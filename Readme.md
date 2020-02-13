@@ -1,6 +1,4 @@
-# Digital House
-
-## Projeto Integrador
+# Digital House - Projeto Integrador
 ### Grupo 2
 
 Integrantes:
