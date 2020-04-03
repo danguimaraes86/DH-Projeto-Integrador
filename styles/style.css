@@ -3,3 +3,18 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+btn-feed {
+    padding: 0 !important;
+}
+
+.btn-success {
+    width: 100%;
+    padding: 0;
+    margin: 5px;
+    
+}
+
+#post {
+    padding: 0;
+}
