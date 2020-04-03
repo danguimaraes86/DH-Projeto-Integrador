@@ -5,5 +5,56 @@ footer{
     width: 100%;
     position: fixed;
     bottom: 0;
-    background-color: #404040 !important;
+    background-color: #404040;
 }
+
+.group-btn-feed {
+    padding: 0;
+}
+
+.group-btn-feed ~ .group-btn-feed {
+    border-left: white 1px solid;
+}
+
+.btn-vegme {
+    width: 100%;
+    padding: 10px;
+    border: #98E144 1px solid;
+    background-color: #98E144;
+    transition: 0.2s;
+}
+
+.btn-vegme:hover {
+    background-color: #98E144;
+    border: gray 1px solid;
+    opacity: 0.9;
+}
+
+/* CCS Section Feed */
+#data-post {
+    font-size: smaller;
+}
+
+.group-btn-post {
+    padding: 0;
+    border-top: #4040404b 1px solid;
+}
+
+.btn-ccp {
+    width: 100%;
+    padding: 10px;
+    color: #404040;
+    transition: 0.2s;
+}
+
+.btn-ccp:hover {
+    background-color: #98E144;
+    border: gray 1px solid;
+    opacity: 0.9;
+}
+
+/* CSS da section Perfil */
+#card-perfil {
+    width: 100%;
+}
+

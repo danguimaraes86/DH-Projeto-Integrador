@@ -1,20 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
 *{
+    font-family: 'Roboto', Helvetica, Arial, sans-serif sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-btn-feed {
-    padding: 0 !important;
+.btn {
+    border-radius: 0;
 }
 
-.btn-success {
-    width: 100%;
-    padding: 0;
-    margin: 5px;
-    
+.row {
+    margin: 0;
 }
 
-#post {
-    padding: 0;
+#titulo-navbar {
+    color: #98E144;
+    font-size: xx-large;
+    line-height: 0;
+}
+
+#form-buscar{
+    text-align: center;
 }

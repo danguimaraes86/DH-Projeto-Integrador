@@ -14,35 +14,91 @@
 
     <header>
         <div class="container d-flex justify-content-between align-items-center py-2 ">
-            <img src="images/Logo-veg.me.png" alt="Logo">
-            <input type="text" placeholder="@Pesquisar">
+            <div class="d-inline-flex justify-content-start align-items-center">
+                <img src="images/Logo-veg.me.png" alt="Logo">
+                <span class="d-none d-md-inline" id="titulo-navbar">veg.me</span>
+            </div>
+
+            <form class="form-inline">
+                <div class="input-group mb-2 mr-sm-2">
+                  <input type="text" class="form-control" id="form-buscar" placeholder="@ Pesquisar">
+                </div>
+              </form>
+
             <a href=""><img src="images/menu.png" alt=""></a>            
         </div>
     </header>
 
     <main>
         
-        <div class="container">
+        <div class="container mt-md-5">
             <div class="row">
 
+                <!-- Seção do Perfil -->
                 <section class="col-3 d-none d-md-block" id="perfil">
-                    <p>helo</p>
+
+                    <div class="card" id="card-perfil">
+                        <img src="images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Nome do Perfil</h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <a href="#" class="btn btn-vegme">Editar</a>
+                        </div>
+                      </div>
+
                 </section>
 
-                <section class="col-6" id="post">
+                <!-- Seção do Post -->
+                <section class="col-md-6 p-0" id="post">
                     
-                    <div class="container">
+                    <!-- Botões Post -->
+                    <div class="row d-none d-md-flex">
 
-                        <div class="row">
+                        <div class="col group-btn-feed">
+                            <button type="button" class="btn btn-vegme">Criar</button>
+                        </div>
+                        <div class="col group-btn-feed">
+                            <button type="button" class="btn btn-vegme">Editar</button>
+                        </div>
+                        <div class="col group-btn-feed">
+                            <button type="button" class="btn btn-vegme">Deletar</button>
+                        </div>
 
-                            <div class="col btn-feed">
-                                <button type="button" class="btn btn-success">Light</button>
-                            </div>
-                            <div class="col btn-feed">
-                                <button type="button" class="btn btn-success">Light</button>
-                            </div>
-                            <div class="col btn-feed">
-                                <button type="button" class="btn btn-success">Light</button>
+                    </div>
+
+                    <!-- Feed -->
+                    <div class="row mt-3">
+
+                        <div class="col p-0">
+
+                            <!-- Card do Post -->
+                            <div class="card">
+                                <img src="images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="card-img-top" alt="...">
+                                
+                                <div class="card-body">
+                                    
+                                    <div class="d-flex justify-content-between">
+                                        <h5 class="card-title">Título do Post</h5>
+                                        <p id="data-post" class="text-muted">03/04/2020</p>
+                                    </div>
+                                    
+                                </div>
+
+                                <!-- Botões Post + Curtir + Comentar -->
+                                <div class="row d-none d-md-flex">
+
+                                    <div class="col group-btn-post">
+                                        <button type="button" class="btn btn-ccp">Post</button>
+                                    </div>
+                                    <div class="col group-btn-post">
+                                        <button type="button" class="btn btn-ccp">Curtir</button>
+                                    </div>
+                                    <div class="col group-btn-post">
+                                        <button type="button" class="btn btn-ccp">Comentar</button>
+                                    </div>
+            
+                                </div>
+
                             </div>
 
                         </div>
@@ -51,8 +107,9 @@
 
                 </section>
 
+                <!-- Seção Amigos -->
                 <section class="col-3 d-none d-md-block" id="amigos">
-                    <p>helo</p>
+                    <p>Amigos</p>
                 </section>
 
             </div>
@@ -62,9 +119,24 @@
 
     <footer>
         <div class="container d-md-none d-flex justify-content-between align-items-center py-2">
-            <img src="images/Logo-veg.me.png" alt="Logo">
-            <input type="text" placeholder="@Pesquisar">
-            <a href=""><img src="images/menu.png" alt=""></a>            
+            <section class="col-md-6 p-0" id="post">
+                    
+                <div class="row">
+
+                    <div class="col btn-feed">
+                        <button type="button" class="btn btn-vegme">Criar</button>
+                    </div>
+                    <div class="col btn-feed">
+                        <button type="button" class="btn btn-vegme">Editar</button>
+                    </div>
+                    <div class="col btn-feed">
+                        <button type="button" class="btn btn-vegme">Deletar</button>
+                    </div>
+
+                </div>
+
+            </section>
+
         </div>
     </footer>
 
