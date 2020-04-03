@@ -1,0 +1,9 @@
+header{
+    background-color: #404040;
+}
+footer{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: #404040 !important;
+}
