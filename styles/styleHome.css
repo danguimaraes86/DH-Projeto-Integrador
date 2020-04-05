@@ -72,3 +72,13 @@ section#amigos {
     padding-left: 0;
     padding-right: 0;
 }
+
+.img-amigo {
+    margin-right: 10px;
+    width: 50px;
+}
+
+/* Footer */
+main {
+    margin-bottom: 100px;
+}
