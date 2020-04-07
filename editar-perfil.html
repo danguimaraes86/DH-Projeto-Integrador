@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <!-- <link rel="stylesheet" href="styles/style-login-cadastro.css"> -->
+    <link rel="stylesheet" href="styles/style-editar-perfil.css">
+    <title>Editar Perfil</title>
+</head>
+
+<body>
+    <header>
+        <div class="container py-2 row mx-auto">
+
+            <div class="d-inline-flex justify-content-start align-items-center col-3">
+                <img src="images/Logo-veg.me.png" alt="Logo">
+                <p class="d-none d-md-inline m-0" id="titulo-navbar">veg.me</p>
+            </div>
+
+            <form class="form-inline col-6">
+                <div class="input-group mx-auto">
+                    <input type="text" class="form-control" id="form-buscar" placeholder="@ Pesquisar">
+                </div>
+            </form>
+
+            <a href="" class="col-3 d-flex flex-row-reverse"><img class="align-self-center" src="images/menu.png"
+                    alt=""></a>
+        </div>
+    </header>
+    <div class="container">
+        <div class="container card col-lg-5 col-md-7 mt-5 px-4" id="form">
+            <div>
+                <h6 class="text-center mt-4 mb-4" id="texto-identificacao">Editar perfil</h6>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlFile1">
+                    Escolha a foto
+                </label>
+                <input type="file" class="form-control-file" id="FormControlFile">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Nome Completo</label>
+                <input type="text" class="form-control" id="FormControlInput" placeholder="Nome completo">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Biografia</label>
+                <textarea class="form-control" placeholder="Fala sobre você" id="FormControlTextarea" rows="8"></textarea>
+            </div>
+            <div class="mb-3 mx-auto ">
+                <button type="submit" class="btn-salvar px-5 py-2">Salvar alterações</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

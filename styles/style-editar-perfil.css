@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Audiowide|Orbitron:400,600,700&display=swap');
+header{
+    background-color:  #404040;
+}
+#form{
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: .25rem;
+}
+.btn-salvar{
+    background-color: #404040;
+    color: #98E144;
+    border-radius: 5px;
+}
+.btn-salvar:hover{
+    opacity: 0.9;
+}
+.form-control,.form-control-file{
+    border: 1px solid #98E144;
+    border-radius: .25rem;
+}
+#texto-identificacao{
+    color:#404040;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;    
+}
