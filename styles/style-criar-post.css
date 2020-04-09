@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Audiowide|Orbitron:400,600,700&display=swap');
+header{
+    background-color:  #404040;
+}
+#form-criar{
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: .25rem;
+}
+.btn-salvar{
+    background-color: #404040;
+    color: #98E144;
+    border-radius: 5px;
+}
+.btn-salvar:hover{
+    opacity: 0.9;
+}
+.form-control{
+    border: 1px solid #98E144;
+    border-radius: .25rem;
+    resize: none;
+}
+#texto-identificacao{
+    color:#404040;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;    
+}
+#anexos{
+    border-top: 2px solid #98E144;
+    border-bottom: 2px solid #98E144;
+}
+.btn-vegme {
+    width: 100%;
+    padding: 10px;
+    border: #98E144 1px solid;
+    background-color: #98E144;
+    transition: 0.2s;
+    border-radius: 4px;
+}
+
+.btn-vegme:hover {
+    background-color: #98E144;
+    border: gray 1px solid;
+    opacity: 0.9;
+}
