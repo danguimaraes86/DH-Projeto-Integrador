@@ -1,0 +1,79 @@
+header{
+    background-color: #404040;
+}
+footer{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: #404040;
+}
+
+
+
+.btn-vegme {
+    width: 100%;
+    padding: 10px;
+    border: #98E144 1px solid;
+    background-color: #98E144;
+    transition: 0.2s;
+    border-radius: 4px;
+}
+
+.btn-vegme:hover {
+    background-color: #98E144;
+    border: gray 1px solid;
+    opacity: 0.9;
+}
+
+/* Section post */
+#data-post {
+    font-size: smaller;
+}
+
+div#post .card ~ .card {
+    margin-top: 20px;
+}
+
+.group-btn-post {
+    padding: 0;
+    border-top: #4040404b 1px solid;
+}
+
+.btn-ccp {
+    width: 100%;
+    padding: 10px;
+    color: #404040;
+    transition: 0.2s;
+}
+
+.btn-ccp:hover {
+    background-color: #98E144;
+    border: gray 1px solid;
+    opacity: 0.9;
+}
+.excluir:hover {
+    background-color: red;
+    border: gray 1px solid;
+    opacity: 0.9;
+}
+
+/* Section Menu */
+section#menu h2{
+    text-align: center;
+}
+section#menu ul li{
+     display: flex;
+    list-style-type: none;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    border-bottom:#cccccc solid 1px;
+}
+
+
+
+/* Footer */
+main {
+    margin-bottom: 100px;
+}
