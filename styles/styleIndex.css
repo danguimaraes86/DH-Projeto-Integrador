@@ -9,16 +9,12 @@
     src: url(../fonts/whatever\ it\ takes.ttf)
 } 
 body{
-    background-image: url(/images/losa.png);
-    width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: #404040;    
 }
-
 /* header */
 header{
     background-color: #FFF;
-    border-bottom: #98E144 solid 4px;
+    border-bottom: #98E144 solid 5px;
 }
 header h1{    
     color:#404040 ;  
@@ -67,7 +63,8 @@ main{
 /* footer  */
 footer{
     background-color: #FFF;
-    border-top: #98E144 solid 4px;
+    border-top: #98E144 solid 5px;
+    border-bottom: #98E144 solid 5px;
     width: 100%;
 }
 footer p,h4{
