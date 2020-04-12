@@ -9,7 +9,7 @@
     src: url(../fonts/whatever\ it\ takes.ttf)
 } 
 body{
-    background-image: url(/images/losa.png);
+    background-image: url(../images/losa.png);
     background-repeat: no-repeat;
     width: 100%;
     background-size: cover;
