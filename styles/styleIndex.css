@@ -9,8 +9,12 @@
     src: url(../fonts/whatever\ it\ takes.ttf)
 } 
 body{
-    background-color: #404040;    
+    background-image: url(/images/losa.png);
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: cover;
 }
+
 /* header */
 header{
     background-color: #FFF;
@@ -26,7 +30,7 @@ header h1{
 
 /* conteudo main */
 main{
-    margin-top: 120px;
+    margin-top: 80px;
 }
 .font-main-titulo{
     font-size: 44px;
