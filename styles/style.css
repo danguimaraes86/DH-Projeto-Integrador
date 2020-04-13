@@ -1,7 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
+@font-face{
+    font-family: myFont1;
+    src: url(../fonts/LoveNature-Rppe6.ttf)
+}
+
+@font-face{
+    font-family: myFont2;
+    src: url(../fonts/LoveTheTrees-qZZ76.ttf);
+}
+
 *{
-    font-family: 'Roboto', Helvetica, Arial, sans-serif sans-serif;
+    font-family: 'Roboto', Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -16,9 +26,11 @@
 }
 
 #titulo-navbar {
+    font-family: myFont1;
     color: #98E144;
     font-size: xx-large;
     line-height: 0;
+    letter-spacing: 0.2em;
 }
 
 #form-buscar{
