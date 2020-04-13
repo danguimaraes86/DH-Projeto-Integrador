@@ -1,18 +1,22 @@
-@import url('https://fonts.googleapis.com/css?family=Audiowide|Orbitron:400,600,700&display=swap');
-
+@font-face{
+    font-family: myFont1;
+    src: url(../fonts/LoveNature-Rppe6.ttf);
+}
 @font-face {
     font-family: Giz-titulo;
-    src: url(../fonts/KGSecondChancesSketch.ttf)
+    src: url(../fonts/KGSecondChancesSketch.ttf);
 } 
-@font-face {
+@font-face{
     font-family: Giz-texto;
-    src: url(../fonts/whatever\ it\ takes.ttf)
-} 
-body{
-    background-image: url(../images/losa.png);
-    background-repeat: no-repeat;
+    src: url(../fonts/whatever\ it\ takes.ttf);
+}
+ 
+
+main{
     width: 100%;
-    background-size: cover;
+    background-image: url("../images/losa.png");
+    background-repeat: no-repeat;
+    background-size: cover;    
 }
 
 /* header */
@@ -23,14 +27,21 @@ header{
 header h1{    
     color:#404040 ;  
     font-weight: 700;  
-    font-family: 'Orbitron', sans-serif;
-    font-size: 36px;
-    letter-spacing: 5px;
+    font-family: myFont1;
+    font-size: 20px;
+    letter-spacing: 0.2em;
+    margin: 0;
+}
+header img{
+    width: 40px;
+}
+header a img{
+    width: 30px;
 }
 
 /* conteudo main */
 main{
-    margin-top: 80px;
+    margin-top: 55px;
 }
 .font-main-titulo{
     font-size: 44px;
@@ -38,9 +49,9 @@ main{
     font-family: giz-titulo ;
     text-transform: uppercase;
 }
-.font-main-texto{
-    color: #FFF;    
-    font-family: giz-texto ;
+.font-main-texto {
+    color: rgb(255, 255, 255);    
+    font-family: Giz-texto;
     letter-spacing: 3px;
     font-size: 36px;
 }
@@ -51,7 +62,6 @@ main{
     font-size: 22px;
     font-weight: 700;
 }
-
 #img-vaca{
     width: 100%;
     width: 280px;
@@ -72,13 +82,14 @@ footer{
     width: 100%;
 }
 footer p,h4{
-    font-family: 'Orbitron', sans-serif;
     margin: 0;
 }
 
 @media (min-width: 575.98px) {
     #div-img-vaca{
-        display: flex;
         justify-content: flex-start !important  ;
+    }
+    header h1{
+        font-size: 28px;
     }
 }
