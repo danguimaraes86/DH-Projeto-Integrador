@@ -1,0 +1,59 @@
+
+header{
+    background-color:  #404040;
+}
+#form-det{
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: .25rem;
+}
+
+.btn-salvar:hover{
+    opacity: 0.9;
+}
+.form-control{
+    border-radius: .25rem;
+    resize: none;
+}
+#texto-identificacao{
+    color:#404040;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;    
+}
+
+#btn-manter {
+    width: 100%;
+    padding: 10px;
+    border: #cccccc solid 1px;
+    background-color: #98E144;
+    transition: 0.2s;
+    border-radius: 4px;
+}
+#btn-excluir {
+    width: 100%;
+    padding: 10px;
+    border: red solid 1px;
+    background-color: red;
+    transition: 0.2s;
+    border-radius: 4px;
+}
+
+#btn-manter:hover {
+    background-color: #98E144;
+    opacity: 0.8;
+}
+
+#btn-excluir:hover {
+    background-color: red;
+    opacity: 0.8;
+}
+
+div.foto{
+    justify-content: center;
+    justify-items: center;
+    width: 100%;
+    height: 250px;
+    background-image: url("../images/Vegana.JPG");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
