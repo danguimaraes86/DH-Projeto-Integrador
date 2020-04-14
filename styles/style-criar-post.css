@@ -5,6 +5,8 @@ header{
 #form-criar{
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: .25rem;
+    box-shadow: 2px 2px gainsboro;
+    margin-bottom: 15px;
 }
 .btn-salvar{
     background-color: #404040;
