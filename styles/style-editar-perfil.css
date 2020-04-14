@@ -1,27 +1,51 @@
 @import url('https://fonts.googleapis.com/css?family=Audiowide|Orbitron:400,600,700&display=swap');
-header{
-    background-color:  #404040;
+
+header {
+    background-color: #404040;
 }
-#form{
+
+#form {
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: .25rem;
+    box-shadow: 2px 2px gainsboro;
+    margin-bottom: 15px;
 }
-.btn-salvar{
+
+input[type='file'] {
+    display: none
+}
+
+#foto-perfil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 15vh;
+    border: 1px solid #98E144;
+    cursor: pointer;
+}
+
+.btn-salvar {
     background-color: #404040;
     color: #98E144;
     border-radius: 5px;
 }
-.btn-salvar:hover{
+
+.btn-salvar:hover {
     opacity: 0.9;
 }
-.form-control,.form-control-file{
+
+.form-control,
+.form-control-file {
     border: 1px solid #98E144;
     border-radius: .25rem;
+    resize: none;
 }
-#texto-identificacao{
-    color:#404040;
+
+#texto-identificacao {
+    color: #404040;
     font-weight: 700;
     text-transform: uppercase;
     font-family: 'Orbitron', sans-serif;
-    letter-spacing: 2px;    
+    letter-spacing: 2px;
 }
