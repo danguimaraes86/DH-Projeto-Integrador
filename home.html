@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/styleHome.css">
+    <link rel="stylesheet" href="styles/style-home.css">
     <title>veg.me || Home</title>
 </head>
 
 <body>
 
-    <header>
+    <header id="nav-bar">
         <div class="container py-2 row mx-auto">
 
             <div class="d-inline-flex justify-content-start align-items-center col-3">
                 <img src="images/Logo-veg.me.png" alt="Logo">
-                <p class="d-none d-md-inline m-0" id="titulo-navbar">veg.me</p>
+                <p id="titulo-navbar">veg.me</p>
             </div>
 
             <form class="form-inline col-6">
@@ -43,7 +43,7 @@
                         <div class="card-body">
                           <h5 class="card-title">Nome do Perfil</h5>
                           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-vegme">Editar</a>
+                          <a href="editar-perfil.html" class="btn btn-vegme">Editar</a>
                         </div>
                       </div>
 
@@ -53,22 +53,25 @@
                 <section class="col-md-6" id="post">
                     
                     <!-- Botões Post -->
-                    <div class="row d-none d-md-flex">
+                    <div class="d-none d-md-flex justify-content-between">
+                        
+                        <a href="criar-post.html">
+                            <button type="button" class="btn btn-vegme" id="btn-criar-post">Criar</button>
+                        </a>
 
-                        <div class="col group-btn-feed">
-                            <button type="button" class="btn btn-vegme">Criar</button>
-                        </div>
-                        <div class="col group-btn-feed">
-                            <button type="button" class="btn btn-vegme">Editar</button>
-                        </div>
-                        <div class="col group-btn-feed">
-                            <button type="button" class="btn btn-vegme">Deletar</button>
-                        </div>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-vegme active">
+                              <input type="radio" name="publico-amigos" id="post-publico" checked> Público
+                            </label>
+                            <label class="btn btn-vegme">
+                              <input type="radio" name="publico-amigos" id="post-amigos"> Amigos
+                            </label>
+                          </div>
 
                     </div>
 
                     <!-- Feed -->
-                    <div id="feed" class="row mt-3">
+                    <div id="feed" class="row d-md-block mt-3">
 
                         <div class="col p-0">
 
@@ -89,7 +92,9 @@
                                 <div class="row">
 
                                     <div class="col group-btn-post">
-                                        <button type="button" class="btn btn-ccp">Post</button>
+                                        <a href="post-completo.html">
+                                            <button type="button" class="btn btn-ccp">Post</button>
+                                        </a>
                                     </div>
                                     <div class="col group-btn-post">
                                         <button type="button" class="btn btn-ccp">Curtir</button>
@@ -169,7 +174,7 @@
                 </section>
 
                 <!-- Seção Amigos -->
-                <section class="col-3 d-none d-md-block border" id="amigos">
+                <section class="col-md-3 d-none d-md-block border" id="amigos">
 
                     <h3 class="text-center mt-2">Amigos</h3>
 
@@ -202,16 +207,7 @@
                             <img src="images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="img-amigo img-fluid" alt="...">
                             Cras justo odio
                         </div>
-
                     </div>
-
-                    <!-- <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                    </ul> -->
                 </section>
 
             </div>
@@ -219,6 +215,7 @@
 
     </main>
 
+    <!-- Footer para mobile -->
     <footer>
         <div class="container d-md-none d-flex justify-content-between align-items-center py-2">
             <section class="col-md-6 p-0" id="post">
@@ -226,13 +223,17 @@
                 <div class="row">
 
                     <div class="col btn-feed">
-                        <button type="button" class="btn btn-vegme">Criar</button>
+                        <a href="#nav-bar">
+                            <button type="button" class="btn btn-vegme">Home</button>
+                        </a>
                     </div>
                     <div class="col btn-feed">
-                        <button type="button" class="btn btn-vegme">Editar</button>
+                        <button type="button" class="btn btn-vegme" id="btnFooterAmigos">Amigos</button>
                     </div>
                     <div class="col btn-feed">
-                        <button type="button" class="btn btn-vegme">Deletar</button>
+                        <a href="/criar-post.html">
+                            <button type="button" class="btn btn-vegme">Criar</button>
+                        </a>
                     </div>
 
                 </div>
@@ -244,7 +245,9 @@
 
 
     <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/index.js"></script>
+    
 </body>
 
 </html>

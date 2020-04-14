@@ -17,7 +17,7 @@
 
             <div class="d-inline-flex justify-content-start align-items-center col-3">
                 <img src="images/Logo-veg.me.png" alt="Logo">
-                <p class="d-none d-md-inline m-0" id="titulo-navbar">veg.me</p>
+                <p id="titulo-navbar">veg.me</p>
             </div>
             
             <form class="form-inline col-6">
@@ -26,14 +26,21 @@
                 </div>
             </form>
 
-            <a href="" class="col-3 d-flex flex-row-reverse"><img class="align-self-center" src="images/menu.png"
-                    alt=""></a>
+            <div class="col-3 d-flex justify-content-center align-items-center">
+                <a href="home.html">
+                  <svg class="bi bi-arrow-left" width="40px" height="40px" viewBox="0 0 16 16" fill="#98E144" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M5.854 4.646a.5.5 0 010 .708L3.207 8l2.647 2.646a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd" d="M2.5 8a.5.5 0 01.5-.5h10.5a.5.5 0 010 1H3a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>
+                  </svg>
+                </a>
+              </div>
         </div>
     </header>
+
     <div class="container">
         <div class="container card col-lg-5 col-md-7 mt-5 px-4" id="form">
             <div>
-                <h6 class="text-center mt-4 mb-4" id="texto-identificacao">Editar perfil</h6>
+                <h5 class="text-center mt-4 mb-4" id="texto-identificacao">Editar perfil</h5>
             </div>
             <div class="form-group">
                 <label for="FormControlFile1">
@@ -43,14 +50,16 @@
             </div>
             <div class="form-group">
                 <label for="FormControlInput1">Nome Completo</label>
-                <input type="text" class="form-control" id="FormControlInput" placeholder="Nome completo">
+                <input type="text" class="form-control" id="FormControlInput" placeholder="Nome atual do perfil">
             </div>
             <div class="form-group">
                 <label for="FormControlTextarea1">Biografia</label>
-                <textarea class="form-control" placeholder="Fale sobre você" id="FormControlTextarea" rows="8"></textarea>
+                <textarea class="form-control" placeholder="Bio atual do perfil" id="FormControlTextarea" rows="8"></textarea>
             </div>
             <div class="mb-3 mx-auto ">
-                <button type="submit" class="btn-salvar px-5 py-2">Salvar alterações</button>
+                <a href="home.html">
+                    <button type="submit" class="btn-salvar px-5 py-2">Salvar alterações</button>
+                </a>
             </div>
         </div>
     </div>

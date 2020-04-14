@@ -16,7 +16,7 @@
 
             <div class="d-inline-flex justify-content-start align-items-center col-3">
                 <img src="images/Logo-veg.me.png" alt="Logo">
-                <p class="d-none d-md-inline m-0" id="titulo-navbar">veg.me</p>
+                <p id="titulo-navbar">veg.me</p>
             </div>
 
             <form class="form-inline col-6">
@@ -29,36 +29,50 @@
                     alt=""></a>
         </div>
     </header>
-    <div class="container">
+
+    <div class="container mb-4">
         <div class="container card col-lg-5 col-md-7 mt-4 px-4" id="form-criar">
             <div>
-                <h6 class="text-center mt-4 mb-3" id="texto-identificacao">Criar Post</h6>
+                <h5 class="text-center mt-4 mb-3" id="texto-identificacao">Criar Post</h5>
             </div>
             
             <div class="form-group">
-                <label for="exampleFormControlInput1">Título do post</label>
-                <input type="text" class="form-control" id="FormControlInput">
+                <label class="form-label" for="post-titulo">Título do post</label>
+                <input type="text" class="form-control" id="post-titulo">
             </div>
             <div class="form-group">
-                <label for="exampleFormControlTextarea1">Descrição</label>
-                <textarea class="form-control" id="FormControlTextarea" rows="6"></textarea>
+                <label class="form-label" for="post-descricao">Descrição</label>
+                <textarea class="form-control" id="post-descricao" rows="6"></textarea>
             </div>
             <div class="form-group">
-                <label for="exampleFormControlFile1">
+                <label class="form-label" for="post-midias-anexadas">
                     Mídias anexadas
                 </label>
-                <input type="image" class="form-control py-4"id="FormControlFile">
-            </div>
-            <div class="row my-3 pt-2 pb-2" id="anexos">
-                <div class="col">
-                    <button class="btn-vegme">Localização</button>
+                <div class="midias">
+                    <img class="img-thumbnail rounded" src="images/criar-post/joseph-gonzalez-zcUgjyqEwe8-unsplash.jpg" alt="">
+                    <img class="img-thumbnail rounded" src="images/criar-post/dose-juice-sTPy-oeA3h0-unsplash.jpg" alt="">
+                    <img class="img-thumbnail rounded" src="images/criar-post/eiliv-sonas-aceron-ZuIDLSz3XLg-unsplash.jpg" alt="">
+                    <img class="img-thumbnail rounded" src="images/criar-post/joseph-gonzalez-zcUgjyqEwe8-unsplash.jpg" alt="">
+                    <img class="img-thumbnail rounded" src="images/criar-post/dose-juice-sTPy-oeA3h0-unsplash.jpg" alt="">
+                    <img class="img-thumbnail rounded" src="images/criar-post/eiliv-sonas-aceron-ZuIDLSz3XLg-unsplash.jpg" alt="">
                 </div>
-                <div class="col">
-                    <button class="btn-vegme">Anexar foto</button>
-                </div>
             </div>
+
+            <div class="row">
+
+                <div class="col group-btn-post">
+                    <button type="button" class="btn btn-ccp">Localização</button>
+                </div>
+                <div class="col group-btn-post">
+                    <button type="button" class="btn btn-ccp">Anexar Fotos</button>
+                </div>
+
+            </div>
+
             <div class="mb-3 mt-2 mx-auto ">
-                <button type="submit" class="btn-salvar px-5 py-2">Publicar post</button>
+                <a href="home.html"> 
+                    <button type="submit" class="btn-vegme px-5 py-2">Publicar</button>
+                </a>
             </div>
         </div>
     </div>

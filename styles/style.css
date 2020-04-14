@@ -28,11 +28,31 @@
 #titulo-navbar {
     font-family: myFont1;
     color: #98E144;
-    font-size: xx-large;
+    font-size: 28px;
     line-height: 0;
     letter-spacing: 0.2em;
+    display: none;
+    margin: 0;
 }
 
 #form-buscar{
     text-align: center;
+}
+
+.btn-vegme {
+    background-color: #404040;
+    color: #98E144;
+    border-radius: 5px;
+    transition: opacity 0.2s;
+}
+
+.btn-vegme:hover {
+    color: #98E144;
+    opacity: 0.9;
+}
+
+@media (min-width: 769px) {
+    #titulo-navbar {
+        display: inline;
+    }
 }

@@ -1,0 +1,83 @@
+header{
+    background-color: #404040;
+}
+
+footer{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: #404040;
+}
+
+#btn-criar-post {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.btn-group-toggle .active {
+    opacity: 0.9;
+    box-shadow: inset rgba(152, 225, 68, 0.5) 0px 0 3px 0px;
+    /* border: #98E144 2px solid; */
+}
+
+/* Section Feed */
+#data-post {
+    font-size: smaller;
+}
+
+div#feed .card ~ .card {
+    margin-top: 20px;
+}
+
+.group-btn-post {
+    padding: 0;
+    border-top: #4040404b 1px solid;
+}
+
+.btn-ccp {
+    width: 100%;
+    padding: 10px;
+    color: #404040;
+    transition: 0.2s;
+}
+
+.btn-ccp:hover {
+    background-color: #98E144;
+    border: gray 1px solid;
+    opacity: 0.9;
+}
+
+/* Section Perfil */
+#card-perfil {
+    width: 100%;
+}
+
+/* Section Amigos */
+
+section#amigos {
+    height: fit-content;
+}
+.list-group-item {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.img-amigo {
+    margin-right: 10px;
+    width: 50px;
+}
+
+/* Footer */
+main {
+    margin-bottom: 100px;
+}
+
+.btn-feed {
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+    section#amigos {
+        margin-top: 16px;
+    }
+}

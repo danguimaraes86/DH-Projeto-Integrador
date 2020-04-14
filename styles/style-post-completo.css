@@ -1,0 +1,90 @@
+header{
+  background-color: #404040;
+}
+
+header a img {
+  width: 30px;
+  height: 30px;
+}
+
+.bi-arrow-leftr {
+  font-weight: 800;
+}
+
+#foto-perfil {
+  height: 70px;
+  width: 80px;
+}
+
+#post-completo {
+  max-width: 600px;
+}
+
+.group-btn-post {
+  padding: 0;
+  border-top: #4040404b 1px solid;
+}
+
+.btn-ccp {
+  width: 100%;
+  padding: 10px;
+  color: #404040;
+  transition: 0.2s;
+}
+
+.btn-ccp:hover {
+  background-color: #98E144;
+  border: gray 1px solid;
+  opacity: 0.9;
+}
+
+section#post-comentario {
+  height: fit-content;
+  border-radius: 0.25rem;
+  margin-bottom: 16px;
+}
+
+.header-comentarios {
+  background-color: lightgray;
+  padding: 16px 0;
+  text-align: center;
+  margin: 0;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+.list-group-flush{
+  padding: 0 16px;
+}
+
+.list-group-item {
+  padding-left: 0;
+  padding-right: 0;
+  text-align: justify;
+}
+
+.list-group-item p {
+  margin: 0;
+  padding: 0;
+}
+
+.list-group-item .nome-perfil {
+  font-weight: 500;
+}
+
+.img-amigo {
+  margin-right: 10px;
+  width: 50px;
+  align-self: flex-start;
+}
+
+/* .icon-post {
+  height: 80px;
+  width: 80px;
+  padding: 10px;
+}
+
+.hover-icon:hover {
+  background-color: gray;
+  transition: 700ms;
+} */
