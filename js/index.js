@@ -1,17 +1,14 @@
 
-$("#btnFooterAmigos").click(function(event) {
+$("#btn-footer-amigos").click(function(event) {
    
-    $('#feed').toggleClass('d-none');
-    $('#amigos').toggleClass('d-none');
+    $('#feed').addClass('d-none');
+    $('#amigos').removeClass('d-none');     
+    
+  });
 
-    let str = $('#btnFooterAmigos')[0].innerText;
-
-    if( str == 'Amigos') {
-      $('#btnFooterAmigos').text('Feed')
-    }
-
-    if(str == 'Feed') {
-      $('#btnFooterAmigos').text('Amigos')
-    }    
+  $("#btn-footer-home").click(function(event) {
+   
+    $('#feed').removeClass('d-none');
+    $('#amigos').addClass('d-none');     
     
   });
