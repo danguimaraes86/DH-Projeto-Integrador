@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="icons/fontawesome/css/all.css">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/style-home.css">
     <title>veg.me || Home</title>
@@ -26,7 +27,9 @@
                 </div>
               </form>
 
-            <a href="" class="col-3 d-flex flex-row-reverse"><img class="align-self-center" src="images/menu.png" alt=""></a>            
+            <div class="col-3 d-flex flex-row-reverse">
+                <i class="fas fa-bars icon-menu"></i>
+            </div>
         </div>
     </header>
 
@@ -217,32 +220,24 @@
 
     <!-- Footer para mobile -->
     <footer>
-        <div class="container d-md-none d-flex justify-content-between align-items-center py-2">
-            <section class="col-md-6 p-0" id="post">
-                    
-                <div class="row">
-
-                    <div class="col btn-feed">
-                        <a href="#nav-bar">
-                            <button type="button" class="btn btn-vegme" id="btn-footer-home">Home</button>
-                        </a>
-                    </div>
-                    <div class="col btn-feed">
-                        <button type="button" class="btn btn-vegme" id="btn-footer-amigos">Amigos</button>
-                    </div>
-                    <div class="col btn-feed">
-                        <a href="criar-post.html">
-                            <button type="button" class="btn btn-vegme">Criar</button>
-                        </a>
-                    </div>
-
+        <div class="container d-md-none p-2">
+            <div class="row">
+                <div class="col btn-feed">
+                    <a href="#nav-bar">
+                        <button type="button" class="btn btn-vegme" id="btn-footer-home">Home</button>
+                    </a>
                 </div>
-
-            </section>
-
+                <div class="col btn-feed">
+                    <button type="button" class="btn btn-vegme" id="btn-footer-amigos">Amigos</button>
+                </div>
+                <div class="col btn-feed">
+                    <a href="criar-post.html">
+                        <button type="button" class="btn btn-vegme">Criar</button>
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
-
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.bundle.js"></script>

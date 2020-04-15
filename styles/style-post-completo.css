@@ -7,6 +7,14 @@ header a img {
   height: 30px;
 }
 
+.icon-denunciar {
+  width: 30px;
+  height: 30px;
+  align-self: flex-end;
+  text-align: center;
+  font-size: 20px;
+}
+
 .bi-arrow-leftr {
   font-weight: 800;
 }

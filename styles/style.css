@@ -39,6 +39,21 @@
     text-align: center;
 }
 
+i {
+    color: #98E144;
+    line-height: 1;
+}
+
+.icon-menu {
+    font-size: 32px;
+    align-self: center;
+}
+
+.icon-voltar {
+    font-size: 40px;
+    text-align: center;
+}
+
 .btn-vegme {
     background-color: #404040;
     color: #98E144;
