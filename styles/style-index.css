@@ -32,8 +32,9 @@ header h1{
     letter-spacing: 0.2em;
     margin: 0;
 }
-header img{
-    width: 40px;
+header i{
+    font-size: 40px;
+    color: #404040;
 }
 
 /* conteudo main */
