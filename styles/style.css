@@ -17,6 +17,11 @@
     box-sizing: border-box;
 }
 
+header{
+    background-color: #404040;
+    border-bottom: #98E144 solid 2px;
+}
+
 .btn {
     border-radius: 0;
 }
@@ -57,7 +62,7 @@ i {
 .btn-vegme {
     background-color: #404040;
     color: #98E144;
-    border-radius: 5px;
+    border-radius: 0.25rem;
     transition: opacity 0.2s;
 }
 

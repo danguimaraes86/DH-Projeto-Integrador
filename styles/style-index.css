@@ -22,7 +22,7 @@ main{
 /* header */
 header{
     background-color: #FFF;
-    border-bottom: #98E144 solid 5px;
+    border-bottom: #98E144 solid 2px;
 }
 header h1{    
     color:#404040 ;  

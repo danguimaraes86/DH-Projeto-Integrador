@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Audiowide|Orbitron:400,600,700&display=swap');
 
-header {
-    background-color: #404040;
-}
 
 .form-control {
     border: 1px solid rgb(193, 193, 193);
@@ -15,11 +12,6 @@ header {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-}
-
-#anexos {
-    border-top: 2px solid #98E144;
-    border-bottom: 2px solid #98E144;
 }
 
 .form-label {
@@ -40,9 +32,9 @@ header {
 }
 
 .btn-ccp:hover {
-    background-color: #98E144;
+    background-color: #404040;
     border: gray 1px solid;
-    opacity: 0.9;
+    color: #97e042;
 }
 
 .midias {
@@ -62,7 +54,7 @@ header {
 
 @media(min-width: 579px) {
     #form-criar {
-        border: 1px solid #97e042;
+        border: 1px solid rgb(193, 193, 193);
         border-radius: .25rem;
         box-shadow: 0px 20px  20px #000;
     }

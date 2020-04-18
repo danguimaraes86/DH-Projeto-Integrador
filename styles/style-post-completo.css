@@ -1,6 +1,4 @@
-header{
-  background-color: #404040;
-}
+
 
 header a img {
   width: 30px;
@@ -22,10 +20,13 @@ header a img {
 #foto-perfil {
   height: 70px;
   width: 80px;
+  border-radius: 0.25rem;
 }
 
 #post-completo {
   max-width: 600px;
+  border: 1px solid rgb(193, 193, 193);
+  border-radius: 0.25rem;
 }
 
 .group-btn-post {
@@ -41,9 +42,9 @@ header a img {
 }
 
 .btn-ccp:hover {
-  background-color: #98E144;
+  background-color: #404040;
   border: gray 1px solid;
-  opacity: 0.9;
+  color: #98E144;
 }
 
 section#post-comentario {
@@ -84,6 +85,7 @@ section#post-comentario {
   margin-right: 10px;
   width: 50px;
   align-self: flex-start;
+  border-radius: 0.25rem;
 }
 
 /* .icon-post {

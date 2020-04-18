@@ -3,14 +3,11 @@
     src: url(../fonts/LoveNature-Rppe6.ttf)
 }
 
-body{
-    background-color: #404040;
-}
 
 /* Header */
 header{
-    background-color:#fff;
-    border-bottom: #98E144 solid 4px;
+    background-color: #404040;
+    border-bottom: #98E144 solid 2px;
 }
 #link-home{
     text-decoration: none;;
@@ -19,7 +16,7 @@ header{
     opacity: 0.9;
 }
 header div h1 {
-    color: #404040;;
+    color: #98E144;
     font-size: xx-large;
     line-height: 0;
     margin-left: 10px;
@@ -37,9 +34,10 @@ header img{
 .box-form{ 
     width: 100%;
     background-color: #fff;
-    border-radius: 7px; 
+    border-radius: 0.25rem; 
     margin-top: 50px; 
-    /* box-shadow: 0px 20px  20px #000;        */
+    border: 1px solid rgb(193, 193, 193);
+
 }
 
 /* texto - impute - imagens do formulario */
@@ -78,7 +76,7 @@ header img{
     color:#98E144;
     font-weight: 600;
     border: none;
-    border-radius: 5px;
+    border-radius: 0.25rem;
     transition: 0.2s;        
 }
 .btn-login:hover{
