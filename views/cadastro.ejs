@@ -1,59 +1,38 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<%- include('./partials/header-login-cadastro') %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/bootstrap/bootstrap.css">
-    <link rel="stylesheet" href="/icons/fontawesome/css/all.css">
-    <link rel="stylesheet" href="/stylesheets/style.css">
-    <link rel="stylesheet" href="/stylesheets/style-login-cadastro.css">
-    <title>Cadastro</title>
-</head>
+<div class="container d-flex justify-content-center align-items-center" id="form">
+    <div class="box-form pr-5 pl-5 p-3 mb-5">
+        <div class="flex-column">
 
-<body>
-    
-    <header>
-        <div class="container d-flex justify-content-center  align-items-center py-2  ">
-            <img src="/images/Logo-veg.me.png" alt="Logo">
-            <a href="/" id="link-home"><h1>veg.me</h1></a>
-        </div>
-    </header>
-
-    <div class="container d-flex justify-content-center align-items-center" id="form">
-        <div class="box-form pr-5 pl-5 p-3 mb-5">
-            <div class="flex-column">
-
-                <div >
-                    <h5 class="text-center mt-3 mb-4"  id="texto-identificacao" >Cadastro</h5>
-                </div>
-
-                <div class="text-box d-flex pt-3 pb-1">
-                    <img class="form-icons" src="/images/icon-login.png" alt="icon-login">
-                    <input type="text" placeholder="Nome" name="nome">
-                </div>
-                <div class="text-box d-flex pt-4 pb-1">
-                    <img class="form-icons" src="/images/icon-email.png" alt="icon-login">
-                    <input type="email" placeholder="E-mail" name="email">
-                </div>
-                <div class="d-flex text-box pt-4 pb-1">
-                    <img class="form-icons" src="/images/icon-senha.png" alt="icon-senha">
-                    <input type="password" placeholder="Senha" name="senha">
-                </div>                
-
-                <div class="mt-5 ">
-                    <a href="home.html">
-                        <button type="submit" class= "btn-login">Cadastrar</button>
-                    </a>
-                </div>
-                <div class="text-center mt-3" id="recuperar-senha">
-                    <a href="/usuario/login" id="recuperar-senha">Já sou cadastrado</a>
-                </div>
-                
+            <div>
+                <h5 class="text-center mt-3 mb-4" id="texto-identificacao">Cadastro</h5>
             </div>
+
+            <div class="text-box d-flex pt-3 pb-1">
+                <img class="form-icons" src="/images/icon-login.png" alt="icon-login">
+                <input type="text" placeholder="Nome" name="nome">
+            </div>
+            <div class="text-box d-flex pt-4 pb-1">
+                <img class="form-icons" src="/images/icon-email.png" alt="icon-login">
+                <input type="email" placeholder="E-mail" name="email">
+            </div>
+            <div class="d-flex text-box pt-4 pb-1">
+                <img class="form-icons" src="/images/icon-senha.png" alt="icon-senha">
+                <input type="password" placeholder="Senha" name="senha">
+            </div>
+
+            <div class="mt-5 ">
+                <a href="/home">
+                    <button type="submit" class="btn-login">Cadastrar</button>
+                </a>
+            </div>
+            <div class="text-center mt-3" id="recuperar-senha">
+                <a href="/usuario/login" id="recuperar-senha">Já sou cadastrado</a>
+            </div>
+
         </div>
     </div>
-
+</div>
 
 </body>
 

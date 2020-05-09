@@ -1,0 +1,55 @@
+<%- include('./partials/header') %>
+
+<div class="container mb-4">
+    <div class="container card col-lg-5 col-md-7 mt-4 px-4" id="form-criar">
+        <div>
+            <h5 class="text-center mt-4 mb-3" id="texto-identificacao">Criar Post</h5>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="post-titulo">Título do post</label>
+            <input type="text" class="form-control" id="post-titulo">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="post-descricao">Descrição</label>
+            <textarea class="form-control" id="post-descricao" rows="6"></textarea>
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="post-midias-anexadas">
+                Mídias anexadas
+            </label>
+            <div class="midias">
+                <img class="img-thumbnail rounded" src="/images/criar-post/joseph-gonzalez-zcUgjyqEwe8-unsplash.jpg"
+                    alt="">
+                <img class="img-thumbnail rounded" src="/images/criar-post/dose-juice-sTPy-oeA3h0-unsplash.jpg" alt="">
+                <img class="img-thumbnail rounded" src="/images/criar-post/eiliv-sonas-aceron-ZuIDLSz3XLg-unsplash.jpg"
+                    alt="">
+                <img class="img-thumbnail rounded" src="/images/criar-post/joseph-gonzalez-zcUgjyqEwe8-unsplash.jpg"
+                    alt="">
+                <img class="img-thumbnail rounded" src="/images/criar-post/dose-juice-sTPy-oeA3h0-unsplash.jpg" alt="">
+                <img class="img-thumbnail rounded" src="/images/criar-post/eiliv-sonas-aceron-ZuIDLSz3XLg-unsplash.jpg"
+                    alt="">
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col group-btn-post">
+                <button type="button" class="btn btn-ccp">Localização</button>
+            </div>
+            <div class="col group-btn-post">
+                <button type="button" class="btn btn-ccp">Anexar Fotos</button>
+            </div>
+
+        </div>
+
+        <div class="mb-3 mt-2 mx-auto ">
+            <a href="home.html">
+                <button type="submit" class="btn-vegme px-5 py-2">Publicar</button>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,9 +1,9 @@
 const login = (req, res) => {
-    return res.render('login');
+    return res.render('login', {title: " - Login"});
 }
 
 const cadastro = (req, res) => {
-    return res.render('cadastro');
+    return res.render('cadastro', {title: " - Cadastro"});
 }
 
 const store = (req, res) => {
@@ -11,7 +11,7 @@ const store = (req, res) => {
 }
 
 const editar = (req, res) => {
-    return res.render('editar-perfil');
+    return res.render('editar-perfil', { title:"Editar Perfil", css:"style-editar-perfil.css"});
 }
 
 const upDate = (req, res) => {

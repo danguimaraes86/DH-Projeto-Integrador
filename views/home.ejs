@@ -1,38 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/bootstrap/bootstrap.css">
-    <link rel="stylesheet" href="/icons/fontawesome/css/all.css">
-    <link rel="stylesheet" href="/stylesheets/style.css">
-    <link rel="stylesheet" href="/stylesheets/style-home.css">
-    <title>veg.me || Home</title>
-</head>
-
-<body>
-
-    <header id="nav-bar">
-        <div class="container py-2 row mx-auto">
-
-            <div class="d-inline-flex justify-content-start align-items-center col-3">
-                <img src="images/Logo-veg.me.png" alt="Logo">
-                <p id="titulo-navbar">veg.me</p>
-            </div>
-
-            <form class="form-inline col-6">
-                <div class="input-group mx-auto">
-                  <input type="text" class="form-control" id="form-buscar" placeholder="@ Pesquisar">
-                </div>
-              </form>
-
-            <div class="col-3 d-flex flex-row-reverse">
-                <i class="fas fa-bars icon-menu"></i>
-            </div>
-        </div>
-    </header>
-
+<%- include('./partials/header') %>
     <main>
         
         <div class="container mt-md-5 mb-3">
@@ -46,7 +12,7 @@
                         <div class="card-body">
                           <h5 class="card-title">Nome do Perfil</h5>
                           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="editar-perfil.html" class="btn btn-vegme">Editar</a>
+                          <a href="/usuario/editar" class="btn btn-vegme">Editar</a>
                         </div>
                       </div>
 
@@ -58,7 +24,7 @@
                     <!-- Botões Post -->
                     <div class="d-none d-md-flex justify-content-between">
                         
-                        <a href="criar-post.html">
+                        <a href="/post/criar">
                             <button type="button" class="btn btn-vegme" id="btn-criar-post">Criar</button>
                         </a>
 
@@ -95,7 +61,7 @@
                                 <div class="row">
 
                                     <div class="col group-btn-post">
-                                        <a href="post-completo.html">
+                                        <a href="/post/completo">
                                             <button type="button" class="btn btn-ccp">Post</button>
                                         </a>
                                     </div>
