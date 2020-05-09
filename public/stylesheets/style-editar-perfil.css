@@ -47,8 +47,3 @@ input[type='file'] {
     letter-spacing: 1px;    
 }
 
-@media(min-width: 578.98px) {
-    #form {
-        box-shadow: 0px 20px  20px #000;   
-    }
-}
