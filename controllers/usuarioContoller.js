@@ -1,3 +1,5 @@
+const { Usuario } = require('../models')
+
 const login = (req, res) => {
     return res.render('login', {title: " - Login"});
 }
@@ -6,8 +8,22 @@ const cadastro = (req, res) => {
     return res.render('cadastro', {title: " - Cadastro"});
 }
 
-const store = (req, res) => {
-    return res.send(`usuario cadastrado`)
+const store = async (req, res) => {
+
+    const { nome, nickname, email, senha, foto_perfil, biografia } = req.body
+
+    const usuario = await Usuario.create({
+      nome,
+      nickname,
+      email,
+      senha, 
+      foto_perfil,
+      biografia
+    })
+
+    return res.json(usuario)
+
+    // return res.send(`usuario cadastrado`)
 }
 
 const editar = (req, res) => {
