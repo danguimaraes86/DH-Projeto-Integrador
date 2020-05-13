@@ -10,15 +10,14 @@ const cadastro = (req, res) => {
 
 const store = async (req, res) => {
 
-    const { nome, nickname, email, senha, foto_perfil, biografia } = req.body
+    const { nome, nickname, email, senha, foto_perfil } = req.body
 
     const usuario = await Usuario.create({
       nome,
       nickname,
       email,
       senha, 
-      foto_perfil,
-      biografia
+      foto_perfil
     })
 
     return res.json(usuario)

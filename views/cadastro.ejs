@@ -1,37 +1,63 @@
 <%- include('./partials/header-login-cadastro') %>
 
 <div class="container d-flex justify-content-center align-items-center" id="form">
-    <div class="box-form pr-5 pl-5 p-3 mb-5">
-        <div class="flex-column">
 
-            <div>
-                <h5 class="text-center mt-3 mb-4" id="texto-identificacao">Cadastro</h5>
-            </div>
+    <!-- Form Cadastro de Usuário -->
+    <form action="/usuario/cadastro" method="POST">
 
-            <div class="text-box d-flex pt-3 pb-1">
-                <img class="form-icons" src="/images/icon-login.png" alt="icon-login">
-                <input type="text" placeholder="Nome" name="nome">
-            </div>
-            <div class="text-box d-flex pt-4 pb-1">
-                <img class="form-icons" src="/images/icon-email.png" alt="icon-login">
-                <input type="email" placeholder="E-mail" name="email">
-            </div>
-            <div class="d-flex text-box pt-4 pb-1">
-                <img class="form-icons" src="/images/icon-senha.png" alt="icon-senha">
-                <input type="password" placeholder="Senha" name="senha">
-            </div>
+        <div class="box-form pr-5 pl-5 p-3 mb-5">
+            <div class="flex-column">
+    
+                <div>
+                    <h5 class="text-center mt-3 mb-4" id="texto-identificacao">Cadastro</h5>
+                </div>
 
-            <div class="mt-5 ">
-                <a href="/home">
-                    <button type="submit" class="btn-login">Cadastrar</button>
-                </a>
-            </div>
-            <div class="text-center mt-3" id="recuperar-senha">
-                <a href="/usuario/login" id="recuperar-senha">Já sou cadastrado</a>
+                <!-- { nome, nickname, email, senha, foto_perfil } -->
+
+                <!-- Nome -->
+                <div class="text-box d-flex pt-3 pb-1">
+                    <img class="form-icons" src="/images/icon-login.png" alt="icon-login">
+                    <input type="text" placeholder="Nome" name="nome">
+                </div>
+
+                <!-- Nickname -->
+                <div class="text-box d-flex pt-3 pb-1">
+                    <img class="form-icons" src="/images/icon-login.png" alt="icon-login">
+                    <input type="text" placeholder="Nickname" name="nickname">
+                </div>
+
+                <!-- E-mail -->
+                <div class="text-box d-flex pt-4 pb-1">
+                    <img class="form-icons" src="/images/icon-email.png" alt="icon-login">
+                    <input type="email" placeholder="E-mail" name="email">
+                </div>
+
+                <!-- Senha -->
+                <div class="d-flex text-box pt-4 pb-1">
+                    <img class="form-icons" src="/images/icon-senha.png" alt="icon-senha">
+                    <input type="password" placeholder="Senha" name="senha">
+                </div>
+
+                <!-- Foto Perfil -->
+                <div class="text-box d-flex justify-content-center pt-4 pb-1">
+                    <label for='selecao-foto' id="foto-perfil">Foto</label>
+                    <input id='selecao-foto' type='text'>
+                </div>
+    
+                <div class="mt-5 ">
+                    <a href="/home">
+                        <button type="submit" class="btn-login">Cadastrar</button>
+                    </a>
+                </div>
+                <div class="text-center mt-3" id="recuperar-senha">
+                    <a href="/usuario/login" id="recuperar-senha">Já sou cadastrado</a>
+                </div>
+    
             </div>
 
         </div>
-    </div>
+
+    </form>
 </div>
 
 </body>

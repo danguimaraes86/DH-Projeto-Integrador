@@ -37,7 +37,21 @@ header img{
     border-radius: 0.25rem; 
     margin-top: 50px; 
     border: 1px solid rgb(193, 193, 193);
+}
 
+#foto-perfil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 15vh;
+    border: 1px solid rgb(193, 193, 193);
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+input[type='file'] {
+    display: none
 }
 
 /* texto - impute - imagens do formulario */

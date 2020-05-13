@@ -30,10 +30,12 @@ module.exports = {
       foto_perfil: {
         type: Sequelize.STRING,
         allowNull: false,
+        defaultValue: '/images/Vegana.JPG'
       },
       biografia: {
         type: Sequelize.STRING,
         allowNull: false,
+        defaultValue: ''
       },
       created_at: {
         type: Sequelize.DATE,
