@@ -4,8 +4,8 @@ const { create, store, show } = require('../controllers/postController');
 
 /* GET home page. */
 router.get('/criar', create);
-router.post('/criar',store);
+router.post('/criar/:usuario_id',store);
 
-router.get('/completo', show);
+router.get('/todos/:usuario_id', show);
 
 module.exports = router;
