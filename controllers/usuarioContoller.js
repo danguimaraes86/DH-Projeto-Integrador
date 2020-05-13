@@ -29,8 +29,31 @@ const editar = (req, res) => {
     return res.render('editar-perfil', { title:"Editar Perfil", css:"style-editar-perfil.css"});
 }
 
-const upDate = (req, res) => {
+const update = (req, res) => {
     
+}
+
+const adicionarFavorito = async (req, res) => {
+
+    const { usuario_id, favorito_id } = req.params
+
+    const usuarioLogado = await Usuario.findByPk(usuario_id)
+    const favorito = await Usuario.findByPk(favorito_id)
+
+    const resposta = await usuarioLogado.addFavorito(favorito)
+
+    return res.json(resposta)
+
+}
+
+const exibirFavoritos = async (req, res) => {
+
+    const { usuario_id } = req.params
+    const usuarioLogado = await Usuario.findByPk(usuario_id)
+
+    const favoritos = await usuarioLogado.getFavorito()
+
+    return res.json(favoritos)
 }
 
 module.exports = { 
@@ -38,5 +61,7 @@ module.exports = {
     cadastro,
     store,
     editar,
-    upDate
- }
+    update,
+    adicionarFavorito,
+    exibirFavoritos
+}
