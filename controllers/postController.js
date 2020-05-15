@@ -45,11 +45,22 @@ const mostrarTodasCurtidasPost = async (req ,res) => {
     return res.json(curtidas)
 }
 
+const mostrarTodosComentariosDeUmPost = async (req, res) => {
+    const { post_id } = req.params
+
+    const post = await Post.findByPk(post_id)
+
+    const comentarios = await post.getComentarios()
+
+    return res.json(comentarios)
+}
+
 
 
 module.exports = { 
     create,
     store,
     show,
-    mostrarTodasCurtidasPost
+    mostrarTodasCurtidasPost,
+    mostrarTodosComentariosDeUmPost
 }

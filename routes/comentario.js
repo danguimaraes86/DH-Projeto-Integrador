@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { store } = require('../controllers/curtidaController.js')
+const { store } = require('../controllers/comentarioController.js')
 
 router.post('/post/:usuario_id/:post_id', store)
 
