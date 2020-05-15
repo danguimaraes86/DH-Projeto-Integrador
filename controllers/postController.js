@@ -35,11 +35,21 @@ const show = async (req, res) => {
     return res.json(posts);
 }
 
+const mostrarTodasCurtidasPost = async (req ,res) => {
+    const { post_id } = req.params
+  
+    const post = await Post.findByPk(post_id)
+  
+    const curtidas = await post.getCurtidas()
+  
+    return res.json(curtidas)
+}
 
 
 
 module.exports = { 
     create,
     store,
-    show 
+    show,
+    mostrarTodasCurtidasPost
 }
