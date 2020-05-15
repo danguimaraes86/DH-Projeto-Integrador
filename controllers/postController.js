@@ -23,16 +23,55 @@ const store = async (req, res) => {
     return res.json({post, imagem})
 }
 
-const show = async (req, res) => {
+// Pega todos os posts de um usario para mostra lo no perfil do usuario que estamos visitando
+const mostrarTodosPostsDeUmUsuario = async (req, res) => {
 
     const { usuario_id } = req.params
 
     const posts = await Post.findAll({
         where: { usuario_id },
-        include: Usuario 
+        include: Usuario,
+        limit: 10 
     })
 
     return res.json(posts);
+}
+
+const mostrarTodosPostsNoFeed = async (req, res) => {
+
+    const posts = await Post.findAll({
+        limit: 10 
+    })
+
+    return res.json(posts);
+}
+
+const mostrarTodosPostsDoSeusFavoritos = async (req, res) => {
+    /* 
+    Favorito e post nao tem relação
+    Buscar todos os favoritos de um usuario
+    Buscar todos os posts de cada favorito
+    */
+
+    const { usuario_id } = req.params // usuario logado
+    const usuarioLogado = await Usuario.findByPk(usuario_id)
+
+    const favoritos = await usuarioLogado.getFavorito()
+
+    const favorito_id = favoritos.map(favorito => {
+       return favorito.id
+    });
+    console.log(favorito_id)
+    
+    const postsDosFavoritos = await Post.findAll({
+        where: {
+            usuario_id: favorito_id
+        },
+        order: [['created_at', 'DESC']],
+        limit: 3
+    })
+
+    return res.json(postsDosFavoritos)
 }
 
 const mostrarTodasCurtidasPost = async (req ,res) => {
@@ -60,7 +99,9 @@ const mostrarTodosComentariosDeUmPost = async (req, res) => {
 module.exports = { 
     create,
     store,
-    show,
+    mostrarTodosPostsDeUmUsuario,
     mostrarTodasCurtidasPost,
-    mostrarTodosComentariosDeUmPost
+    mostrarTodosComentariosDeUmPost,
+    mostrarTodosPostsNoFeed,
+    mostrarTodosPostsDoSeusFavoritos
 }
