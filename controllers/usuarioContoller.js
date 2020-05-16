@@ -17,7 +17,7 @@ const store = async (req, res) => {
       nickname,
       email,
       senha, 
-      foto_perfil: `public/images/fotos-perfil/${fotoPerfil[0].filename}`
+      foto_perfil: `images/fotos-perfil/${fotoPerfil[0].filename}`
     })
 
     req.session.usuario = {

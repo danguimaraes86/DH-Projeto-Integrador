@@ -8,10 +8,10 @@
                 <section class="col-3 d-none d-md-block p-0" id="perfil">
 
                     <div class="card" id="card-perfil">
-                        <img src="images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="card-img-top" alt="...">
+                        <img src="<%= usuario.foto_perfil %> " class="card-img-top" alt="...">
                         <div class="card-body">
-                          <h5 class="card-title">Nome do Perfil</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <h5 class="card-title"><%= usuario.nome %> </h5>
+                          <p class="card-text"><%= usuario.biografia %> </p>
                           <a href="/usuario/editar" class="btn btn-vegme">Editar</a>
                         </div>
                       </div>
