@@ -10,7 +10,8 @@ const homeRouter = require('./routes/home');
 const postRouter = require('./routes/post');
 const curtidaRouter = require('./routes/curtida');
 const comentarioRouter = require('./routes/comentario');
-
+const loginRouter = require('./routes/login');
+const session = require('express-session');
 
 const app = express();
 
@@ -23,8 +24,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(session({
+  secret: "veg-me",
+  resave: true,
+  saveUninitialized: true,
+}))
 app.use('/', indexRouter);
+app.use('/login',loginRouter)
 app.use('/usuario', usuarioRouter);
 app.use('/home', homeRouter);
 app.use('/post', postRouter);

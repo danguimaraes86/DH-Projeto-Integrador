@@ -1,8 +1,6 @@
 const { Usuario } = require('../models')
 
-const login = (req, res) => {
-    return res.render('login', {title: " - Login"});
-}
+
 
 const cadastro = (req, res) => {
     return res.render('cadastro', {title: " - Cadastro"});
@@ -11,18 +9,25 @@ const cadastro = (req, res) => {
 const store = async (req, res) => {
 
     const { nome, nickname, email, senha, foto_perfil } = req.body
+    
+    const fotoPerfil = req.files    
 
     const usuario = await Usuario.create({
       nome,
       nickname,
       email,
       senha, 
-      foto_perfil
+      foto_perfil: `public/images/fotos-perfil/${fotoPerfil[0].filename}`
     })
 
-    return res.json(usuario)
+    req.session.usuario = {
+        id: usuario.id,
+        email: usuario.email,
+        nome: usuario.nome
+    }
 
-    // return res.send(`usuario cadastrado`)
+
+    return res.redirect('/home')
 }
 
 const editar = (req, res) => {
@@ -57,7 +62,6 @@ const exibirFavoritos = async (req, res) => {
 }
 
 module.exports = { 
-    login,
     cadastro,
     store,
     editar,

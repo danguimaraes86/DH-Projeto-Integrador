@@ -3,10 +3,12 @@
 <div class="container d-flex justify-content-center align-items-center" id="form">
 
     <!-- Form Cadastro de Usuário -->
-    <form action="/usuario/cadastro" method="POST">
+    <form action="/usuario/cadastro" method="POST" enctype="multipart/form-data">
 
         <div class="box-form pr-5 pl-5 p-3 mb-5">
             <div class="flex-column">
+
+
     
                 <div>
                     <h5 class="text-center mt-3 mb-4" id="texto-identificacao">Cadastro</h5>
@@ -41,7 +43,7 @@
                 <!-- Foto Perfil -->
                 <div class="text-box d-flex justify-content-center pt-4 pb-1">
                     <label for='selecao-foto' id="foto-perfil">Foto</label>
-                    <input id='selecao-foto' type='text'>
+                    <input id='selecao-foto' type='file' name="fotoPerfil">
                 </div>
     
                 <div class="mt-5 ">
