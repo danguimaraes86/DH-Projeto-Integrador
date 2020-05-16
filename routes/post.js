@@ -10,9 +10,24 @@ const {
   mostrarTodosPostsDoSeusFavoritos
 } = require('../controllers/postController');
 
+const multer = require('multer')
+const path = require('path')
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, path.join("public", "images","fotos-post"))
+    },
+    filename: function (req, file, cb) {
+        const nome = req.session.usuario.nome
+        cb(null, `${nome}-${Date.now()}${path.extname(file.originalname)}`);
+    }
+  })
+   
+  var upload = multer({ storage: storage })
+
 /* GET home page. */
 router.get('/criar', create);
-router.post('/criar/:usuario_id', store);
+router.post('/criar',upload.any(), store);
 
 router.get('/todos/:usuario_id', mostrarTodosPostsDeUmUsuario);
 

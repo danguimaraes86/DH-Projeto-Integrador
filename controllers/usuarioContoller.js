@@ -20,14 +20,8 @@ const store = async (req, res) => {
       foto_perfil: `images/fotos-perfil/${fotoPerfil[0].filename}`
     })
 
-    req.session.usuario = {
-        id: usuario.id,
-        email: usuario.email,
-        nome: usuario.nome
-    }
 
-
-    return res.redirect('/home')
+    return res.redirect('/login')
 }
 
 const editar = (req, res) => {

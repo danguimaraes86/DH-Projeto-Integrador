@@ -6,21 +6,21 @@ const create = (req, res) => {
 
 const store = async (req, res) => {
 
-    const { usuario_id } = req.params
-    const { caminho, titulo, descricao } = req.body
-
+    const { id } = req.session.usuario
+    const { titulo, descricao } = req.body
+    const fotoPost = req.files
     const post = await Post.create({
-        usuario_id,
+        usuario_id:id,
         titulo,
         descricao
     })
 
     const imagem = await Imagem.create({
-        caminho,
+        caminho:`images/fotos-post/${fotoPost[0].filename}`,
         post_id: post.id
     })
 
-    return res.json({post, imagem})
+    return res.redirect('/home')
 }
 
 // Pega todos os posts de um usario para mostra lo no perfil do usuario que estamos visitando

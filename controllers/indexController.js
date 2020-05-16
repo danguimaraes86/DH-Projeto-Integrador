@@ -1,4 +1,8 @@
-const index = (req, res) => {
+const { Usuario } = require('../models')
+
+
+const index = async (req, res) => {
+  
     return res.render('index');
 }
 

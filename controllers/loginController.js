@@ -12,7 +12,7 @@ const create = async (req, res) => {
             email:email
         }
     });
-    console.log(usuario)
+   // console.log(usuario)
     if (!usuario || usuario.senha != senha) {
         return res.render('login', {title: " - Login"});
     }else{
@@ -21,8 +21,9 @@ const create = async (req, res) => {
             email: usuario.email,
             nome: usuario.nome
         }
-        res.locals.usuario = usuario;
-        return res.render('home',{title: " - Home", css: "style-home.css"})
+        //res.locals.usuario = usuario;
+        return res.redirect('/home');
+        //return res.render('home',{title: " - Home", css: "style-home.css"})
     }
 }
 
