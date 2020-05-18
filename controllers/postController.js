@@ -81,7 +81,7 @@ const mostrarTodasCurtidasPost = async (req ,res) => {
     const usuario_id = curtidas.map(usuario => {
         return usuario.usuario_id
     })
-    console.log(usuario_id)
+ 
     const usuarioQueCurtiu = await Usuario.findAll({
         where: { id: usuario_id }
     })

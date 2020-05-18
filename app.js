@@ -3,6 +3,8 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const session = require('express-session');
+
 
 const indexRouter = require('./routes/index');
 const usuarioRouter = require('./routes/usuario');
@@ -11,7 +13,6 @@ const postRouter = require('./routes/post');
 const curtidaRouter = require('./routes/curtida');
 const comentarioRouter = require('./routes/comentario');
 const loginRouter = require('./routes/login');
-const session = require('express-session');
 
 const app = express();
 
@@ -19,23 +20,29 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(
+  session({
+    secret: "343ji43j4n3jn4jk3n",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({
-  secret: "veg-me",
-  resave: true,
-  saveUninitialized: true,
-}))
 app.use('/', indexRouter);
-app.use('/login',loginRouter)
+app.use('/login',loginRouter);
 app.use('/usuario', usuarioRouter);
+
 app.use('/home', homeRouter);
 app.use('/post', postRouter);
 app.use('/curtir', curtidaRouter);
 app.use('/comentario', comentarioRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

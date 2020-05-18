@@ -1,32 +1,36 @@
 <%- include('./partials/header') %>
 
-    <div class="container">
-        <div class="container card col-lg-5 col-md-7 mt-4 px-4" id="form">
-            <div>
+<div class="container">
+    <div class="container card col-lg-5 col-md-7 mt-4 px-4" id="form">
+        <div>
+            <form action="/usuario/editar" method="POST" enctype="multipart/form-data">
                 <h5 class="text-center mt-4 mb-4" id="texto-identificacao">Editar perfil</h5>
-            </div>
-            <div class="form-group d-flex justify-content-center">
-                <label for='selecao-foto' id="foto-perfil">Foto</label>
-                <input id='selecao-foto' type='file'>
-            </div>
-            <div class="form-group">
-                <label for="FormControlInput1">Nome Completo</label>
-                <input type="text" class="form-control" id="FormControlInput" placeholder="Nome atual do perfil">
-            </div>
-            <div class="form-group">
-                <label for="FormControlTextarea1">Biografia</label>
-                <textarea class="form-control" placeholder="Bio atual do perfil" id="FormControlTextarea" rows="8"></textarea>
-            </div>
-            <div class="d-flex mb-3 mx-auto">
-                <a href="/home">
-                    <button type="submit" class="btn-salvar px-5 py-2">cancelar</button>
-                </a>
-                <a href="/home">
-                    <button type="submit" class="btn-salvar px-5 py-2">Salvar</button>
-                </a>
-            </div>
         </div>
+        <div class="form-group d-flex justify-content-center">
+            <label for='selecao-foto' id="foto-perfil">Foto</label>
+            <input id='selecao-foto' type='file' name="fotoPerfil">
+        </div>
+        <div class="form-group">
+            <label for="FormControlInput1">Nome Completo</label>
+            <input type="text" class="form-control" id="FormControlInput" placeholder="Nome atual do perfil"
+                name="nome">
+        </div>
+        <div class="form-group">
+            <label for="FormControlTextarea1">Biografia</label>
+            <textarea class="form-control" placeholder="Para remover a biografia tecle espaço ate sumir esse texto!" name="biografia" 
+            rows="4"></textarea>
+        </div>
+        <div class="d-flex mb-3 mx-auto">
+            <a href="/home">
+                <button type="submit" class="btn-salvar px-5 py-2">cancelar</button>
+            </a>
+
+            <button type="submit" class="btn-salvar px-5 py-2">Salvar</button>
+
+        </div>
+        </form>
     </div>
+</div>
 </body>
 
 </html>

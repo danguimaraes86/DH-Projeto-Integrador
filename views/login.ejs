@@ -1,40 +1,54 @@
 <%- include('./partials/header-login-cadastro') %>
 
 <div class="container d-flex justify-content-center  p-3 " id="form">
-    <div class="box-form pr-5 pl-5 p-3 mb-5">
-        <div class="flex-column">
 
-            <div>
-                <h5 class="text-center mt-3 mb-4 " id="texto-identificacao">Login</h5>
-            </div>
-            <form action="/login" method="POST">
+    
+
+    <form action="/login" method="POST">
+
+        <div class="box-form pr-5 pl-5 p-3 mb-5">
+
+            <div class="flex-column">
                 
-            <div class="text-box d-flex pb-1 pt-3">
-                <img class="form-icons" src="/images/icon-login.png" alt="icon-login">
-                <input type="email" placeholder="E-mail" name="email">
-            </div>
+                <% if(typeof(erros) != "undefined") { %>
+                    <div class="alert alert-warning" role="alert">
+                      <ul>
+                      <% erros.forEach( (erros) => { %>
+                          <li><h6>Atenção: <%= erros.msg %></h6></li>
+                      <% }) %>
+                    </ul>                      
+                    </div>
+                  <% } %> 
 
-            <div class="text-box d-flex  pt-4 pb-1">
-                <img class="form-icons" src="/images/icon-senha.png" alt="icon-senha">
-                <input type="password" placeholder="Senha" name="senha">
-            </div>
-            <div class="mt-5 ">
-                <a href="/home">
-                    <button type="submit" class="btn-login">Login</button>
-                </a>
-            </div>
+                <div>
+                    <h5 class="text-center mt-3 mb-4 " id="texto-identificacao">Login</h5>
+                </div>
 
-            </form>
-            <div class="text-center mt-2" id="recuperar-senha">
-                <a href="#" id="recuperar-senha">Recuperar senha</a>
-            </div>
+                <div class="text-box d-flex pb-1 pt-3">
+                    <img class="form-icons" src="/images/icon-login.png" alt="icon-login">
+                    <input type="email" placeholder="E-mail" name="email">
+                </div>
 
-            <div class="text-center mt-4" id="criar-conta">
-                <a href="/usuario/cadastro">Criar nova Conta</a>
-            </div>
+                <div class="text-box d-flex  pt-4 pb-1">
+                    <img class="form-icons" src="/images/icon-senha.png" alt="icon-senha">
+                    <input type="password" placeholder="Senha" name="senha">
+                </div>
 
+                <div class="mt-5 ">                    
+                    <button type="submit" class="btn-login">Login</button>                    
+                </div>
+
+                <div class="text-center mt-2" id="recuperar-senha">
+                    <a href="#" id="recuperar-senha">Recuperar senha</a>
+                </div>
+
+                <div class="text-center mt-4" id="criar-conta">
+                    <a href="/usuario/cadastro">Criar nova Conta</a>
+                </div>
+
+            </div>
         </div>
-    </div>
+    </form>
 </div>
 
 </body>
