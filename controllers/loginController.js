@@ -2,7 +2,7 @@ const { Usuario } = require('../models');
 const { check, validationResult, body } = require('express-validator');
 
 const index = (req, res) => {
-    return res.render('login', { title: " - Login" });
+    return res.render('login', { title: " - Login", css:'style-login-cadastro.css' });
 };
 
 const login = async (req, res) => {

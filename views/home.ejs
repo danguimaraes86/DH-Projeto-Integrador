@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<%- include('./partials/head-meta') %> 
+
+<body>
+
 <%- include('./partials/header') %>
 <main>
 
@@ -10,7 +17,8 @@
                 <div class="card" id="card-perfil">
                     <img src="<%= usuario.foto_perfil %>" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title"> <%= usuario.nome  %> </h5>
+                        <h5 class="card-title mb-0"> <%= usuario.nome  %> </h5>
+                        <h6 class="card-text text-muted"> @<%= usuario.nickname  %> </h6>
                         <p class="card-text"> <%= usuario.biografia  %> </p>
                         <a href="/usuario/editar" class="btn btn-vegme">Editar</a>
                     </div>
@@ -33,7 +41,7 @@
                             <input type="radio" name="publico-amigos" id="post-publico" checked> Público
                         </label>
                         <label class="btn btn-vegme">
-                            <input type="radio" name="publico-amigos" id="post-amigos"> Amigos
+                            <input type="radio" name="publico-amigos" id="post-amigos"> Favoritos
                         </label>
                     </div>
 
@@ -86,43 +94,28 @@
             <!-- Seção Amigos -->
             <section class="col-md-3 d-none d-md-block " id="amigos">
 
-                <h3 class="text-center mt-2">Amigos</h3>
+                <h3 class="text-center mt-2">Favoritos</h3>
 
                 <div class="list-group list-group-flush">
                     <div class="list-group-item d-flex align-items-center">
                         <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="img-amigo img-fluid"
                             alt="...">
-                        Cras justo odio
+                        Henrique
                     </div>
                     <div class="list-group-item d-flex align-items-center">
                         <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="img-amigo img-fluid"
                             alt="...">
-                        Cras justo odio
+                        Ariele
                     </div>
                     <div class="list-group-item d-flex align-items-center">
                         <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="img-amigo img-fluid"
                             alt="...">
-                        Cras justo odio
+                        Bruno
                     </div>
                     <div class="list-group-item d-flex align-items-center">
                         <img src="images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="img-amigo img-fluid"
                             alt="...">
-                        Cras justo odio
-                    </div>
-                    <div class="list-group-item d-flex align-items-center">
-                        <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="img-amigo img-fluid"
-                            alt="...">
-                        Cras justo odio
-                    </div>
-                    <div class="list-group-item d-flex align-items-center">
-                        <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="img-amigo img-fluid"
-                            alt="...">
-                        Cras justo odio
-                    </div>
-                    <div class="list-group-item d-flex align-items-center">
-                        <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="img-amigo img-fluid"
-                            alt="...">
-                        Cras justo odio
+                        Guilherme
                     </div>
                 </div>
             </section>
@@ -142,10 +135,10 @@
                 </a>
             </div>
             <div class="col btn-feed">
-                <button type="button" class="btn btn-vegme" id="btn-footer-amigos">Amigos</button>
+                <button type="button" class="btn btn-vegme" id="btn-footer-amigos">Favoritos</button>
             </div>
             <div class="col btn-feed">
-                <a href="criar-post.html">
+                <a href="/post/criar">
                     <button type="button" class="btn btn-vegme">Criar</button>
                 </a>
             </div>
@@ -153,9 +146,7 @@
     </div>
 </footer>
 
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.bundle.js"></script>
-<script src="js/index.js"></script>
+<%- include('./partials/scripts') %> 
 
 </body>
 

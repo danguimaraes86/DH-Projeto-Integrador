@@ -2,7 +2,7 @@ module.exports = {
     host: "localhost",
     port: 3306,
     username: "root",
-    password: "",
+    password: "1qax2wsz",
     dialect: "mysql",
     database: "veg_me",
     define: {
