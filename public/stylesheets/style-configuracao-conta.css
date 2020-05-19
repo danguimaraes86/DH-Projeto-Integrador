@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Audiowide|Orbitron:400,600,700&display=swap');
+
+#form{
+    border: 1px solid rgb(193, 193, 193);
+    border-radius: .25rem;
+    margin-bottom: 15px;
+}
+
+.btn-salvar {
+    background-color: #404040;
+    color: #98E144;
+    border-radius: 0.25rem;
+}
+
+.btn-salvar:hover {
+    opacity: 0.9;
+}
+
+.btn-danger {
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}

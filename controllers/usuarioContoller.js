@@ -1,7 +1,7 @@
 const { Usuario } = require('../models')
 
 const cadastro = (req, res) => {
-    return res.render('cadastro', {title: " - Cadastro"});
+    return res.render('cadastro', {title: " - Cadastro", css:'style-login-cadastro.css' });
 }
 
 const store = async (req, res) => {
@@ -25,7 +25,10 @@ const store = async (req, res) => {
 }
 
 const editar = (req, res) => {
-    return res.render('editar-perfil', { title:"Editar Perfil", css:"style-editar-perfil.css"});
+
+    const { usuario } = req.session;
+
+    return res.render('editar-perfil', { title:"Editar Perfil", css:"style-editar-perfil.css", usuario});
 }
 
 const update = async (req, res) => {
@@ -62,6 +65,12 @@ const update = async (req, res) => {
     return res.redirect('/home')
 }
 
+const configuracaoConta = async (req, res) => {
+
+    const { usuario } = req.session
+
+    return res.render('configuracao-conta', { title: 'Configurações', css: 'style-configuracao-conta.css', usuario})
+}
 
 const adicionarFavorito = async (req, res) => {
 
@@ -91,6 +100,7 @@ module.exports = {
     store,
     editar,
     update,
+    configuracaoConta,
     adicionarFavorito,
     exibirFavoritos
 }

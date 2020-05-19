@@ -6,6 +6,7 @@ const {
   store, 
   editar, 
   update, 
+  configuracaoConta,
   adicionarFavorito, 
   exibirFavoritos 
 } = require('../controllers/usuarioContoller');
@@ -30,6 +31,8 @@ router.post('/cadastro',upload.any(), store);
 
 router.get('/editar', auth, editar);
 router.post('/editar', upload.any(), update);
+
+router.get('/configuracao', auth, configuracaoConta)
 
 router.get('/favorito/:usuario_id', exibirFavoritos)
 router.post('/favorito/:usuario_id/:favorito_id', adicionarFavorito)
