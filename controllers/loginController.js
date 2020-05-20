@@ -21,7 +21,7 @@ const login = async (req, res) => {
                     msg: "Email ou senha errados!"
                 }
             ]
-            return res.render('login', { title: " - Login", erros: erros });
+            return res.render('login', { title: " - Login", erros: erros, css:'style-login-cadastro.css' });
         };
     
         req.session.usuario = usuario;
@@ -29,7 +29,7 @@ const login = async (req, res) => {
         return res.redirect("/home");        
 
     } else {
-        return res.render('login', { title: " - Login", erros: listaErros.errors });
+        return res.render('login', { title: " - Login", erros: listaErros.errors, css:'style-login-cadastro.css' });
     };
 };
 
