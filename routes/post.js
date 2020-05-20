@@ -6,12 +6,13 @@ const {
   mostrarTodosPostsDeUmUsuario,
   mostrarTodasCurtidasPost,
   mostrarTodosComentariosDeUmPost,
-  mostrarTodosPostsNoFeed,
-  mostrarTodosPostsDoSeusFavoritos
+  mostrarTodosPostsDoSeusFavoritos,
+  mostrarPostCompleto
 } = require('../controllers/postController');
 
 const multer = require('multer')
 const path = require('path')
+const auth = require('../middlewares/auth')
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -34,11 +35,8 @@ router.get('/:post_id/curtidas', mostrarTodasCurtidasPost)
 
 router.get('/:post_id/comentarios', mostrarTodosComentariosDeUmPost)
 
-router.get('/feed/geral', mostrarTodosPostsNoFeed)
 router.get('/feed/favorito/:usuario_id', mostrarTodosPostsDoSeusFavoritos)
 
-router.get('/post-completo', (req, res) => {
-  return res.render('post-completo', { title: 'Post #ID', css: 'style-post-completo.css'})
-})
+router.get('/post-completo',auth, mostrarPostCompleto)
 
 module.exports = router;

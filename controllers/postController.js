@@ -1,33 +1,58 @@
 const { Usuario, Post, Imagem } = require('../models')
+const moment = require('moment')
 
 const create = (req, res) => {
-    return res.render('criar-post',{title:"Criar Post", css:"style-criar-post.css"});
+    return res.render('criar-post', { title: "Criar Post", css: "style-criar-post.css" });
 }
 
 const store = async (req, res) => {
 
     const { id } = req.session.usuario
     const { titulo, descricao } = req.body
-    const fotoPost = ()=> {
-        if(req.files.length > 0){
+    const fotoPost = () => {
+        if (req.files.length > 0) {
             return `images/fotos-post/${req.files[0].filename}`
-        }else{
+        } else {
             return "null"
         }
-    }    
+    }
 
     const post = await Post.create({
-        usuario_id:id,
+        usuario_id: id,
         titulo,
         descricao
     })
-    
+
     const imagem = await Imagem.create({
-        caminho:fotoPost(),
+        caminho: fotoPost(),
         post_id: post.id
     })
 
     return res.redirect('/home')
+}
+
+const mostrarPostCompleto = async (req, res) => {
+    const { p } = req.query
+
+    const postCompleto = await Post.findByPk(p);
+    const imagens = await postCompleto.getImagens();
+    const comentarios = await postCompleto.getComentarios();
+    const titularPost = await postCompleto.getUsuario()
+    console.log(titularPost);
+    
+
+    return res.render('post-completo',
+        {
+            title: 'Post #ID',
+            css: 'style-post-completo.css',
+            postCompleto,
+            imagens,
+            comentarios,
+            titularPost,
+            moment
+        });
+
+
 }
 
 // Pega todos os posts de um usario para mostra lo no perfil do usuario que estamos visitando
@@ -38,33 +63,24 @@ const mostrarTodosPostsDeUmUsuario = async (req, res) => {
     const posts = await Post.findAll({
         where: { usuario_id },
         include: Usuario,
-        limit: 10 
+        limit: 10
     })
 
     return res.json(posts);
 }
 
-const mostrarTodosPostsNoFeed = async (req, res) => {
-
-    const posts = await Post.findAll({
-        order: [['created_at', 'DESC']],
-        limit: 10 
-    })
-
-    return res.json(posts);
-}
 
 const mostrarTodosPostsDoSeusFavoritos = async (req, res) => {
-    
+
     const { usuario_id } = req.params // usuario logado
     const usuarioLogado = await Usuario.findByPk(usuario_id)
 
     const favoritos = await usuarioLogado.getFavorito()
 
     const favorito_id = favoritos.map(favorito => {
-       return favorito.id
+        return favorito.id
     });
-    
+
     const postsDosFavoritos = await Post.findAll({
         where: {
             usuario_id: favorito_id
@@ -76,19 +92,19 @@ const mostrarTodosPostsDoSeusFavoritos = async (req, res) => {
     return res.json(postsDosFavoritos)
 }
 
-const mostrarTodasCurtidasPost = async (req ,res) => {
+const mostrarTodasCurtidasPost = async (req, res) => {
     const { post_id } = req.params
-  
+
     const post = await Post.findByPk(post_id)
-  
+
     const curtidas = await post.getCurtidas()
-    
+
     const quantidadeCurtidas = curtidas.length
 
     const usuario_id = curtidas.map(usuario => {
         return usuario.usuario_id
     })
- 
+
     const usuarioQueCurtiu = await Usuario.findAll({
         where: { id: usuario_id }
     })
@@ -112,12 +128,12 @@ const mostrarTodosComentariosDeUmPost = async (req, res) => {
 
 
 
-module.exports = { 
+module.exports = {
     create,
     store,
     mostrarTodosPostsDeUmUsuario,
     mostrarTodasCurtidasPost,
     mostrarTodosComentariosDeUmPost,
-    mostrarTodosPostsNoFeed,
-    mostrarTodosPostsDoSeusFavoritos
+    mostrarTodosPostsDoSeusFavoritos,
+    mostrarPostCompleto
 }

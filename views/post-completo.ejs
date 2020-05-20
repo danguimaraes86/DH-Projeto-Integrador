@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<%- include('./partials/head-meta') %> 
+<%- include('./partials/head-meta') %>
 
 <body>
 
-<%- include('./partials/header') %>
+  <%- include('./partials/header') %>
 
   <main class="container">
     <div id="post-completo" class="container my-3">
@@ -13,11 +13,11 @@
       <div class="d-flex justify-content-between align-items-center my-3">
 
         <div class="d-flex align-items-center justify-content-start">
-          <a href=""><img src="/images/post-completo/andre-furtado-JtV6zyOZSrA-unsplash.jpg" alt="Logo"
+          <a href=""><img src="/<%= titularPost.foto_perfil %>" alt="Logo"
               id="foto-perfil"></a>
           <div class="ml-2">
-            <p>Titular do Post</p>
-            <h4>Título do post</h4>
+            <p><%= titularPost.nome %></p>
+            <h4><%=postCompleto.titulo%></h4>
           </div>
         </div>
 
@@ -33,14 +33,13 @@
 
       <!-- Card do Post -->
       <div class="card">
-        <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="card-img-top" alt="...">
-
+        <% if(imagens[0].caminho != "null"){ %>
+          <img src="/<%=imagens[0].caminho%>" class="card-img-top" alt="...">
+        <% } %>
         <div class="card-body">
 
           <div class="d-flex justify-content-between">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam a saepe eaque eum fugit illo commodi
-              doloribus blanditiis eveniet quo, et iusto aperiam debitis, optio aut excepturi facilis voluptate totam.
-            </p>
+            <p><%= postCompleto.descricao%></p>
           </div>
 
         </div>
@@ -70,7 +69,8 @@
         <div class="list-group list-group-flush">
           <div class="list-group-item">
             <div class="d-flex justify-content-start align-items-center mb-2">
-              <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="img-amigo img-fluid" alt="...">
+              <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="img-amigo img-fluid"
+                alt="...">
               <p class="nome-perfil">Nome do perfil</p>
             </div>
             <p>
@@ -82,7 +82,8 @@
           </div>
           <div class="list-group-item">
             <div class="d-flex justify-content-start align-items-center mb-2">
-              <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="img-amigo img-fluid" alt="...">
+              <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="img-amigo img-fluid"
+                alt="...">
               <p class="nome-perfil">Nome do perfil</p>
             </div>
             <p>
@@ -91,7 +92,8 @@
           </div>
           <div class="list-group-item">
             <div class="d-flex justify-content-start align-items-center mb-2">
-              <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="img-amigo img-fluid" alt="...">
+              <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="img-amigo img-fluid"
+                alt="...">
               <p class="nome-perfil">Nome do perfil</p>
             </div>
             <p>
@@ -100,7 +102,8 @@
           </div>
           <div class="list-group-item">
             <div class="d-flex justify-content-start align-items-center mb-2">
-              <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="img-amigo img-fluid" alt="...">
+              <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="img-amigo img-fluid"
+                alt="...">
               <p class="nome-perfil">Nome do perfil</p>
             </div>
             <p>
@@ -110,7 +113,8 @@
           </div>
           <div class="list-group-item">
             <div class="d-flex justify-content-start align-items-center mb-2">
-              <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="img-amigo img-fluid" alt="...">
+              <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="img-amigo img-fluid"
+                alt="...">
               <p class="nome-perfil">Nome do perfil</p>
             </div>
             <p>
@@ -126,7 +130,7 @@
 
   </main>
 
-  <%- include('./partials/scripts') %> 
+  <%- include('./partials/scripts') %>
 
 </body>
 
