@@ -8,15 +8,22 @@ const store = async (req, res) => {
 
     const { id } = req.session.usuario
     const { titulo, descricao } = req.body
-    const fotoPost = req.files
+    const fotoPost = ()=> {
+        if(req.files.length > 0){
+            return `images/fotos-post/${req.files[0].filename}`
+        }else{
+            return "null"
+        }
+    }    
+
     const post = await Post.create({
         usuario_id:id,
         titulo,
         descricao
     })
-
+    
     const imagem = await Imagem.create({
-        caminho:`images/fotos-post/${fotoPost[0].filename}`,
+        caminho:fotoPost(),
         post_id: post.id
     })
 

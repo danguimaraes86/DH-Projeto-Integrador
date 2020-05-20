@@ -17,9 +17,8 @@ var storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, path.join("public", "images","fotos-post"))
     },
-    filename: function (req, file, cb) {
-        const nome = req.session.usuario.nome
-        cb(null, `${nome}-${Date.now()}${path.extname(file.originalname)}`);
+    filename: function (req, file, cb) {    
+        cb(null, `${Date.now()}${path.extname(file.originalname)}`);
     }
   })
    

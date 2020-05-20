@@ -12,11 +12,12 @@
         <div class="row">
 
             <!-- Seção do Perfil -->
-            <section class="col-3 d-none d-md-block p-0" id="perfil">
+            <section class="col-3 d-none d-md-block p-0" id="perfil">                
 
-                <div class="card" id="card-perfil">
-                    <img src="<%= usuario.foto_perfil %>" class="card-img-top" alt="...">
+                <div class="card" id="card-perfil">                 
+                        <img src="<%= usuario.foto_perfil %>" class="card-img-top" alt="...">                   
                     <div class="card-body">
+
                         <h5 class="card-title mb-0"> <%= usuario.nome  %> </h5>
                         <h6 class="card-text text-muted"> @<%= usuario.nickname  %> </h6>
                         <p class="card-text"> <%= usuario.biografia  %> </p>
@@ -53,165 +54,38 @@
                     <div class="col p-0">
 
                         <!-- Card do Post -->
-                        <div class="card">
-                            <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="card-img-top"
-                                alt="...">
-
-                            <div class="card-body">
-
-                                <div class="d-flex justify-content-between">
-                                    <h5 class="card-title">Título do Post</h5>
-                                    <p id="data-post" class="text-muted">03/04/2020</p>
+                        <% posts.forEach( post => {  %> 
+                            <div class="card"> 
+                                <% if(post.imagens[0].caminho != "null"){ %>                                
+                                <img src="<%=post.imagens[0].caminho%>" class="card-img-top"
+                                    alt="...">
+                                <% } %> 
+                                <div class="card-body">
+    
+                                    <div class="d-flex justify-content-between">
+                                        <h5 class="card-title"><%=post.titulo%></h5>
+                                        <p id="data-post" class="text-muted"><%= moment().format('DD/MM/YYYY')%></p>
+                                    </div>
+    
                                 </div>
-
+    
+                                <!-- Botões Post + Curtir + Comentar -->
+                                <div class="row">
+    
+                                    <div class="col group-btn-post">
+                                        <a href="/post/post-completo">
+                                            <button type="button" class="btn btn-ccp">Post</button>
+                                        </a>
+                                    </div>
+                                    <div class="col group-btn-post">
+                                        <button type="button" class="btn btn-ccp">Curtir</button>
+                                    </div>
+                                    <div class="col group-btn-post">
+                                        <button type="button" class="btn btn-ccp">Comentar</button>
+                                    </div>
+                                </div>
                             </div>
-
-                            <!-- Botões Post + Curtir + Comentar -->
-                            <div class="row">
-
-                                <div class="col group-btn-post">
-                                    <a href="/post/post-completo">
-                                        <button type="button" class="btn btn-ccp">Post</button>
-                                    </a>
-                                </div>
-                                <div class="col group-btn-post">
-                                    <button type="button" class="btn btn-ccp">Curtir</button>
-                                </div>
-                                <div class="col group-btn-post">
-                                    <button type="button" class="btn btn-ccp">Comentar</button>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="card">
-                            <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="card-img-top"
-                                alt="...">
-
-                            <div class="card-body">
-
-                                <div class="d-flex justify-content-between">
-                                    <h5 class="card-title">Título do Post</h5>
-                                    <p id="data-post" class="text-muted">03/04/2020</p>
-                                </div>
-
-                            </div>
-
-                            <!-- Botões Post + Curtir + Comentar -->
-                            <div class="row">
-
-                                <div class="col group-btn-post">
-                                    <a href="/post/post-completo">
-                                        <button type="button" class="btn btn-ccp">Post</button>
-                                    </a>
-                                </div>
-                                <div class="col group-btn-post">
-                                    <button type="button" class="btn btn-ccp">Curtir</button>
-                                </div>
-                                <div class="col group-btn-post">
-                                    <button type="button" class="btn btn-ccp">Comentar</button>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="card">
-                            <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="card-img-top"
-                                alt="...">
-
-                            <div class="card-body">
-
-                                <div class="d-flex justify-content-between">
-                                    <h5 class="card-title">Título do Post</h5>
-                                    <p id="data-post" class="text-muted">03/04/2020</p>
-                                </div>
-
-                            </div>
-
-                            <!-- Botões Post + Curtir + Comentar -->
-                            <div class="row">
-
-                                <div class="col group-btn-post">
-                                    <a href="/post/post-completo">
-                                        <button type="button" class="btn btn-ccp">Post</button>
-                                    </a>
-                                </div>
-                                <div class="col group-btn-post">
-                                    <button type="button" class="btn btn-ccp">Curtir</button>
-                                </div>
-                                <div class="col group-btn-post">
-                                    <button type="button" class="btn btn-ccp">Comentar</button>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="card">
-                            <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="card-img-top"
-                                alt="...">
-
-                            <div class="card-body">
-
-                                <div class="d-flex justify-content-between">
-                                    <h5 class="card-title">Título do Post</h5>
-                                    <p id="data-post" class="text-muted">03/04/2020</p>
-                                </div>
-
-                            </div>
-
-                            <!-- Botões Post + Curtir + Comentar -->
-                            <div class="row">
-
-                                <div class="col group-btn-post">
-                                    <a href="/post/post-completo">
-                                        <button type="button" class="btn btn-ccp">Post</button>
-                                    </a>
-                                </div>
-                                <div class="col group-btn-post">
-                                    <button type="button" class="btn btn-ccp">Curtir</button>
-                                </div>
-                                <div class="col group-btn-post">
-                                    <button type="button" class="btn btn-ccp">Comentar</button>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="card">
-                            <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="card-img-top"
-                                alt="...">
-
-                            <div class="card-body">
-
-                                <div class="d-flex justify-content-between">
-                                    <h5 class="card-title">Título do Post</h5>
-                                    <p id="data-post" class="text-muted">03/04/2020</p>
-                                </div>
-
-                            </div>
-
-                            <!-- Botões Post + Curtir + Comentar -->
-                            <div class="row">
-
-                                <div class="col group-btn-post">
-                                    <a href="/post/post-completo">
-                                        <button type="button" class="btn btn-ccp">Post</button>
-                                    </a>
-                                </div>
-                                <div class="col group-btn-post">
-                                    <button type="button" class="btn btn-ccp">Curtir</button>
-                                </div>
-                                <div class="col group-btn-post">
-                                    <button type="button" class="btn btn-ccp">Comentar</button>
-                                </div>
-
-                            </div>
-
-                        </div>
+                            <% }) %>
                         
 
                     </div>

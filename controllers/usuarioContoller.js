@@ -8,14 +8,21 @@ const store = async (req, res) => {
 
     const { nome, nickname, email, senha, foto_perfil } = req.body
     
-    const fotoPerfil = req.files; 
+    // const fotoPerfil = req.files; 
+    const fotoPerfil = ()=> {
+        if(req.files.length > 0){
+            return `images/fotos-perfil/${req.files[0].filename}`
+        }else{
+            return "images/fotos-perfil/user.jpg"
+        }
+    }
     
     const usuario = await Usuario.create({
       nome,
       nickname,
       email,
       senha, 
-      foto_perfil: `images/fotos-perfil/${fotoPerfil[0].filename}`
+      foto_perfil: fotoPerfil()
     });
 
     // cria usuário na sessão ao cadastrar
