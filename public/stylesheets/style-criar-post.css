@@ -37,6 +37,20 @@
     color: #97e042;
 }
 
+input[type='file'] {
+    display: none
+}
+#btn-input-foto{
+    background-image: url('../images/imagens-icons/click.png');
+    width: 30px;
+    height: 40px;
+    background-size: cover; 
+    cursor: pointer;
+}
+#texto-selecionar-foto{
+    cursor: pointer;
+}
+
 .midias {
     border: 1px solid rgb(193, 193, 193);
     border-radius: .25rem;
@@ -50,6 +64,7 @@
     width: 30%;
     max-height: 100px;
     margin-top: 8px;
+    border: none;
 }
 
 @media(min-width: 579px) {
