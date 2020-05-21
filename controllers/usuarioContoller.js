@@ -48,6 +48,8 @@ const update = async (req, res) => {
     const usuario = await Usuario.findByPk(id);    
 
     // Verfica se o nome vai ser alterado
+    
+    
     if(usuario.nome != nome && nome != "") {
         usuario.nome = nome;
         await usuario.save();
