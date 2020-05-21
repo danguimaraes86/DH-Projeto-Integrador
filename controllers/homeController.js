@@ -1,4 +1,4 @@
-const { Post , Imagem } = require('../models')
+const { Post , Imagem, Usuario } = require('../models')
 const moment = require('moment')
 
 const index = async (req, res) => {
@@ -7,7 +7,10 @@ const index = async (req, res) => {
 
     const posts = await Post.findAll({
         order: [['created_at', 'DESC']],
-        include: Imagem 
+        include: [
+            Usuario,
+            Imagem
+        ]
     })
 
     return res.render('home', {title:"Home", css:"style-home.css", posts:posts, moment});

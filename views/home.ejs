@@ -56,6 +56,18 @@
                             <!-- Card do Post -->
                             <% posts.forEach( post => {  %>
                             <div class="card" id="<%=post.id%>">
+
+                                <div class="d-flex align-items-center justify-content-start m-1">
+                                    <a href=""><img src="/<%= post.usuario.foto_perfil %>" alt="Logo"
+                                            id="foto-perfil"></a>
+                                    <div>
+                                        <p class="pl-2 m-0"><%= post.usuario.nome %></p>
+
+                                        <p id="data-post" class="text-muted pl-2 m-0">
+                                            <%= moment(post.created_at).format('DD/MM/YYYY')%></p>
+                                    </div>
+                                </div>
+
                                 <% if(post.imagens[0].caminho != "null"){ %>
                                 <img src="<%=post.imagens[0].caminho%>" class="card-img-top" alt="...">
                                 <% } %>
@@ -63,7 +75,6 @@
 
                                     <div class="d-flex justify-content-between">
                                         <h5 class="card-title"><%=post.titulo%></h5>
-                                        <p id="data-post" class="text-muted"><%= moment().format('DD/MM/YYYY')%></p>
                                     </div>
 
                                 </div>
