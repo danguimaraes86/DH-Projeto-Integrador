@@ -48,8 +48,10 @@
 
                     <!-- Foto Perfil -->
                     <div class="text-box d-flex justify-content-center pt-4 pb-1">
-                        <label for='selecao-foto' id="foto-perfil">Foto</label>
-                        <input id='selecao-foto' type='file' name="fotoPerfil">
+                        <label for='selecao-foto' id="foto-perfil">
+                            <img src="/images/texto-foto/texto-foto.png" alt="" id="foto-label" width="100%" height="100%" >
+                        </label>
+                        <input type='file' id='selecao-foto'  name="fotoPerfil">                        
                     </div>
 
                     <div class="mt-5 ">
@@ -68,6 +70,7 @@
         </div>
 </div>
 
+<%- include('./partials/scripts') %>
 </body>
 
 </html>
