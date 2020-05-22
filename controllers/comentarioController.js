@@ -1,7 +1,9 @@
 const { Comentario } = require('../models')
 
 const store = async (req, res) => {
-  
+
+  const url = req.header('Referer')
+
   const { id } = req.session.usuario
   const { post } = req.query
 
@@ -13,7 +15,12 @@ const store = async (req, res) => {
     descricao
   })
 
-  return res.redirect('/home#' + post_id)
+  if (url.includes('/home'))  {
+    return res.redirect(`${url}#${post}`)
+  } else {
+    return res.redirect(url)
+  }
+
 }
 
 module.exports = {

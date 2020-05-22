@@ -52,10 +52,23 @@
             <button type="button" class="btn btn-ccp">Curtir</button>
           </div>
           <div class="col group-btn-post">
-            <button type="button" class="btn btn-ccp">Comentar</button>
+            <button type="button" class="btn btn-ccp" data-toggle="collapse" data-target="#form-comentario-<%= postCompleto.id %>">Comentar</button>
           </div>
 
         </div>
+
+        <div class="collapse" id="form-comentario-<%= postCompleto.id %>">
+          <div class="container my-3">
+              <form action="/comentario/post?post=<%= postCompleto.id %>" method="POST" class="d-flex justify-content-between align-items-center">
+                  <div class="form-group w-100 mr-3 m-0">
+                      <input type="text" class="form-control" id="input-comentario-<%= postCompleto.id %>" placeholder="Digite seu comentário..." name="descricao">
+                  </div>
+                  <button type="submit">
+                      <i id="btn-enviar" class="fas fa-paper-plane"></i>
+                  </button>
+              </form>
+          </div>
+      </div>
 
 
       </div>
@@ -66,63 +79,18 @@
           <h3>Comentários</h3>
         </div> -->
 
-        <div class="list-group list-group-flush">
-          <div class="list-group-item">
-            <div class="d-flex justify-content-start align-items-center mb-2">
-              <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="img-amigo img-fluid"
-                alt="...">
-              <p class="nome-perfil">Nome do perfil</p>
+        <% comentarios.forEach(comentario => { %>
+          <div class="list-group list-group-flush">
+            <div class="list-group-item">
+              <div class="d-flex justify-content-start align-items-center mb-2">
+                <img src="/<%= comentario.usuario.foto_perfil %> " class="img-amigo"
+                  alt="...">
+                <p class="nome-perfil"><%= comentario.usuario.nome %></p>
+              </div>
+              <p><%= comentario.descricao %></p>
             </div>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque eaque corporis repellat debitis quo atque
-              est ipsa vitae distinctio, veritatis officia, dolorem officiis eos accusamus. Iure velit similique aperiam
-              molestias, quibusdam totam voluptate iste adipisci obcaecati sed animi eaque necessitatibus, modi ipsa
-              exercitationem maiores! Non facere doloremque quia omnis illum?
-            </p>
           </div>
-          <div class="list-group-item">
-            <div class="d-flex justify-content-start align-items-center mb-2">
-              <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="img-amigo img-fluid"
-                alt="...">
-              <p class="nome-perfil">Nome do perfil</p>
-            </div>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda, ratione?
-            </p>
-          </div>
-          <div class="list-group-item">
-            <div class="d-flex justify-content-start align-items-center mb-2">
-              <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="img-amigo img-fluid"
-                alt="...">
-              <p class="nome-perfil">Nome do perfil</p>
-            </div>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. In vero eos asperiores facilis, nihil placeat!
-            </p>
-          </div>
-          <div class="list-group-item">
-            <div class="d-flex justify-content-start align-items-center mb-2">
-              <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="img-amigo img-fluid"
-                alt="...">
-              <p class="nome-perfil">Nome do perfil</p>
-            </div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat ex ut animi temporibus quia eveniet natus
-              est officia nobis illo.
-            </p>
-          </div>
-          <div class="list-group-item">
-            <div class="d-flex justify-content-start align-items-center mb-2">
-              <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg" class="img-amigo img-fluid"
-                alt="...">
-              <p class="nome-perfil">Nome do perfil</p>
-            </div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet modi atque beatae.
-            </p>
-          </div>
-
-        </div>
+        <% })%>
 
       </section>
 

@@ -88,6 +88,10 @@ section#post-comentario {
   border-radius: 0.25rem;
 }
 
+form button {
+  background-color: transparent
+}
+
 /* .icon-post {
   height: 80px;
   width: 80px;

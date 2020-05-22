@@ -35,9 +35,12 @@ const mostrarPostCompleto = async (req, res) => {
     const { post } = req.query
 
     const postCompleto = await Post.findByPk(post);
+    const titularPost = await postCompleto.getUsuario();
     const imagens = await postCompleto.getImagens();
-    const comentarios = await postCompleto.getComentarios();
-    const titularPost = await postCompleto.getUsuario()
+
+    const comentarios = await postCompleto.getComentarios({
+        include: Usuario
+    });
 
     return res.render('post-completo',
         {
@@ -48,7 +51,7 @@ const mostrarPostCompleto = async (req, res) => {
             comentarios,
             titularPost,
             moment
-        });
+    });
 }
 
 // Pega todos os posts de um usario para mostra lo no perfil do usuario que estamos visitando
@@ -121,8 +124,6 @@ const mostrarTodosComentariosDeUmPost = async (req, res) => {
 
     return res.json(comentarios)
 }
-
-
 
 module.exports = {
     create,
