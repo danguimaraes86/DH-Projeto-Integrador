@@ -90,9 +90,23 @@
                                         <button type="button" class="btn btn-ccp">Curtir</button>
                                     </div>
                                     <div class="col group-btn-post">
-                                        <button type="button" class="btn btn-ccp">Comentar</button>
+                                        <button type="button" class="btn btn-ccp" data-toggle="collapse" data-target="#form-comentario-<%= post.id %>">Comentar</button>
                                     </div>
                                 </div>
+
+                                <div class="collapse" id="form-comentario-<%= post.id %>">
+                                    <div class="container my-3">
+                                        <form class="d-flex justify-content-between align-items-center">
+                                            <div class="form-group w-100 mr-3 m-0">
+                                                <input type="text" class="form-control" id="input-comentario-<%= post.id %>" placeholder="Digite seu comentário...">
+                                            </div>
+                                            <a href="">
+                                                <i id="btn-enviar" class="fas fa-paper-plane"></i>
+                                            </a>
+                                        </form>
+                                    </div>
+                                </div>
+
                             </div>
                             <% }) %>
 

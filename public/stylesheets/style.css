@@ -76,6 +76,10 @@ i {
     opacity: 0.9;
 }
 
+#btn-enviar {
+    font-size: 30px;
+}
+
 button {
     border-style: none;
 }
