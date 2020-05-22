@@ -49,6 +49,15 @@ div#feed .card ~ .card {
     color: #98E144;
 }
 
+.badge {
+    transition-delay: 0s;
+    transition: 0.2s;
+}
+
+.badge-pill {
+    border: #98E144 1px solid;
+}
+
 form button {
     background-color: transparent
 }

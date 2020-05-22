@@ -20,3 +20,8 @@
     border-radius: 4px;
     margin-bottom: 1rem;
 }
+
+form a:hover {
+    color: #98E144;
+    text-decoration: none;
+}

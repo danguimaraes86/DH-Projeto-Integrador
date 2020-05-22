@@ -1,4 +1,4 @@
-const { Post , Imagem, Usuario } = require('../models')
+const { Post, Imagem, Usuario, Curtida } = require('../models')
 const moment = require('moment')
 
 const index = async (req, res) => {
@@ -9,9 +9,13 @@ const index = async (req, res) => {
         order: [['created_at', 'DESC']],
         include: [
             Usuario,
-            Imagem
+            Imagem,
+            Curtida
         ]
     })
+
+    console.log(posts);
+    
 
     return res.render('home', {title:"Home", css:"style-home.css", posts, moment});
 }
