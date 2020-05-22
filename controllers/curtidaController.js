@@ -1,10 +1,8 @@
 const { Curtida } = require('../models')
-// const { pegarIdDoPost } = require('../public/js/pegarIdPost')
 
 const store = async (req, res) => {
   const { id } = req.session.usuario
   const post_id = req.params.id
-  // const post_id = pegarIdDoPost()
 
   console.log(post_id)
 
