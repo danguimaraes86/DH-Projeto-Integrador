@@ -1,14 +1,27 @@
 const { Curtida } = require('../models')
 
 const store = async (req, res) => {
-  const { usuario_id, post_id } = req.params
+  const { id } = req.session.usuario
+  const post_id = req.params.id
 
-  const curtida = await Curtida.create({
-    post_id,
-    usuario_id
+  const verificaSeJaCurtiu = await Curtida.findOne({
+    where: { usuario_id: id, post_id }
   })
+  console.log(verificaSeJaCurtiu)
 
-  return res.json(curtida)
+  if(verificaSeJaCurtiu) {
+    await Curtida.destroy({
+      where: { usuario_id: id, post_id }
+    })
+  } else {
+    await Curtida.create({
+      post_id,
+      usuario_id: id
+    })
+  }
+
+
+  return res.redirect('/home#' + post_id)
 }
 
 module.exports = {
