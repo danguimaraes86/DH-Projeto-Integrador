@@ -1,16 +1,19 @@
 const { Comentario } = require('../models')
 
 const store = async (req, res) => {
-  const { usuario_id, post_id } = req.params
+  
+  const { id } = req.session.usuario
+  const { post } = req.query
+
   const { descricao } = req.body
 
   const comentario = await Comentario.create({
-    post_id,
-    usuario_id,
+    post_id: post,
+    usuario_id: id,
     descricao
   })
 
-  return res.json(comentario)
+  return res.redirect('/home#' + post_id)
 }
 
 module.exports = {

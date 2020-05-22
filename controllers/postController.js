@@ -32,14 +32,12 @@ const store = async (req, res) => {
 }
 
 const mostrarPostCompleto = async (req, res) => {
-    const { p } = req.query
+    const { post } = req.query
 
-    const postCompleto = await Post.findByPk(p);
+    const postCompleto = await Post.findByPk(post);
     const imagens = await postCompleto.getImagens();
     const comentarios = await postCompleto.getComentarios();
     const titularPost = await postCompleto.getUsuario()
-    console.log(titularPost);
-    
 
     return res.render('post-completo',
         {
@@ -51,8 +49,6 @@ const mostrarPostCompleto = async (req, res) => {
             titularPost,
             moment
         });
-
-
 }
 
 // Pega todos os posts de um usario para mostra lo no perfil do usuario que estamos visitando

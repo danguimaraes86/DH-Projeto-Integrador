@@ -49,6 +49,10 @@ div#feed .card ~ .card {
     color: #98E144;
 }
 
+form button {
+    background-color: transparent
+}
+
 /* Section Perfil */
 #card-perfil {
     width: 100%;

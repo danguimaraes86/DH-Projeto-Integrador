@@ -82,13 +82,16 @@
                                 <div class="row">
 
                                     <div class="col group-btn-post">
-                                        <a href="/post/post-completo?p=<%=post.id%>">
+                                        <a href="/post/post-completo?post=<%=post.id%>">
                                             <button type="button" class="btn btn-ccp">Post</button>
                                         </a>
                                     </div>
                                     <div class="col group-btn-post">
                                         <a href="/curtir/post/<%=post.id%>">
-                                        <button type="button" class="btn btn-ccp">Curtir</button>
+                                            <button type="button" class="btn btn-ccp">
+                                                Curtir
+                                                <span class="badge badge-pill">14</span>
+                                            </button>
                                         </a>    
                                     </div>
                                     <div class="col group-btn-post">
@@ -98,13 +101,13 @@
 
                                 <div class="collapse" id="form-comentario-<%= post.id %>">
                                     <div class="container my-3">
-                                        <form class="d-flex justify-content-between align-items-center">
+                                        <form action="/comentario/post?post=<%= post.id %>" method="POST" class="d-flex justify-content-between align-items-center">
                                             <div class="form-group w-100 mr-3 m-0">
-                                                <input type="text" class="form-control" id="input-comentario-<%= post.id %>" placeholder="Digite seu comentário...">
+                                                <input type="text" class="form-control" id="input-comentario-<%= post.id %>" placeholder="Digite seu comentário..." name="descricao">
                                             </div>
-                                            <a href="">
+                                            <button type="submit">
                                                 <i id="btn-enviar" class="fas fa-paper-plane"></i>
-                                            </a>
+                                            </button>
                                         </form>
                                     </div>
                                 </div>
