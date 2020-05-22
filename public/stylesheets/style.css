@@ -76,6 +76,10 @@ i {
     opacity: 0.9;
 }
 
+button {
+    border-style: none;
+}
+
 @media (min-width: 769px) {
     #titulo-navbar {
         display: inline;

@@ -13,7 +13,7 @@ const index = async (req, res) => {
         ]
     })
 
-    return res.render('home', {title:"Home", css:"style-home.css", posts:posts, moment});
+    return res.render('home', {title:"Home", css:"style-home.css", posts, moment});
 }
 
 module.exports = { index }
