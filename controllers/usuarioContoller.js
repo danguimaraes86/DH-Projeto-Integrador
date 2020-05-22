@@ -13,7 +13,7 @@ const store = async (req, res) => {
         if(req.files.length > 0){
             return `images/fotos-perfil/${req.files[0].filename}`
         }else{
-            return "images/fotos-perfil/user.jpg"
+            return "images/padrao/user.jpg"
         }
     }
     

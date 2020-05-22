@@ -41,8 +41,8 @@ input[type='file'] {
     display: none
 }
 #btn-input-foto{
-    background-image: url('../images/imagens-icons/click.png');
-    width: 30px;
+    background-image: url('../icons/click.png');
+    width: 35px;
     height: 40px;
     background-size: cover; 
     cursor: pointer;
