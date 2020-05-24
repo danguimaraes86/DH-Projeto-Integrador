@@ -38,10 +38,10 @@
 
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-vegme active">
-                                <input type="radio" name="publico-amigos" id="post-publico" checked> Público
+                                <input type="radio" name="publico-favoritos" id="post-publico" checked value="publico"> Público
                             </label>
                             <label class="btn btn-vegme">
-                                <input type="radio" name="publico-amigos" id="post-amigos"> Favoritos
+                                <input type="radio" name="publico-favoritos" id="post-amigos" value="favoritos"> Favoritos
                             </label>
                         </div>
 
@@ -128,26 +128,13 @@
                     <h3 class="text-center mt-2">Favoritos</h3>
 
                     <div class="list-group list-group-flush">
+                        <% favoritos.forEach( favorito => {  %> 
                         <div class="list-group-item d-flex align-items-center">
-                            <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg"
+                            <img src="<%= favorito.foto_perfil %> "
                                 class="img-amigo img-fluid" alt="...">
-                            Henrique
-                        </div>
-                        <div class="list-group-item d-flex align-items-center">
-                            <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg"
-                                class="img-amigo img-fluid" alt="...">
-                            Ariele
-                        </div>
-                        <div class="list-group-item d-flex align-items-center">
-                            <img src="/images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg"
-                                class="img-amigo img-fluid" alt="...">
-                            Bruno
-                        </div>
-                        <div class="list-group-item d-flex align-items-center">
-                            <img src="images/e4dc8320-7171-11e8-85fa-f767ca73e247_IMG_0794.jpg"
-                                class="img-amigo img-fluid" alt="...">
-                            Guilherme
-                        </div>
+                            <%= favorito.nome %> 
+                        </div>                       
+                    <% }) %> 
                     </div>
                 </section>
 

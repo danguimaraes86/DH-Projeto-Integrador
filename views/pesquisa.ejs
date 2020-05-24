@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<%- include('./partials/head-meta') %>
+
+<body>
+
+    <%- include('./partials/header') %>
+
+    <section id="amigos">
+
+        <h3 class="text-center mt-4 p-4">Usuarios Encontrados</h3>
+
+        <div class="container">
+
+            <% usuarios.forEach( usuarioEncontrado => {  %>
+
+            <% if( usuario.nickname != usuarioEncontrado.nickname ) { %>
+
+            <div class="list-group-item d-flex align-items-center justify-content-between">
+                <div class="d-flex" id="<%=usuarioEncontrado.id%> ">
+                    <img src="/<%=usuarioEncontrado.foto_perfil %> " class="img-amigo img-fluid" alt="..."
+                        id="foto-usuario">
+                    <div class="d-row ">
+                        <p class="ml-2" id="nome-usuario"><%= usuarioEncontrado.nome %></p>
+                        <p class="ml-2" id="nickname-usuario">@<%= usuarioEncontrado.nickname %></p>
+                    </div>
+                </div>
+                <div>
+                    <a href="/usuario/favorito/<%=usuarioEncontrado.id%> ">
+                        <button type="button" class="btn btn-vegme" id="btn-criar-post">Favoritos</button>
+                    </a>
+                </div>
+            </div>
+            <% } %>
+            <% }) %>
+        </div>
+
+    </section>
+
+    <%- include('./partials/scripts') %>
+
+</body>
+
+</html>

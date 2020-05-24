@@ -2,20 +2,19 @@ const { Usuario } = require('../models')
 
 const cadastro = (req, res) => {
     return res.render('cadastro', {title: " - Cadastro", css:'style-login-cadastro.css' });
-}
+};
 
 const store = async (req, res) => {
 
-    const { nome, nickname, email, senha, foto_perfil } = req.body
+    const { nome, nickname, email, senha, foto_perfil } = req.body;
     
-    // const fotoPerfil = req.files; 
     const fotoPerfil = ()=> {
         if(req.files.length > 0){
             return `images/fotos-perfil/${req.files[0].filename}`
         }else{
             return "images/padrao/user.jpg"
         }
-    }
+    };
     
     const usuario = await Usuario.create({
       nome,
@@ -32,9 +31,7 @@ const store = async (req, res) => {
 }
 
 const editar = (req, res) => {
-
     const { usuario } = req.session;
-
     return res.render('editar-perfil', { title:"Editar Perfil", css:"style-editar-perfil.css", usuario});
 }
 
@@ -47,9 +44,7 @@ const update = async (req, res) => {
     // buscar usuário no banco
     const usuario = await Usuario.findByPk(id);    
 
-    // Verfica se o nome vai ser alterado
-    
-    
+    // Verfica se o nome vai ser alterado   
     if(usuario.nome != nome && nome != "") {
         usuario.nome = nome;
         await usuario.save();
@@ -83,26 +78,17 @@ const configuracaoConta = async (req, res) => {
 
 const adicionarFavorito = async (req, res) => {
 
-    const { usuario_id, favorito_id } = req.params
+    const { id } = req.session.usuario;
+    const favorito_id = req.params.id  ;  
 
-    const usuarioLogado = await Usuario.findByPk(usuario_id)
-    const favorito = await Usuario.findByPk(favorito_id)
+    const usuarioLogado = await Usuario.findByPk(id);
+    const favorito = await Usuario.findByPk(favorito_id) ;    
+    
+    await usuarioLogado.addFavorito(favorito);     
 
-    const resposta = await usuarioLogado.addFavorito(favorito)
-
-    return res.json(resposta)
-
+    return res.redirect('/home');
 }
 
-const exibirFavoritos = async (req, res) => {
-
-    const { usuario_id } = req.params
-    const usuarioLogado = await Usuario.findByPk(usuario_id)
-
-    const favoritos = await usuarioLogado.getFavorito()
-
-    return res.json(favoritos)
-}
 
 module.exports = { 
     cadastro,
@@ -111,5 +97,4 @@ module.exports = {
     update,
     configuracaoConta,
     adicionarFavorito,
-    exibirFavoritos
 }

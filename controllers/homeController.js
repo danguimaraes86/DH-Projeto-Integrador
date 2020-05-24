@@ -3,7 +3,7 @@ const moment = require('moment')
 
 const index = async (req, res) => {
        
-    const { usuario } = req.session;
+    const { id } = req.session.usuario
 
     const posts = await Post.findAll({
         order: [['created_at', 'DESC']],
@@ -14,10 +14,10 @@ const index = async (req, res) => {
         ]
     })
 
-    console.log(posts);
-    
+    const usuarioLogado = await Usuario.findByPk(id)
+    const favoritos = await usuarioLogado.getFavorito()    
 
-    return res.render('home', {title:"Home", css:"style-home.css", posts, moment});
+    return res.render('home', {title:"Home", css:"style-home.css", posts, favoritos, moment});
 }
 
 module.exports = { index }

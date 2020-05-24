@@ -1,0 +1,19 @@
+/* @import url('https://fonts.googleapis.com/css?family=Audiowide|Orbitron:400,600,700&display=swap'); */
+
+#foto-usuario{
+    width: 70px;
+    height: 70px;
+    background-size: cover;
+    border-radius: 0.25rem;
+}
+
+#nome-usuario{
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+}
+
+#nickname-usuario{
+    padding: 0;
+    margin: 0;
+}
