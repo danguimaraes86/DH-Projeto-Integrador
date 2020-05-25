@@ -8,6 +8,7 @@ const {
   update,
   configuracaoConta,
   adicionarFavorito,
+  removerFavorito
 } = require('../controllers/usuarioContoller');
 
 const multer = require('multer')
@@ -31,8 +32,10 @@ router.post('/cadastro', upload.any(), store);
 router.get('/editar', auth, editar);
 router.post('/editar', upload.any(), update);
 
-router.get('/configuracao', auth, configuracaoConta)
+router.get('/configuracao', auth, configuracaoConta);
 
-router.get('/favorito/:id', auth, adicionarFavorito)
+router.get('/adicionar/favorito/:id', auth, adicionarFavorito);
+
+router.get('/remover/favorito/:id', auth, removerFavorito)
 
 module.exports = router;

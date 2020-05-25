@@ -84,7 +84,20 @@ const adicionarFavorito = async (req, res) => {
     const usuarioLogado = await Usuario.findByPk(id);
     const favorito = await Usuario.findByPk(favorito_id) ;    
     
-    await usuarioLogado.addFavorito(favorito);     
+    await usuarioLogado.addFavorito(favorito);   
+
+    return res.redirect('/home');
+}
+
+const removerFavorito = async (req, res) => {
+
+    const { id } = req.session.usuario;
+    const favorito_id = req.params.id  ;  
+
+    const usuarioLogado = await Usuario.findByPk(id);
+    const favorito = await Usuario.findByPk(favorito_id) ;    
+   
+    await usuarioLogado.removeFavorito(favorito);
 
     return res.redirect('/home');
 }
@@ -97,4 +110,5 @@ module.exports = {
     update,
     configuracaoConta,
     adicionarFavorito,
+    removerFavorito
 }
