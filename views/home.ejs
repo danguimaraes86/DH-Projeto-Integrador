@@ -90,7 +90,15 @@
                                         <a href="/curtir/post/<%=post.id%>">
                                             <button type="button" class="btn btn-ccp">
                                                 Curtir
-                                                <span class="badge badge-pill"><%= post.curtidas.length %></span>
+
+                                                <% let statusCurtida = '' %>
+                                                <% post.curtidas.forEach(curtida => { %>
+                                                    <% if (curtida.usuarioId == usuario.id) { %>
+                                                        <% statusCurtida = 'curtida' %> 
+                                                    <% } %>
+                                                <% }) %>
+                                                <span class="badge badge-pill <%= statusCurtida %>" id="contador-curtidas"><%= post.curtidas.length %></span>
+
                                             </button>
                                         </a>    
                                     </div>

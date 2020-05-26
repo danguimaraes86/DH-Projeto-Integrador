@@ -21,16 +21,16 @@
                 <div class="d-flex" id="<%=usuarioEncontrado.id%> ">
                     <img src="/<%=usuarioEncontrado.foto_perfil %> " class="img-amigo img-fluid" alt="..."
                         id="foto-usuario">
-                    <div class="d-row ">
-                        <p class="ml-2" id="nome-usuario"><%= usuarioEncontrado.nome %></p>
-                        <p class="ml-2" id="nickname-usuario">@<%= usuarioEncontrado.nickname %></p>
+                    <div class="d-row ml-2">
+                        <p id="nome-usuario"><%= usuarioEncontrado.nome %></p>
+                        <p id="nickname-usuario">@<%= usuarioEncontrado.nickname %></p>
                     </div>
                 </div>
-                <div>
-                    <a href="/usuario/adicionar/favorito/<%=usuarioEncontrado.id%> ">
+                <div class="d-flex">
+                    <a class="mx-1" href="/usuario/adicionar/favorito/<%=usuarioEncontrado.id%>">
                         <button type="button" class="btn btn-vegme" id="btn-adicionar-favorito">Adicionar</button>
                     </a>
-                    <a href="/usuario/remover/favorito/<%=usuarioEncontrado.id%> ">
+                    <a class="mx-1" href="/usuario/remover/favorito/<%=usuarioEncontrado.id%>">
                         <button type="button" class="btn btn-vegme" id="btn-remover-favorito">Remover</button>
                     </a>
                 </div>

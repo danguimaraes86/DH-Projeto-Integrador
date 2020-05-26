@@ -58,6 +58,15 @@ div#feed .card ~ .card {
     border: #98E144 1px solid;
 }
 
+.curtida {
+    color: #404040;
+    background-color: #98E144;
+}
+
+.curtida:hover {
+    color: #404040;
+}
+
 form button {
     background-color: transparent
 }

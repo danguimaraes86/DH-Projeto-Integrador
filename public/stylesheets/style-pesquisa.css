@@ -1,5 +1,10 @@
 /* @import url('https://fonts.googleapis.com/css?family=Audiowide|Orbitron:400,600,700&display=swap'); */
 
+a:hover {
+    /* color: #98E144; */
+    text-decoration: none;
+}
+
 #foto-usuario{
     width: 70px;
     height: 70px;
