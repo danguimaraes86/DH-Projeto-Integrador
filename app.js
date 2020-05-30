@@ -13,7 +13,8 @@ const postRouter = require('./routes/post');
 const curtidaRouter = require('./routes/curtida');
 const comentarioRouter = require('./routes/comentario');
 const loginRouter = require('./routes/login');
-const pesquisaRouter = require('./routes/pesquisa')
+const pesquisaRouter = require('./routes/pesquisa');
+const configuracaoRouter = require('./routes/configuracao')
 
 const app = express();
 
@@ -44,6 +45,7 @@ app.use('/post', postRouter);
 app.use('/curtir', curtidaRouter);
 app.use('/comentario', comentarioRouter);
 app.use('/pesquisa',pesquisaRouter);
+app.use('/configuracao', configuracaoRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

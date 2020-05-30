@@ -8,39 +8,74 @@
     <%- include('./partials/header') %>
 
     <div class="container">
+
         <div class="container card col-lg-5 col-md-7 mt-4 px-4" id="form">
 
             <h5 class="text-center mt-4 mb-4" id="texto-identificacao">Configurações</h5>
 
-            <form>
+            <% if(typeof(resposta) != "undefined") { %>
+            <div class="alert alert-dark text-center" role="alert">
+                <h6><%= resposta.msg %></h6>
+            </div>
+            <% } %>
+
+            <form method="POST" action="/configuracao/usuario">
                 <div class="form-group">
-                    <label for="FormControlInput1">Nome Completo</label>
-                    <input type="text" class="form-control" id="FormControlInput" placeholder="Nome atual do perfil"
-                        name="nome" value="<%= usuario.nome %>">
+                    <label for="FormControlInput1">Nickname</label>
+                    <input type="text" class="form-control" id="FormControlInput" placeholder="Digite seu novo Nickname"
+                        name="novoNickname">
                 </div>
-    
+
                 <div class="form-group">
                     <label for="FormControlInput1">Alterar E-mail de Cadastro</label>
-                    <input type="text" class="form-control" id="FormControlInput" placeholder="<%= usuario.email %>"
-                        name="nome">
+                    <input type="email" class="form-control" id="FormControlInput" placeholder="Digite seu novo email"
+                        name="novoEmail">
                 </div>
-    
+
                 <div class="form-group">
                     <label for="FormControlInput1">Alterar Senha</label>
-                    <input type="text" class="form-control" id="FormControlInput" placeholder="Digite sua nova senha"
-                        name="nome">
+                    <input type="password" class="form-control" id="FormControlInput"
+                        placeholder="Digite sua nova senha" name="novaSenha">
                 </div>
-    
+
                 <div class="d-flex justify-content-around mb-3 mx-auto">
                     <a href="/home" class="btn-salvar px-5 py-2">Cancelar</a>
-                    <button type="submit" class="btn-salvar px-5 py-2">Salvar</button>
-    
+
+                    <button type="button" class="btn-salvar px-5 py-2" data-toggle="modal"
+                        data-target="#modalConfirmacao">
+                        Salvar
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="modalConfirmacao" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5>Confirmação de segurança</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="FormControlInput1">Digite sua senha</label>
+                                        <input type="text" class="form-control" id="FormControlInput" name="senhaAtual">
+                                    </div>
+                                </div>
+                                <div class="text-center m-3">
+                                    <button type="submit" class="btn-salvar px-5 py-2">Confirmar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-    
-                <div>
-                    <button type="button" class="btn btn-danger btn-block">Excluir conta</button>
-                </div>
+
             </form>
+
+            <div>
+                <button type="button" class="btn btn-danger btn-block">Excluir conta</button>
+            </div>
 
         </div>
     </div>
