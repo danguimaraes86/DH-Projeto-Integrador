@@ -1,4 +1,5 @@
 const { Usuario } = require('../models')
+const { validationResult } = require("express-validator")
 
 const cadastro = (req, res) => {
     return res.render('cadastro', {title: " - Cadastro", css:'style-login-cadastro.css' });
@@ -15,6 +16,26 @@ const store = async (req, res) => {
             return "images/padrao/user.jpg"
         }
     };
+
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array() });
+    }
+
+    const verificaSeNickNameExiste = await Usuario.findOne({
+        where: { nickname }
+    });
+
+    const verificaSeEmailExiste = await Usuario.findOne({
+        where: { email }
+    });
+
+    if(verificaSeNickNameExiste || verificaSeEmailExiste) {
+
+        return res.send("email ou nickname ja existe");
+
+    }
     
     const usuario = await Usuario.create({
       nome,
