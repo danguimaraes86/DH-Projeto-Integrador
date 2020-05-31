@@ -17,10 +17,15 @@ const store = async (req, res) => {
         }
     };
 
-    const errors = validationResult(req);
+    const erros = validationResult(req);
 
-    if (!errors.isEmpty()) {
-        return res.status(422).json({ errors: errors.array() });
+    if (!erros.isEmpty()) {
+
+        return res.render('cadastro', { 
+            title: " - Cadastro",
+            erros: erros.array(),
+            css:'style-login-cadastro.css'
+         });
     }
 
     const verificaSeNickNameExiste = await Usuario.findOne({
