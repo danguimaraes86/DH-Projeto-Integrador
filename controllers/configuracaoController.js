@@ -1,4 +1,6 @@
 const { Usuario } = require('../models');
+const { compararHashDaSenha } = require('../utils/hashing');
+const { gerarHashDaSenha } = require('../utils/hashing');
 
 const index = (req, res) => {
     return res.render('configuracao-conta', { title: "Configuração", css: "style-configuracao-conta.css" });
@@ -11,7 +13,7 @@ const update = async (req, res) => {
     const { senha } = req.session.usuario;
     let dadosValidacao = [];
 
-    if (senha === senhaAtual) {
+        if (await compararHashDaSenha(senhaAtual, senha)) {
 
         const { id } = req.session.usuario;
         const usuarioLogado = await Usuario.findByPk(id);
@@ -43,13 +45,15 @@ const update = async (req, res) => {
             dadosValidacao.push({ msg: "Email já existe !" });
         }
 
+        console.log(novaSenha);
+        
         // verifica se existe e se campo não veio vazio e se tem mais de 3 caracteres e faz a troca da senha
-        if (novaSenha != "" && novaSenha.length >= 3) {
-            usuarioLogado.senha = novaSenha;
+        if (novaSenha != "" && novaSenha.length >= 6) {
+            usuarioLogado.senha = await gerarHashDaSenha(novaSenha);
             await usuarioLogado.save();
             dadosValidacao.push({ msg: "Senha alterada com sucesso" });
-        } else if (novaSenha.length < 3 && novaSenha != "") {
-            dadosValidacao.push({ msg: "A senha deve conter no nínimo 3 caracteres !" });
+        } else if (novaSenha.length < 6 && novaSenha != "") {
+            dadosValidacao.push({ msg: "A senha deve conter no nínimo 6 caracteres !" });
         }
 
         if (!dadosValidacao) {
@@ -85,7 +89,7 @@ const destroy = async (req, res) => {
 
     let dadosValidacao = [];
 
-    if (senha === senhaAtual) {
+    if (await compararHashDaSenha(senhaAtual, senha)) {
         const { id } = req.session.usuario;
         Usuario.destroy({
             where: { id: id }
