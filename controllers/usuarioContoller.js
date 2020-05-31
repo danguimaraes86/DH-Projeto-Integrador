@@ -38,7 +38,11 @@ const store = async (req, res) => {
 
     if(verificaSeNickNameExiste || verificaSeEmailExiste) {
 
-        return res.send("email ou nickname ja existe");
+        return res.render('cadastro', { 
+            title: " - Cadastro",
+            erros: [ {msg: "email ou nickname já existem"} ],
+            css:'style-login-cadastro.css'
+         });
 
     }
     
