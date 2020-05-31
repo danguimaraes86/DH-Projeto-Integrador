@@ -40,7 +40,7 @@ const store = async (req, res) => {
 
         return res.render('cadastro', { 
             title: " - Cadastro",
-            erros: [ {msg: "email ou nickname já existem"} ],
+            erros: [ {msg: "Email ou nickname já existem!"} ],
             css:'style-login-cadastro.css'
          });
 
