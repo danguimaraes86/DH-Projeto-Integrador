@@ -21,3 +21,8 @@ exports.validarCadastro =  [
       .withMessage("A senha precisa de no minimo 6 characters!")
 
 ] 
+
+exports.validarLogin = [
+  check('email').isEmail().withMessage("Digite um email!"),
+  check('senha').isLength({min:3}).withMessage("A senha deve conter no minímo 3 caracteres"),
+]
