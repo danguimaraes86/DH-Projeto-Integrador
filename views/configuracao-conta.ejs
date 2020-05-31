@@ -84,12 +84,47 @@
                 </div>
 
             </form>
-
             <div>
-                <button type="button" class="btn btn-danger btn-block">Excluir conta</button>
-            </div>
 
+                <div>
+                    <form action="/configuracao/usuario/excluir" method="POST">
+                        <!-- <button type="button" class="btn btn-danger btn-block">Excluir conta</button> -->
+                        <button type="button" class="btn btn-danger btn-block" data-toggle="modal"
+                            data-target="#modalExcluir">
+                            Excluir conta
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="modalExcluir" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5>Certeza que deseja excluir sua conta!</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="FormControlInput1">Digite sua senha</label>
+                                            <input type="text" class="form-control" id="FormControlInput"
+                                                name="senhaAtual">
+                                        </div>
+                                    </div>
+                                    <div class="text-center m-3">
+                                        <button type="submit" class="btn-salvar px-5 py-2">Confirmar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
         </div>
+
+    </div>
     </div>
 
     <%- include('./partials/scripts') %>

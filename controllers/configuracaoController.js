@@ -6,15 +6,15 @@ const index = (req, res) => {
 }
 
 const update = async (req, res) => {
-    
+
     const { novoNickname, novoEmail, novaSenha, senhaAtual } = req.body;
-    const { senha } = req.session.usuario;     
+    const { senha } = req.session.usuario;
     let dadosValidacao = [];
 
     if (senha === senhaAtual) {
 
         const { id } = req.session.usuario;
-        const usuarioLogado = await Usuario.findByPk(id);       
+        const usuarioLogado = await Usuario.findByPk(id);
 
         // Verifica se nickname já existe no banco
         const nickname = await Usuario.findOne({
@@ -31,7 +31,7 @@ const update = async (req, res) => {
             await usuarioLogado.save();
             dadosValidacao.push({ msg: "Nickname alterado com sucesso" });
         } else if (nickname) {
-            dadosValidacao.push({ msg: "Nickname já existe !" });            
+            dadosValidacao.push({ msg: "Nickname já existe !" });
         }
 
         // verifica se existe e se campo não veio vazio e faz a troca do email
@@ -40,23 +40,23 @@ const update = async (req, res) => {
             await usuarioLogado.save();
             dadosValidacao.push({ msg: "Email alterado com sucesso" });
         } else if (email) {
-            dadosValidacao.push({ msg: "Email já existe !" });    
+            dadosValidacao.push({ msg: "Email já existe !" });
         }
 
         // verifica se existe e se campo não veio vazio e se tem mais de 3 caracteres e faz a troca da senha
         if (novaSenha != "" && novaSenha.length >= 3) {
             usuarioLogado.senha = novaSenha;
             await usuarioLogado.save();
-            dadosValidacao.push({ msg: "Senha alterada com sucesso" }); 
-        }else if (novaSenha.length < 3 && novaSenha != "") {
-            dadosValidacao.push({ msg: "A senha deve conter no nínimo 3 caracteres !"});    
+            dadosValidacao.push({ msg: "Senha alterada com sucesso" });
+        } else if (novaSenha.length < 3 && novaSenha != "") {
+            dadosValidacao.push({ msg: "A senha deve conter no nínimo 3 caracteres !" });
         }
 
-        if(!dadosValidacao){
+        if (!dadosValidacao) {
             return res.redirect('/configuracao/usuario');
-        }        
-        
-        req.session.usuario = usuarioLogado; 
+        }
+
+        req.session.usuario = usuarioLogado;
 
         return res.render('configuracao-conta',
             {
@@ -66,7 +66,7 @@ const update = async (req, res) => {
             });
 
     } else {
-        dadosValidacao.push({ msg: "Senha incorreta, tente novamente!" });        
+        dadosValidacao.push({ msg: "Senha incorreta, tente novamente!" });
         return res.render('configuracao-conta',
             {
                 title: "Configuração",
@@ -76,4 +76,31 @@ const update = async (req, res) => {
     }
 }
 
-module.exports = { index, update }
+
+const destroy = async (req, res) => {
+
+
+    const { senhaAtual } = req.body;
+    const { senha } = req.session.usuario;
+
+    let dadosValidacao = [];
+
+    if (senha === senhaAtual) {
+        const { id } = req.session.usuario;
+        Usuario.destroy({
+            where: { id: id }
+        })
+        return res.redirect('/')
+
+    } else {
+        dadosValidacao.push({ msg: "Senha incorreta, tente novamente!" });
+        return res.render('configuracao-conta',
+            {
+                title: "Configuração",
+                css: "style-configuracao-conta.css",
+                dadosValidacao
+            });
+    }
+}
+
+module.exports = { index, update, destroy }
