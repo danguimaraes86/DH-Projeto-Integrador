@@ -11,6 +11,8 @@ const {
   removerFavorito
 } = require('../controllers/usuarioContoller');
 
+const { validarCadastro } = require('../middlewares/validator')
+
 const multer = require('multer')
 const path = require('path')
 const auth = require('../middlewares/auth')
@@ -27,7 +29,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage })
 
 router.get('/cadastro', cadastro);
-router.post('/cadastro', upload.any(), store);
+router.post('/cadastro', upload.any(), validarCadastro, store);
 
 router.get('/editar', auth, editar);
 router.post('/editar', upload.any(), update);

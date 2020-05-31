@@ -2,14 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 const {index, login} = require('../controllers/loginController')
-const {check, validationResult, body} = require('express-validator');
-
+const { validarLogin } = require('../middlewares/validator')
 
 router.get('/', index);
 
-router.post('/',[
-    check('email').isEmail().withMessage("Digite um email!"),
-    check('senha').isLength({min:3}).withMessage("A senha deve conter no minímo 3 caracteres"),
-], login);
+router.post('/', validarLogin, login);
 
 module.exports = router;

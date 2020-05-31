@@ -1,37 +1,42 @@
 const { Usuario } = require('../models');
-const { check, validationResult, body } = require('express-validator');
+const { validationResult } = require('express-validator');
+const { compararHashDaSenha } = require('../utils/hashing')
+
 
 const index = (req, res) => {
     return res.render('login', { title: " - Login", css:'style-login-cadastro.css' });
 };
 
 const login = async (req, res) => {
+    const { email, senha } = req.body;
 
     let listaErros = validationResult(req);
-    console.log(listaErros);
     
-    if (listaErros.isEmpty()) {
+    if (!listaErros.isEmpty()) {
+        
+        return res.render('login', { 
+                title: " - Login",
+                erros: listaErros.errors,
+                css:'style-login-cadastro.css'
+             });
+        
+    }
 
-        const { email, senha } = req.body;
-        
-        const usuario = await Usuario.findOne( { where: {email} });          
-        
-        if (!usuario || usuario.senha != senha) {
-            const erros = [
-                {
-                    msg: "Email ou senha errados!"
-                }
-            ]
-            return res.render('login', { title: " - Login", erros: erros, css:'style-login-cadastro.css' });
-        };
+    const usuario = await Usuario.findOne( { where: {email} });     
     
+    if (usuario && await compararHashDaSenha(senha, usuario.senha)) {
+        
         req.session.usuario = usuario;
-
+        
         return res.redirect("/home");        
+    }
 
-    } else {
-        return res.render('login', { title: " - Login", erros: listaErros.errors, css:'style-login-cadastro.css' });
-    };
+    return res.render('login', { 
+        title: " - Login",
+        erros: [{ msg: "Usuario ou senha inválida." }],
+        css:'style-login-cadastro.css'
+        });
+    
 };
 
 module.exports = { index, login };

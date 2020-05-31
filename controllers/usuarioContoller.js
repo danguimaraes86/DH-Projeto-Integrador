@@ -1,4 +1,6 @@
 const { Usuario } = require('../models')
+const { validationResult } = require("express-validator")
+const { gerarHashDaSenha } = require('../utils/hashing')
 
 const cadastro = (req, res) => {
     return res.render('cadastro', {title: " - Cadastro", css:'style-login-cadastro.css' });
@@ -15,12 +17,41 @@ const store = async (req, res) => {
             return "images/padrao/user.jpg"
         }
     };
+
+    const erros = validationResult(req);
+
+    if (!erros.isEmpty()) {
+
+        return res.render('cadastro', { 
+            title: " - Cadastro",
+            erros: erros.array(),
+            css:'style-login-cadastro.css'
+         });
+    }
+
+    const verificaSeNickNameExiste = await Usuario.findOne({
+        where: { nickname }
+    });
+
+    const verificaSeEmailExiste = await Usuario.findOne({
+        where: { email }
+    });
+
+    if(verificaSeNickNameExiste || verificaSeEmailExiste) {
+
+        return res.render('cadastro', { 
+            title: " - Cadastro",
+            erros: [ {msg: "Email ou nickname já existem!"} ],
+            css:'style-login-cadastro.css'
+         });
+
+    }
     
     const usuario = await Usuario.create({
       nome,
       nickname,
       email,
-      senha, 
+      senha: await gerarHashDaSenha(senha), 
       foto_perfil: fotoPerfil()
     });
 
