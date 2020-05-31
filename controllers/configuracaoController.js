@@ -6,14 +6,15 @@ const index = (req, res) => {
 }
 
 const update = async (req, res) => {
-
-    const { id } = req.session.usuario
+    
     const { novoNickname, novoEmail, novaSenha, senhaAtual } = req.body;
+    const { senha } = req.session.usuario;     
+    let dadosValidacao = [];
 
+    if (senha === senhaAtual) {
 
-    if (req.session.usuario.senha === senhaAtual) {
-
-        const usuarioLogado = await Usuario.findByPk(id)
+        const { id } = req.session.usuario;
+        const usuarioLogado = await Usuario.findByPk(id);       
 
         // Verifica se nickname já existe no banco
         const nickname = await Usuario.findOne({
@@ -28,54 +29,49 @@ const update = async (req, res) => {
         if (!nickname && novoNickname != "") {
             usuarioLogado.nickname = novoNickname;
             await usuarioLogado.save();
-            req.session.usuario = usuarioLogado
+            dadosValidacao.push({ msg: "Nickname alterado com sucesso" });
         } else if (nickname) {
-            const resposta = { msg: "Nickname já existe!" }
-            return res.render('configuracao-conta',
-                {
-                    title: "Configuração",
-                    css: "style-configuracao-conta.css",
-                    resposta
-                });
+            dadosValidacao.push({ msg: "Nickname já existe !" });            
         }
 
         // verifica se existe e se campo não veio vazio e faz a troca do email
         if (!email && novoEmail != "") {
             usuarioLogado.email = novoEmail;
             await usuarioLogado.save();
-            req.session.usuario = usuarioLogado
+            dadosValidacao.push({ msg: "Email alterado com sucesso" });
         } else if (email) {
-            const resposta = { msg: "Email já existe!" }
-            return res.render('configuracao-conta',
-                {
-                    title: "Configuração",
-                    css: "style-configuracao-conta.css",
-                    resposta
-                });
+            dadosValidacao.push({ msg: "Email já existe !" });    
         }
 
-        if (novaSenha != "") {
+        // verifica se existe e se campo não veio vazio e se tem mais de 3 caracteres e faz a troca da senha
+        if (novaSenha != "" && novaSenha.length >= 3) {
             usuarioLogado.senha = novaSenha;
             await usuarioLogado.save();
+            dadosValidacao.push({ msg: "Senha alterada com sucesso" }); 
+        }else if (novaSenha.length < 3 && novaSenha != "") {
+            dadosValidacao.push({ msg: "A senha deve conter no nínimo 3 caracteres !"});    
         }
 
-        const resposta = { msg: "Dados alterados com sucesso!" }
+        if(!dadosValidacao){
+            return res.redirect('/configuracao/usuario');
+        }        
+        
+        req.session.usuario = usuarioLogado; 
+
         return res.render('configuracao-conta',
             {
                 title: "Configuração",
                 css: "style-configuracao-conta.css",
-                resposta
+                dadosValidacao
             });
 
-
-
     } else {
-        const resposta = { msg: "Senha incorreta, tente novamente!" }
+        dadosValidacao.push({ msg: "Senha incorreta, tente novamente!" });        
         return res.render('configuracao-conta',
             {
                 title: "Configuração",
                 css: "style-configuracao-conta.css",
-                resposta
+                dadosValidacao
             });
     }
 }

@@ -8,7 +8,8 @@ const index = (req, res) => {
 const login = async (req, res) => {
 
     let listaErros = validationResult(req);
-
+    console.log(listaErros);
+    
     if (listaErros.isEmpty()) {
 
         const { email, senha } = req.body;

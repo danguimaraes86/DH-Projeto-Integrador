@@ -5,7 +5,6 @@
     src: url(../fonts/LoveNature-Rppe6.ttf)
 }
 
-
 #form{
     border: 1px solid rgb(193, 193, 193);
     border-radius: .25rem;
@@ -33,4 +32,7 @@ form a:hover {
     text-decoration: none;
 }
 
+#listaDeInformacoes{
+    list-style: none;
+}
 

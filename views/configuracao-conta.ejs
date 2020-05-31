@@ -13,9 +13,21 @@
 
             <h5 class="text-center mt-4 mb-4" id="texto-identificacao">Configurações</h5>
 
-            <% if(typeof(resposta) != "undefined") { %>
-            <div class="alert alert-dark text-center" role="alert">
-                <h6><%= resposta.msg %></h6>
+            <% if(typeof(dadosValidacao) != "undefined") { %>
+            <div class="alert alert-light" role="alert">
+                <ul id="listaDeInformacoes">
+                    <% dadosValidacao.forEach( (dados) => { %>
+                    <%  if(dados.msg.indexOf("sucesso") >= 0){ %>
+                    <li>
+                        <h6 class="text-center" style="color: green;"><%= dados.msg  %></h6>
+                    </li>
+                    <% }else{ %>
+                    <li>
+                        <h6 class="text-center" style="color: red;"><%= dados.msg  %></h6>
+                    </li>
+                    <% } %>
+                    <% }) %>
+                </ul>
             </div>
             <% } %>
 
