@@ -12,7 +12,7 @@ const index = async (req, res) => {
         return curr.id
     });
 
-    const feedFavorito = true;
+    const feedFavorito = false;
     
     let posts
     if (feedFavorito) {

@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Audiowide|Orbitron:400,600,700&display=swap');
 
+@font-face{
+    font-family: myFont1;
+    src: url(../fonts/LoveNature-Rppe6.ttf)
+}
+
 #form{
     border: 1px solid rgb(193, 193, 193);
     border-radius: .25rem;
@@ -19,9 +24,15 @@
 .btn-danger {
     border-radius: 4px;
     margin-bottom: 1rem;
+    
 }
 
 form a:hover {
     color: #98E144;
     text-decoration: none;
 }
+
+#listaDeInformacoes{
+    list-style: none;
+}
+
