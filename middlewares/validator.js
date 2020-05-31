@@ -3,17 +3,20 @@ const { check, body } = require('express-validator')
 exports.validarCadastro =  [
   check("nome")
       .exists()
-      .isLength({min: 1 , max: 50}).withMessage('Tamanho maximo 50 characters'),
-       
-  body("email")
+      .isLength({min: 1 , max: 50})
+      .withMessage('Tamanho maximo 50 characters'),
+  
+  check("nickname")
       .exists()
-      .isEmail().withMessage('utilize um formato de e-mail'),
+      .isLength({ min: 3, max: 15 })
+      .withMessage('Cadastre um nick de 3 a 15 caracters!'),
+
+  check("email")
+      .exists()
+      .isEmail()
+      .withMessage('utilize um formato de e-mail'),
   
-  body("nickname").isAlphanumeric()
-      .isLength({ min: 3, max: 15 }).withMessage('Cadastre um nick de 3 a 15 caracters!')
-      .notEmpty(),
-  
-      check("senha", "Senha é obrigatório!")
+  check("senha", "Senha é obrigatório!")
       .notEmpty()
       .isLength({
         min: 6

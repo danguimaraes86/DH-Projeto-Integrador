@@ -1,5 +1,6 @@
 const { Usuario } = require('../models')
 const { validationResult } = require("express-validator")
+const { gerarHashDaSenha } = require('../utils/hashing')
 
 const cadastro = (req, res) => {
     return res.render('cadastro', {title: " - Cadastro", css:'style-login-cadastro.css' });
@@ -50,7 +51,7 @@ const store = async (req, res) => {
       nome,
       nickname,
       email,
-      senha, 
+      senha: await gerarHashDaSenha(senha), 
       foto_perfil: fotoPerfil()
     });
 
