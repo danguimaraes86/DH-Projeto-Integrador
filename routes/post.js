@@ -8,7 +8,8 @@ const {
   mostrarTodosComentariosDeUmPost,
   mostrarTodosPostsDoSeusFavoritos,
   mostrarPostCompleto,
-  editarPost
+  editarPost,
+  excluirPost
 } = require('../controllers/postController');
 
 const multer = require('multer')
@@ -41,5 +42,6 @@ router.get('/feed/favorito/:usuario_id', mostrarTodosPostsDoSeusFavoritos)
 router.get('/post-completo',auth, mostrarPostCompleto)
 
 router.post('/editar/:post_id', auth, upload.any(), editarPost)
+router.post('/excluir/:post_id', auth, excluirPost)
 
 module.exports = router;

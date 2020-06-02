@@ -98,6 +98,20 @@ const editarPost = async (req, res) => {
     return res.redirect('/home')
 }
 
+const excluirPost = async (req, res) => {
+
+    const { id } = req.session.usuario
+    const { post_id } = req.params
+
+    const post = await Post.findByPk(post_id);
+
+    if (post.usuario_id == id) {
+        await Post.destroy({ where: {id: post_id}})
+    }
+
+    return res.redirect('/home')
+}
+
 // Pega todos os posts de um usario para mostra lo no perfil do usuario que estamos visitando
 const mostrarTodosPostsDeUmUsuario = async (req, res) => {
 
@@ -177,5 +191,6 @@ module.exports = {
     mostrarTodosComentariosDeUmPost,
     mostrarTodosPostsDoSeusFavoritos,
     mostrarPostCompleto,
-    editarPost
+    editarPost,
+    excluirPost
 }

@@ -115,6 +115,10 @@ input[type='file'] {
     border: none;
 }
 
+.btn-danger {
+    border-radius: 4px;
+}
+
 /* Section Perfil */
 #card-perfil {
     width: 100%;
