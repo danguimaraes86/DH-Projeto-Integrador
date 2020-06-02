@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Audiowide|Orbitron:400,600,700&display=swap');
 
-
 .form-control {
     border: 1px solid rgb(193, 193, 193);
     border-radius: .25rem;
@@ -40,6 +39,7 @@
 input[type='file'] {
     display: none
 }
+
 #btn-input-foto{
     background-image: url('../icons/click.png');
     width: 35px;
@@ -47,6 +47,7 @@ input[type='file'] {
     background-size: cover; 
     cursor: pointer;
 }
+
 #texto-selecionar-foto{
     cursor: pointer;
 }
@@ -60,6 +61,7 @@ input[type='file'] {
     justify-content: space-around;
     padding-bottom: 8px;
 }
+
 .img-thumbnail {
     width: 30%;
     max-height: 100px;

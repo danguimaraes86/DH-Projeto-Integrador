@@ -1,4 +1,6 @@
 const { Usuario, Post, Imagem } = require('../models')
+const fs = require('fs')
+const path = require('path')
 const moment = require('moment')
 
 const create = (req, res) => {
@@ -52,6 +54,48 @@ const mostrarPostCompleto = async (req, res) => {
             titularPost,
             moment
     });
+}
+
+const editarPost = async (req, res) => {
+
+    const { post_id } = req.params
+    const { titulo, descricao } = req.body;
+    const fotoPost = req.files;  
+
+    // buscar post no banco
+    const post = await Post.findByPk(post_id);
+    const imagem = await Imagem.findOne({where: {post_id}})
+    let verificaAlteracao = false;
+
+    // Verfica se o titulo vai ser alterado   
+    if(post.titulo != titulo && titulo != "") {
+        post.titulo = titulo;
+        verificaAlteracao = true
+    };
+    
+    // Verifica se a descricao vai ser alterada
+    if(post.descricao != descricao) {
+        post.descricao = descricao;
+        verificaAlteracao = true;
+    };
+
+    if (verificaAlteracao) {
+        await post.save()
+    }
+    
+    // Verfica se o usuário selecionou uma foto para altera-la
+    if(fotoPost.length > 0){     
+
+        await fs.unlinkSync(path.join('public', imagem.caminho))
+
+        await Imagem.update({ caminho: `images/fotos-post/${fotoPost[0].filename}` }, {
+            where: {
+              post_id
+            }
+        });
+    };
+
+    return res.redirect('/home')
 }
 
 // Pega todos os posts de um usario para mostra lo no perfil do usuario que estamos visitando
@@ -132,5 +176,6 @@ module.exports = {
     mostrarTodasCurtidasPost,
     mostrarTodosComentariosDeUmPost,
     mostrarTodosPostsDoSeusFavoritos,
-    mostrarPostCompleto
+    mostrarPostCompleto,
+    editarPost
 }

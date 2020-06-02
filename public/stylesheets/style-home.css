@@ -71,6 +71,50 @@ form button {
     background-color: transparent
 }
 
+/* Modal Editar Post */
+.form-control {
+    border: 1px solid rgb(193, 193, 193);
+    border-radius: .25rem;
+    resize: none;
+}
+
+.form-label {
+    font-weight: 500;
+}
+
+input[type='file'] {
+    display: none
+}
+
+#btn-input-foto{
+    background-image: url('../icons/click.png');
+    width: 35px;
+    height: 40px;
+    background-size: cover; 
+    cursor: pointer;
+}
+
+#texto-selecionar-foto{
+    cursor: pointer;
+}
+
+.midias {
+    border: 1px solid rgb(193, 193, 193);
+    border-radius: .25rem;
+    min-height: 48px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-bottom: 8px;
+}
+
+.img-thumbnail {
+    width: 30%;
+    max-height: 100px;
+    margin-top: 8px;
+    border: none;
+}
+
 /* Section Perfil */
 #card-perfil {
     width: 100%;

@@ -5,7 +5,7 @@ const index = async (req, res) => {
 
     const { id } = req.session.usuario
 
-    const usuarioLogado = await Usuario.findByPk(id)
+    const usuarioLogado = await Usuario.findByPk(id);
     const favoritos = await usuarioLogado.getFavorito();
 
     const favoritoID = favoritos.map(curr => {

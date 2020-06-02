@@ -56,15 +56,76 @@
                             <% posts.forEach( post => {  %>
                             <div class="card" id="<%=post.id%>">
 
-                                <div class="d-flex align-items-center justify-content-start m-1">
-                                    <img src="/<%= post.usuario.foto_perfil %>" alt="Logo"
-                                            id="foto-perfil">
-                                    <div>
-                                        <p class="pl-2 m-0"><%= post.usuario.nome %></p>
-
-                                        <p id="data-post" class="text-muted pl-2 m-0">
-                                            <%= moment(post.createdAt).format('DD/MM/YYYY')%></p>
+                                <!-- Header do Post -->
+                                <div class="d-flex align-items-center justify-content-between m-1">
+                                    <div class="d-flex justify-content-start align-items-center">
+                                        <img src="/<%= post.usuario.foto_perfil %>" alt="Logo"
+                                                id="foto-perfil">
+                                        <div>
+                                            <p class="pl-2 m-0"><%= post.usuario.nome %></p>
+    
+                                            <p id="data-post" class="text-muted pl-2 m-0">
+                                                <%= moment(post.createdAt).format('DD/MM/YYYY')%></p>
+                                        </div>
                                     </div>
+
+                                    <!-- Botão Editar Post -->
+                                    <% if (usuario.id == post.usuario.id) { %>
+                                    <div class="align-self-center">
+                                            <button type="button" class="btn" data-toggle="modal" data-target="#post-editar-<%= post.id %>">
+                                                <i class="fas fa-edit icon-editar"></i>
+                                            </button>
+                                    </div>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="post-editar-<%= post.id %>" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Editar Post</h5>
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                <span>&times;</span>
+                                            </button>
+                                            </div>
+                                            <form action="/post/editar/<%= post.id %>" method="post" enctype="multipart/form-data">
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="post-titulo-<%= post.id %>">Título do post</label>
+                                                        <input type="text" class="form-control" id="post-titulo-<%= post.id %>" name="titulo" value="<%= post.titulo %>">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="post-descricao-<%= post.id %>">Descrição</label>
+                                                        <textarea class="form-control" id="post-descricao-<%= post.id %>" rows="6" name="descricao"><%= post.descricao %></textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="post-midias-anexadas">
+                                                            Mídias anexadas
+                                                        </label>
+                                        
+                                                        <div class="midias">
+                                                            <img class="img-thumbnail rounded" src="" alt="" id="foto-label" width="100%" height="100%">
+                                                        </div>
+                                                    </div>
+                                        
+                                                    <div class="row">
+                                                        <input id='selecao-foto-<%= post.id %>' class="selecao-foto" type='file' name="fotoPost">
+                                                        <label for='selecao-foto-<%= post.id %>' id="btn-input-foto"></label>
+                                                        <label for='selecao-foto-<%= post.id %>' id="texto-selecionar-foto">Selecionar foto</label>                        
+                                                    </div>
+                                                    
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-vegme">Salvar Alterações</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        </div>
+                                    </div>
+
+                                    <% } %>
+
+
                                 </div>
 
                                 <% if(post.imagens[0].caminho != "null"){ %>
@@ -122,10 +183,7 @@
 
                             </div>
                             <% }) %>
-
-
                         </div>
-
                     </div>
 
                 </section>

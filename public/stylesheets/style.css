@@ -64,6 +64,10 @@ i {
     text-align: center;
 }
 
+.icon-editar {
+    font-size: 24px;
+}
+
 .btn-vegme {
     background-color: #404040;
     color: #98E144;
