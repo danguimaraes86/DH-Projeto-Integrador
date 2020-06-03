@@ -34,11 +34,13 @@ const store = async (req, res) => {
 }
 
 const mostrarPostCompleto = async (req, res) => {
+
     const { post } = req.query
 
     const postCompleto = await Post.findByPk(post);
     const titularPost = await postCompleto.getUsuario();
     const imagens = await postCompleto.getImagens();
+    const curtidas = await postCompleto.getCurtidas();
 
     const comentarios = await postCompleto.getComentarios({
         include: Usuario
@@ -46,11 +48,12 @@ const mostrarPostCompleto = async (req, res) => {
 
     return res.render('post-completo',
         {
-            title: 'Post #ID',
+            title: postCompleto.titulo,
             css: 'style-post-completo.css',
             postCompleto,
             imagens,
             comentarios,
+            curtidas,
             titularPost,
             moment
     });

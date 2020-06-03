@@ -1,6 +1,9 @@
 const { Curtida } = require('../models')
 
 const store = async (req, res) => {
+
+  const url = req.header('Referer')
+
   const { id } = req.session.usuario
   const post_id = req.params.id
 
@@ -8,7 +11,7 @@ const store = async (req, res) => {
     where: { usuario_id: id, post_id }
   })
 
-  if(verificaSeJaCurtiu) {
+  if (verificaSeJaCurtiu) {
     await Curtida.destroy({
       where: { usuario_id: id, post_id }
     })
@@ -19,7 +22,12 @@ const store = async (req, res) => {
     })
   }
 
-  return res.redirect('/home#' + post_id)
+  if (url.includes('/home')) {
+    return res.redirect(`${url}#${post_id}`)
+  } else {
+    return res.redirect(url)
+  }
+
 }
 
 module.exports = {

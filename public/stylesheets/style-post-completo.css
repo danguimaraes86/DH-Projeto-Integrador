@@ -88,17 +88,32 @@ section#post-comentario {
   border-radius: 0.25rem;
 }
 
+.badge {
+  transition-delay: 0s;
+  transition: 0.2s;
+}
+
+.badge-pill {
+  border: #98E144 1px solid;
+}
+
+.curtida {
+  color: #404040;
+  background-color: #98E144;
+}
+
+.curtida:hover {
+  color: #404040;
+}
+
 form button {
   background-color: transparent
 }
 
-/* .icon-post {
-  height: 80px;
-  width: 80px;
-  padding: 10px;
+.fa-trash-alt {
+  color: #98E144;
 }
 
-.hover-icon:hover {
-  background-color: gray;
-  transition: 700ms;
-} */
+.fa-trash-alt:hover {
+  color: red;
+}
