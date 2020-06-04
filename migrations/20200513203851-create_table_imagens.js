@@ -13,6 +13,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      arquivo: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
       post_id: {
         type: Sequelize.INTEGER,
         allowNull: false,

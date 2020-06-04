@@ -38,10 +38,12 @@
 
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-vegme active">
-                                <input type="radio" name="publico-favoritos" id="post-publico" checked value="publico"> Público
+                                <input type="radio" name="publico-favoritos" id="post-publico" checked value="publico">
+                                Público
                             </label>
                             <label class="btn btn-vegme">
-                                <input type="radio" name="publico-favoritos" id="post-favorito" value="favoritos"> Favoritos
+                                <input type="radio" name="publico-favoritos" id="post-favorito" value="favoritos">
+                                Favoritos
                             </label>
                         </div>
 
@@ -59,11 +61,10 @@
                                 <!-- Header do Post -->
                                 <div class="d-flex align-items-center justify-content-between m-1">
                                     <div class="d-flex justify-content-start align-items-center">
-                                        <img src="/<%= post.usuario.foto_perfil %>" alt="Logo"
-                                                id="foto-perfil">
+                                        <img src="/<%= post.usuario.foto_perfil %>" alt="Logo" id="foto-perfil">
                                         <div>
                                             <p class="pl-2 m-0"><%= post.usuario.nome %></p>
-    
+
                                             <p id="data-post" class="text-muted pl-2 m-0">
                                                 <%= moment(post.createdAt).format('DD/MM/YYYY')%></p>
                                         </div>
@@ -72,122 +73,148 @@
                                     <!-- Botão Editar Post -->
                                     <% if (usuario.id == post.usuario.id) { %>
                                     <div class="align-self-center">
-                                            <button type="button" class="btn" data-toggle="modal" data-target="#post-editar-<%= post.id %>">
-                                                <i class="fas fa-edit icon-editar"></i>
-                                            </button>
+                                        <button type="button" class="btn" data-toggle="modal"
+                                            data-target="#post-editar-<%= post.id %>">
+                                            <i class="fas fa-edit icon-editar"></i>
+                                        </button>
                                     </div>
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="post-editar-<%= post.id %>" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Editar Post</h5>
-                                            <button type="button" class="close" data-dismiss="modal">
-                                                <span>&times;</span>
-                                            </button>
-                                            </div>
-                                            <form action="/post/editar/<%= post.id %>" method="post" enctype="multipart/form-data">
-                                                <div class="modal-body">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="post-titulo-<%= post.id %>">Título do post</label>
-                                                        <input type="text" class="form-control" id="post-titulo-<%= post.id %>" name="titulo" value="<%= post.titulo %>">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="post-descricao-<%= post.id %>">Descrição</label>
-                                                        <textarea class="form-control" id="post-descricao-<%= post.id %>" rows="6" name="descricao"><%= post.descricao %></textarea>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="post-midias-anexadas">
-                                                            Mídias anexadas
-                                                        </label>
-                                        
-                                                        <div class="midias">
-                                                            <img class="img-thumbnail rounded" src="" alt="" class="foto-label" width="100%" height="100%">
-                                                        </div>
-                                                    </div>
-                                        
-                                                    <div class="row">
-                                                        <input id='selecao-foto-<%= post.id %>' class="selecao-foto" type='file' name="fotoPost">
-                                                        <label for='selecao-foto-<%= post.id %>' id="btn-input-foto"></label>
-                                                        <label for='selecao-foto-<%= post.id %>' id="texto-selecionar-foto">Selecionar foto</label>                        
-                                                    </div>
-                                                    
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Editar Post</h5>
+                                                    <button type="button" class="close" data-dismiss="modal">
+                                                        <span>&times;</span>
+                                                    </button>
                                                 </div>
+                                                <form action="/post/editar/<%= post.id %>" method="post"
+                                                    enctype="multipart/form-data">
+                                                    <div class="modal-body">
+                                                        <div class="form-group">
+                                                            <label class="form-label"
+                                                                for="post-titulo-<%= post.id %>">Título do post</label>
+                                                            <input type="text" class="form-control"
+                                                                id="post-titulo-<%= post.id %>" name="titulo"
+                                                                value="<%= post.titulo %>">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="form-label"
+                                                                for="post-descricao-<%= post.id %>">Descrição</label>
+                                                            <textarea class="form-control"
+                                                                id="post-descricao-<%= post.id %>" rows="6"
+                                                                name="descricao"><%= post.descricao %></textarea>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="form-label" for="post-midias-anexadas">
+                                                                Mídias anexadas
+                                                            </label>
 
-                                                <div class="modal-footer d-flex justify-content-between">
-                                                    <div class="btn-group dropup">
-                                                        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
-                                                          Excluir Post
-                                                        </button>
-                                                        <div class="dropdown-menu p-0">
-                                                            <button type="submit" formaction="/post/excluir/<%= post.id %>" formmethod="POST" class="btn btn-block btn-danger">Sim</button>
+                                                            <div class="midias">
+                                                                <img class="img-thumbnail rounded" src="" alt=""
+                                                                    class="foto-label" width="100%" height="100%">
+                                                            </div>
                                                         </div>
-                                                      </div>
-                                                    <button type="submit" class="btn btn-vegme">Salvar Alterações</button>
-                                                </div>
-                                            </form>
-                                        </div>
+
+                                                        <div class="row">
+                                                            <input id='selecao-foto-<%= post.id %>' class="selecao-foto"
+                                                                type='file' name="fotoPost">
+                                                            <label for='selecao-foto-<%= post.id %>'
+                                                                id="btn-input-foto"></label>
+                                                            <label for='selecao-foto-<%= post.id %>'
+                                                                id="texto-selecionar-foto">Selecionar foto</label>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="modal-footer d-flex justify-content-between">
+                                                        <div class="btn-group dropup">
+                                                            <button type="button" class="btn btn-danger dropdown-toggle"
+                                                                data-toggle="dropdown">
+                                                                Excluir Post
+                                                            </button>
+                                                            <div class="dropdown-menu p-0">
+                                                                <button type="submit"
+                                                                    formaction="/post/excluir/<%= post.id %>"
+                                                                    formmethod="POST"
+                                                                    class="btn btn-block btn-danger">Sim</button>
+                                                            </div>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-vegme">Salvar
+                                                            Alterações</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <% } %>
 
-
                                 </div>
 
                                 <% if(post.imagens[0].caminho != "null"){ %>
+                                <% if(post.imagens[0].arquivo.indexOf("image") == 0) { %>
                                 <img src="<%=post.imagens[0].caminho%>" class="card-img-top" alt="...">
-                                <% } %>
-                                <div class="card-body">
+                                <% } else { %>
+                                <video controls loop src="<%=post.imagens[0].caminho %>" class="card-img-top" alt="...">
+                                    <% } %>
+                                    <% } %>
 
-                                    <div class="d-flex justify-content-between">
-                                        <h5 class="card-title"><%=post.titulo%></h5>
+                                    <div class="card-body">
+
+                                        <div class="d-flex justify-content-between">
+                                            <h5 class="card-title"><%=post.titulo%></h5>
+                                        </div>
+
                                     </div>
 
-                                </div>
+                                    <!-- Botões Post + Curtir + Comentar -->
+                                    <div class="row">
 
-                                <!-- Botões Post + Curtir + Comentar -->
-                                <div class="row">
+                                        <div class="col group-btn-post">
+                                            <a href="/post/post-completo?post=<%=post.id%>">
+                                                <button type="button" class="btn btn-ccp">Post</button>
+                                            </a>
+                                        </div>
+                                        <div class="col group-btn-post">
+                                            <a href="/curtir/post/<%=post.id%>">
+                                                <button type="button" class="btn btn-ccp">
+                                                    Curtir
 
-                                    <div class="col group-btn-post">
-                                        <a href="/post/post-completo?post=<%=post.id%>">
-                                            <button type="button" class="btn btn-ccp">Post</button>
-                                        </a>
-                                    </div>
-                                    <div class="col group-btn-post">
-                                        <a href="/curtir/post/<%=post.id%>">
-                                            <button type="button" class="btn btn-ccp">
-                                                Curtir
-
-                                                <% let statusCurtida = '' %>
-                                                <% post.curtidas.forEach(curtida => { %>
+                                                    <% let statusCurtida = '' %>
+                                                    <% post.curtidas.forEach(curtida => { %>
                                                     <% if (curtida.usuarioId == usuario.id) { %>
-                                                        <% statusCurtida = 'curtida' %> 
+                                                    <% statusCurtida = 'curtida' %>
                                                     <% } %>
-                                                <% }) %>
-                                                <span class="badge badge-pill <%= statusCurtida %>" id="contador-curtidas"><%= post.curtidas.length %></span>
+                                                    <% }) %>
+                                                    <span class="badge badge-pill <%= statusCurtida %>"
+                                                        id="contador-curtidas"><%= post.curtidas.length %></span>
 
-                                            </button>
-                                        </a>    
+                                                </button>
+                                            </a>
+                                        </div>
+                                        <div class="col group-btn-post">
+                                            <button type="button" class="btn btn-ccp" data-toggle="collapse"
+                                                data-target="#form-comentario-<%= post.id %>">Comentar</button>
+                                        </div>
                                     </div>
-                                    <div class="col group-btn-post">
-                                        <button type="button" class="btn btn-ccp" data-toggle="collapse" data-target="#form-comentario-<%= post.id %>">Comentar</button>
-                                    </div>
-                                </div>
 
-                                <div class="collapse" id="form-comentario-<%= post.id %>">
-                                    <div class="container my-3">
-                                        <form action="/comentario/post?post=<%= post.id %>" method="POST" class="d-flex justify-content-between align-items-center">
-                                            <div class="form-group w-100 mr-3 m-0">
-                                                <input type="text" class="form-control" id="input-comentario-<%= post.id %>" placeholder="Digite seu comentário..." name="descricao">
-                                            </div>
-                                            <button type="submit">
-                                                <i id="btn-enviar" class="fas fa-paper-plane"></i>
-                                            </button>
-                                        </form>
+                                    <div class="collapse" id="form-comentario-<%= post.id %>">
+                                        <div class="container my-3">
+                                            <form action="/comentario/post?post=<%= post.id %>" method="POST"
+                                                class="d-flex justify-content-between align-items-center">
+                                                <div class="form-group w-100 mr-3 m-0">
+                                                    <input type="text" class="form-control"
+                                                        id="input-comentario-<%= post.id %>"
+                                                        placeholder="Digite seu comentário..." name="descricao">
+                                                </div>
+                                                <button type="submit">
+                                                    <i id="btn-enviar" class="fas fa-paper-plane"></i>
+                                                </button>
+                                            </form>
+                                        </div>
                                     </div>
-                                </div>
 
                             </div>
                             <% }) %>
@@ -202,13 +229,12 @@
                     <h3 class="text-center mt-2">Favoritos</h3>
 
                     <div class="list-group list-group-flush">
-                        <% favoritos.forEach( favorito => {  %> 
+                        <% favoritos.forEach( favorito => {  %>
                         <div class="list-group-item d-flex align-items-center">
-                            <img src="<%= favorito.foto_perfil %> "
-                                class="img-amigo img-fluid" alt="...">
-                            <%= favorito.nome %> 
-                        </div>                       
-                    <% }) %> 
+                            <img src="<%= favorito.foto_perfil %> " class="img-amigo img-fluid" alt="...">
+                            <%= favorito.nome %>
+                        </div>
+                        <% }) %>
                     </div>
                 </section>
 

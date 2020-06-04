@@ -11,14 +11,17 @@ const store = async (req, res) => {
 
     const { id } = req.session.usuario
     const { titulo, descricao } = req.body
+    let extensao;
+
     const fotoPost = () => {
         if (req.files.length > 0) {
+            extensao = req.files[0].mimetype
             return `images/fotos-post/${req.files[0].filename}`
         } else {
+            extensao = null
             return "null"
         }
     }
-
     const post = await Post.create({
         usuario_id: id,
         titulo,
@@ -27,7 +30,8 @@ const store = async (req, res) => {
 
     const imagem = await Imagem.create({
         caminho: fotoPost(),
-        post_id: post.id
+        post_id: post.id,
+        arquivo: extensao
     })
 
     return res.redirect('/home')
@@ -56,28 +60,28 @@ const mostrarPostCompleto = async (req, res) => {
             curtidas,
             titularPost,
             moment
-    });
+        });
 }
 
 const editarPost = async (req, res) => {
 
     const { post_id } = req.params
     const { titulo, descricao } = req.body;
-    const fotoPost = req.files;  
+    const fotoPost = req.files;
 
     // buscar post no banco
     const post = await Post.findByPk(post_id);
-    const imagem = await Imagem.findOne({where: {post_id}})
+    const imagem = await Imagem.findOne({ where: { post_id } })
     let verificaAlteracao = false;
 
     // Verfica se o titulo vai ser alterado   
-    if(post.titulo != titulo && titulo != "") {
+    if (post.titulo != titulo && titulo != "") {
         post.titulo = titulo;
         verificaAlteracao = true
     };
-    
+
     // Verifica se a descricao vai ser alterada
-    if(post.descricao != descricao) {
+    if (post.descricao != descricao) {
         post.descricao = descricao;
         verificaAlteracao = true;
     };
@@ -85,17 +89,20 @@ const editarPost = async (req, res) => {
     if (verificaAlteracao) {
         await post.save()
     }
-    
+
     // Verfica se o usuário selecionou uma foto para altera-la
-    if(fotoPost.length > 0){     
+    if (fotoPost.length > 0) {
 
-        await fs.unlinkSync(path.join('public', imagem.caminho))
+        if (imagem.caminho != "null") {
+            await fs.unlinkSync(path.join('public', imagem.caminho))
+        }
 
-        await Imagem.update({ caminho: `images/fotos-post/${fotoPost[0].filename}` }, {
-            where: {
-              post_id
-            }
-        });
+        await Imagem.update({
+            caminho: `images/fotos-post/${fotoPost[0].filename}`, arquivo: req.files[0].mimetype
+        },
+            {
+                where: { post_id }
+            });
     };
 
     return res.redirect('/home')
@@ -109,7 +116,7 @@ const excluirPost = async (req, res) => {
     const post = await Post.findByPk(post_id);
 
     if (post.usuario_id == id) {
-        await Post.destroy({ where: {id: post_id}})
+        await Post.destroy({ where: { id: post_id } })
     }
 
     return res.redirect('/home')
