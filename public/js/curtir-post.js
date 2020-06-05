@@ -12,6 +12,11 @@ $('.btn-curtir').click((e)=>{
 
             $('#contador-curtidas').text(`${data.qtdCurtida}`)
             
+            $('#contador-curtidas').removeClass(`curtida`)
+            $('#contador-curtidas').addClass(`${data.status}`)
+
+            
+            
             
     }));
 })
