@@ -15,14 +15,24 @@
                 <section class="col-3 d-none d-md-block p-0" id="perfil">
 
                     <div class="card" id="card-perfil">
-                        <a href="/usuario/<%= usuario.nickname %>">
-                            <img src="<%= usuario.foto_perfil %>" class="card-img-top" alt="...">
-                        </a>
+                        <img src="/<%= perfilUsuario.foto_perfil %>" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title mb-0"> <%= usuario.nome  %> </h5>
-                            <h6 class="card-text text-muted"> @<%= usuario.nickname  %> </h6>
-                            <p class="card-text"> <%= usuario.biografia  %> </p>
+
+                            <h5 class="card-title mb-0"> <%= perfilUsuario.nome  %> </h5>
+                            <h6 class="card-text text-muted"> @<%= perfilUsuario.nickname  %> </h6>
+                            <p class="card-text"> <%= perfilUsuario.biografia  %> </p>
                         </div>
+
+                        <% if (visitanteFavoritado != undefined) { %>
+                            <a class="my-2 text-center" href="/usuario/remover/favorito/<%=perfilUsuario.id%>">
+                                <button type="button" class="btn btn-vegme" id="btn-remover-favorito">Remover</button>
+                            </a>
+                        <% } else { %>
+                            <a class="my-2 text-center" href="/usuario/adicionar/favorito/<%=perfilUsuario.id%>">
+                                <button type="button" class="btn btn-vegme" id="btn-adicionar-favorito">Adicionar</button>
+                            </a>
+                        <% } %>
+
                     </div>
 
                 </section>
@@ -30,30 +40,8 @@
                 <!-- Seção do Post -->
                 <section class="col-md-6" id="post">
 
-                    <!-- Botões Post -->
-                    <div class="d-none d-md-flex justify-content-between">
-
-                        <a href="/post/criar">
-                            <button type="button" class="btn btn-vegme" id="btn-criar-post">Criar</button>
-                        </a>
-
-                        <form action="/home" method="GET">
-                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                <label for="feed-publico" class="btn btn-vegme active">
-                                    <input type="submit" name="feed" id="feed-publico" value="publico">
-                                    Público
-                                </label>
-                                <label for="feed-favorito" class="btn btn-vegme">
-                                    <input type="submit" name="feed" id="feed-favorito" value="favoritos">
-                                    Favoritos
-                                </label>
-                            </div>
-                        </form>
-
-                    </div>
-
                     <!-- Feed -->
-                    <div id="feed" class="row d-md-block mt-3">
+                    <div id="feed" class="row d-md-block">
 
                         <div class="col p-0">
 
@@ -64,9 +52,7 @@
                                 <!-- Header do Post -->
                                 <div class="d-flex align-items-center justify-content-between m-1">
                                     <div class="d-flex justify-content-start align-items-center">
-                                        <a href="/usuario/<%= post.usuario.nickname %>">
-                                            <img src="/<%= post.usuario.foto_perfil %>" alt="Logo" id="foto-perfil">
-                                        </a>
+                                        <img src="/<%= post.usuario.foto_perfil %>" alt="Logo" id="foto-perfil">
                                         <div>
                                             <p class="pl-2 m-0"><%= post.usuario.nome %></p>
 
@@ -160,9 +146,9 @@
                                 
                                 <% if(post.imagens[0].caminho != "null"){ %>
                                 <% if(post.imagens[0].arquivo.indexOf("image") == 0) { %>
-                                <img src="<%=post.imagens[0].caminho%>" class="card-img-top" alt="...">
+                                <img src="/<%=post.imagens[0].caminho%>" class="card-img-top" alt="...">
                                 <% } else { %>
-                                <video controls loop controlslist='nodownload' src="<%=post.imagens[0].caminho %>" class="card-img-top" alt="..."></video>
+                                <video controls loop controlslist='nodownload' src="/<%=post.imagens[0].caminho %>" class="card-img-top" alt="..."></video>
                                     <% } %>
                                     <% } %>
 
@@ -189,7 +175,7 @@
 
                                                     <% let statusCurtida = '' %>
                                                     <% post.curtidas.forEach(curtida => { %>
-                                                    <% if (curtida.usuarioId == usuario.id) { %>
+                                                    <% if (curtida.usuarioId == perfilUsuario.id) { %>
                                                     <% statusCurtida = 'curtida' %>
                                                     <% } %>
                                                     <% }) %>
@@ -237,9 +223,11 @@
                         <% favoritos.forEach( favorito => {  %>
                         <div class="list-group-item d-flex align-items-center">
                             <a href="/usuario/<%= favorito.nickname %>">
-                                <img src="<%= favorito.foto_perfil %> " class="img-amigo img-fluid" alt="...">
+                                <img src="/<%= favorito.foto_perfil %> " class="img-amigo img-fluid" alt="...">
                             </a>
-                            <%= favorito.nome %>
+                            <a href="/usuario/<%= favorito.nickname %>">
+                                <%= favorito.nome %>
+                            </a>
                         </div>
                         <% }) %>
                     </div>

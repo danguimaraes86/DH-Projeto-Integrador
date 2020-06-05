@@ -23,15 +23,15 @@ let storage = multer.diskStorage({
     filename: function (req, file, cb) {    
         cb(null, `${Date.now()}${path.extname(file.originalname)}`);
     }
-  })
+})
    
 let upload = multer({ 
   storage: storage,
   fileFilter: (req, file, cb) => {
     // (img.indexOf(extensaoDoArquivo) > -1)
-    let extensaoUpload = path.extname(file.originalname);
+    let extensaoUpload = path.extname(file.originalname).toLowerCase();
     const extensaoImg = [".jpeg", ".png", ".tiff", ".svg", ".jpg", ".jfif"];
-    const extensaoVideo = [".mp4", ".mkv", ".avi", ".mov"];
+    const extensaoVideo = [".mp4", ".mkv", ".avi", ".mov", ".m4v"];
     if(extensaoImg.includes(extensaoUpload) || extensaoVideo.includes(extensaoUpload) ){
       return cb(null, true)
     }else{

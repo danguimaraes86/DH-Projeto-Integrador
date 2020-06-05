@@ -12,9 +12,3 @@ $("#btn-footer-home").click(function (event) {
 
 })
 
-// $(document).ready(function () {
-//   $([name='publico-favoritos']).click(function () {
-//     var vMostrar = $('input:radio:checked').val();
-//     alert(vMostrar);
-//   });
-// })

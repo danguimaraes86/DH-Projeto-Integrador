@@ -19,21 +19,25 @@
 
             <div class="list-group-item d-flex align-items-center justify-content-between">
                 <div class="d-flex" id="<%=usuarioEncontrado.id%> ">
-                    <img src="/<%=usuarioEncontrado.foto_perfil %> " class="img-amigo img-fluid" alt="..."
-                        id="foto-usuario">
+                    <a href="/usuario/<%= usuarioEncontrado.nickname %>">
+                        <img src="/<%=usuarioEncontrado.foto_perfil %> " class="img-amigo img-fluid" alt="..."  id="foto-usuario">
+                    </a>
                     <div class="d-row ml-2">
                         <p id="nome-usuario"><%= usuarioEncontrado.nome %></p>
                         <p id="nickname-usuario">@<%= usuarioEncontrado.nickname %></p>
                     </div>
                 </div>
-                <div class="d-flex">
-                    <a class="mx-1" href="/usuario/adicionar/favorito/<%=usuarioEncontrado.id%>">
-                        <button type="button" class="btn btn-vegme" id="btn-adicionar-favorito">Adicionar</button>
-                    </a>
-                    <a class="mx-1" href="/usuario/remover/favorito/<%=usuarioEncontrado.id%>">
+
+                <% if (favoritosUsuarioLogado.includes(usuarioEncontrado.id)) { %>
+                    <a class="my-1 text-center" href="/usuario/remover/favorito/<%=usuarioEncontrado.id%>">
                         <button type="button" class="btn btn-vegme" id="btn-remover-favorito">Remover</button>
                     </a>
-                </div>
+                <% } else { %>
+                    <a class="my-1 text-center" href="/usuario/adicionar/favorito/<%=usuarioEncontrado.id%>">
+                        <button type="button" class="btn btn-vegme" id="btn-adicionar-favorito">Adicionar</button>
+                    </a>
+                <% } %>
+
             </div>
             <% } %>
             <% }) %>

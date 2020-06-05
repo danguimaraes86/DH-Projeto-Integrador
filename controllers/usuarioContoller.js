@@ -1,6 +1,8 @@
-const { Usuario } = require('../models')
+const { Usuario, Post, Imagem, Curtida, Comentario } = require('../models')
 const { validationResult } = require("express-validator")
 const { gerarHashDaSenha } = require('../utils/hashing')
+const moment = require('moment')
+
 
 const cadastro = (req, res) => {
     return res.render('cadastro', {title: " - Cadastro", css:'style-login-cadastro.css' });
@@ -133,6 +135,37 @@ const removerFavorito = async (req, res) => {
     return res.redirect('/home');
 }
 
+const perfilVisitante = async (req, res) => {
+
+    const { nickname } = req.params;
+
+    const perfilUsuario = await Usuario.findOne({where: {nickname}})
+    const posts = await Post.findAll({
+        where: { usuario_id: perfilUsuario.id },
+        order: [['created_at', 'DESC']],
+        include: [
+            Usuario,
+            Imagem,
+            Curtida
+        ]
+    })
+    const favoritos = await perfilUsuario.getFavorito()
+
+    const usuarioLogado = await Usuario.findByPk(req.session.usuario.id)
+    const favoritosUsuarioLogado = await usuarioLogado.getFavorito()
+    const visitanteFavoritado = favoritosUsuarioLogado.find(e => e.id == perfilUsuario.id)
+
+    return res.render('perfil-visitante', {
+        title: perfilUsuario.nickname,
+        css: "style-home.css",
+        perfilUsuario,
+        posts,
+        favoritos,
+        visitanteFavoritado,
+        moment
+    })
+}
+
 
 module.exports = { 
     cadastro,
@@ -141,5 +174,6 @@ module.exports = {
     update,
     configuracaoConta,
     adicionarFavorito,
-    removerFavorito
+    removerFavorito,
+    perfilVisitante
 }

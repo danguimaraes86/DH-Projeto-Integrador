@@ -5,6 +5,8 @@ const index = async (req, res) => {
 
     const { id } = req.session.usuario
 
+    const { feed } = req.query;
+
     const usuarioLogado = await Usuario.findByPk(id);
     const favoritos = await usuarioLogado.getFavorito();
 
@@ -12,10 +14,8 @@ const index = async (req, res) => {
         return curr.id
     });
 
-    const feedFavorito = false;
-    
     let posts
-    if (feedFavorito) {
+    if (feed == 'favoritos') {
         posts = await Post.findAll({
             where: {usuario_id: favoritoID },
             order: [['created_at', 'DESC']],

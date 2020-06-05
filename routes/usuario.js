@@ -8,7 +8,8 @@ const {
   update,
   configuracaoConta,
   adicionarFavorito,
-  removerFavorito
+  removerFavorito,
+  perfilVisitante
 } = require('../controllers/usuarioContoller');
 
 const { validarCadastro } = require('../middlewares/validator')
@@ -37,7 +38,8 @@ router.post('/editar', upload.any(), update);
 router.get('/configuracao', auth, configuracaoConta);
 
 router.get('/adicionar/favorito/:id', auth, adicionarFavorito);
-
 router.get('/remover/favorito/:id', auth, removerFavorito)
+
+router.get('/:nickname', auth, perfilVisitante)
 
 module.exports = router;

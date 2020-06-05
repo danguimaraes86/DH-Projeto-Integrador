@@ -45,8 +45,6 @@ const update = async (req, res) => {
             dadosValidacao.push({ msg: "Email já existe !" });
         }
 
-        console.log(novaSenha);
-        
         // verifica se existe e se campo não veio vazio e se tem mais de 3 caracteres e faz a troca da senha
         if (novaSenha != "" && novaSenha.length >= 6) {
             usuarioLogado.senha = await gerarHashDaSenha(novaSenha);
