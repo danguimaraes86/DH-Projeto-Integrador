@@ -29,3 +29,21 @@ exports.validarLogin = [
   check('email').isEmail().withMessage("Digite um email!"),
   check('senha').isLength({min:3}).withMessage("A senha deve conter no minímo 3 caracteres"),
 ]
+
+exports.validarConfiguracao = [
+  check("novoNickname")
+      .optional({ checkFalsy: true })
+      .exists()
+      .isLength({ min: 3, max: 15 })
+      .withMessage('Cadastre um nick de 3 a 15 caracters!'),
+  check('novoEmail')
+      .optional({ checkFalsy: true })
+      .isEmail()
+      .withMessage("Digite um email!"),
+  check("novaSenha", "Senha é obrigatório!")
+      .optional({ checkFalsy: true })
+      .isLength({
+        min: 6
+      })
+      .withMessage("A senha precisa de no minimo 6 characters!")
+]
