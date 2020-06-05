@@ -183,8 +183,8 @@
                                             </a>
                                         </div>
                                         <div class="col group-btn-post">
-                                            <a href="/curtir/post/<%=post.id%>">
-                                                <button type="button" class="btn btn-ccp">
+                                            <a >
+                                                <button type="button" class="btn-curtir-home btn btn-ccp">
                                                     Curtir
 
                                                     <% let statusCurtida = '' %>
@@ -193,7 +193,7 @@
                                                     <% statusCurtida = 'curtida' %>
                                                     <% } %>
                                                     <% }) %>
-                                                    <span class="badge badge-pill <%= statusCurtida %>"
+                                                    <span class="contador-curtidas badge badge-pill <%= statusCurtida %>"
                                                         id="contador-curtidas"><%= post.curtidas.length %></span>
 
                                                 </button>
@@ -272,6 +272,8 @@
     </footer>
 
     <%- include('./partials/scripts') %>
+    
+   <script src="/js/curtir-post.js"></script> 
 
 </body>
 

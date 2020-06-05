@@ -35,6 +35,10 @@ const store = async (req, res) => {
   //const titularPost = await postCompleto.getUsuario();
   //const imagens = await postCompleto.getImagens();
   const curtidas = await postCompleto.getCurtidas();
+    console.log({
+      qtdCurtida:curtidas.length,
+      status:statusCurtida
+    })
     return res.status(200).json({
       qtdCurtida:curtidas.length,
       status:statusCurtida
