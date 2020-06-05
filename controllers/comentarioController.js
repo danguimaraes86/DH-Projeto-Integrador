@@ -31,7 +31,7 @@ const excluirComentario = async (req, res) => {
 
     await Comentario.destroy({ where: {id}})
     
-    return res.redirect(url)
+    return res.status(200).json({message:'excluir com sucesso'})
 
 }
 

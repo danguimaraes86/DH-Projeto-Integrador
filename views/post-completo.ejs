@@ -8,7 +8,7 @@
   <%- include('./partials/header') %>
 
   <main class="container">
-    <div id="post-completo" class="container my-3">
+    <div id="post-completo-<%=postCompleto.id%>" class="post-completo container my-3">
 
       <!-- Header do Post -->
       <div class="d-flex justify-content-between align-items-center my-3">
@@ -52,8 +52,8 @@
         <div class="row">
 
           <div class="col group-btn-post">
-            <a href="/curtir/post/<%=postCompleto.id%>">
-                <button type="button" class="btn btn-ccp">
+            <a >
+                <button type="button"  class="btn-curtir btn btn-ccp">
                     Curtir
 
                     <% let statusCurtida = '' %>
@@ -92,8 +92,8 @@
       <% if (comentarios.length > 0) { %>
         <section class="border" id="post-comentario">
           <% comentarios.forEach(comentario => { %>
-            <div class="list-group list-group-flush">
-              <div class="list-group-item">
+            <div  class="list-group list-group-flush">
+              <div id="comentario-<%= comentario.id %>" class="list-group-item">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                   <div class="d-flex">
                     <a href="/usuario/<%= comentario.usuario.nickname %>">
@@ -102,9 +102,9 @@
                     <p class="nome-perfil"><%= comentario.usuario.nome %></p>
                   </div>
 
-                  <a href="/comentario/excluir/<%= comentario.id %>" class="btn-excluir">
+                  <button  class="btn-excluir">
                     <i class="btn fas fa-trash-alt"></i>
-                  </a>
+                  </button>
 
                 </div>
                 <p><%= comentario.descricao %></p>
@@ -118,7 +118,8 @@
   </main>
 
   <%- include('./partials/scripts') %>
-  <!-- <script src="/js/excluir-comentario.js"></script> -->
+   <script src="/js/excluir-comentario.js"></script> 
+   <script src="/js/curtir-post.js"></script> 
 
 </body>
 

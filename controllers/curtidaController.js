@@ -1,11 +1,16 @@
-const { Curtida } = require('../models')
+const { Curtida,Post } = require('../models')
 
 const store = async (req, res) => {
 
-  const url = req.header('Referer')
+
 
   const { id } = req.session.usuario
   const post_id = req.params.id
+
+  const postCompleto = await Post.findByPk(post_id);
+  //const titularPost = await postCompleto.getUsuario();
+  //const imagens = await postCompleto.getImagens();
+  const curtidas = await postCompleto.getCurtidas();
 
   const verificaSeJaCurtiu = await Curtida.findOne({
     where: { usuario_id: id, post_id }
@@ -22,11 +27,9 @@ const store = async (req, res) => {
     })
   }
 
-  if (url.includes('/home')) {
-    return res.redirect(`${url}#${post_id}`)
-  } else {
-    return res.redirect(url)
-  }
+ 
+    return res.status(200).json({qtdCurtida:curtidas.length})
+  
 
 }
 
