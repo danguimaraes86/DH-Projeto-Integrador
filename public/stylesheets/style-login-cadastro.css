@@ -2,7 +2,9 @@
     font-family: myFont1;
     src: url(../fonts/LoveNature-Rppe6.ttf)
 }
-
+#listaDeInformacoes{
+    list-style: none;
+}
 
 /* Header */
 header{

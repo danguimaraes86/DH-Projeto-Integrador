@@ -32,22 +32,29 @@ const store = async (req, res) => {
     }
 
     const verificaSeNickNameExiste = await Usuario.findOne({
-        where: { nickname }
+        where: { nickname },
+        
     });
 
     const verificaSeEmailExiste = await Usuario.findOne({
         where: { email }
     });
 
+    const ListaDeErros =[]
+    if(verificaSeNickNameExiste ) {
+        ListaDeErros.push( {msg: "Nickname já existe!"} )
+    }
+    if(verificaSeEmailExiste ){
+        ListaDeErros.push( {msg: "Email já existe!"} )
+    }
+    
     if(verificaSeNickNameExiste || verificaSeEmailExiste) {
-
         return res.render('cadastro', { 
             title: " - Cadastro",
-            erros: [ {msg: "Email ou nickname já existem!"} ],
+            erros : ListaDeErros,
             css:'style-login-cadastro.css'
          });
-
-    }
+    }   
     
     const usuario = await Usuario.create({
       nome,

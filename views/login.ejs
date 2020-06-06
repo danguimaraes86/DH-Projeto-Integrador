@@ -15,13 +15,13 @@
 
         <div class="box-form pr-5 pl-5 p-3 mb-5">
 
-            <div class="flex-column">
+            <div class="flex-column text-center">
                 
                 <% if(typeof(erros) != "undefined") { %>
-                    <div class="alert alert-warning" role="alert">
-                      <ul>
+                    <div class="alert alert-light" role="alert">
+                      <ul id="listaDeInformacoes">
                       <% erros.forEach( (erros) => { %>
-                          <li><h6>Atenção: <%= erros.msg %></h6></li>
+                          <li><h6 style="color: red"><%= erros.msg %></h6></li>
                       <% }) %>
                     </ul>                      
                     </div>
