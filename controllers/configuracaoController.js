@@ -1,7 +1,8 @@
 const { Usuario } = require('../models');
 const { compararHashDaSenha } = require('../utils/hashing');
 const { gerarHashDaSenha } = require('../utils/hashing');
-const { validationResult } = require("express-validator")
+const { validationResult } = require("express-validator");
+const nodemailer = require('../configs/emailController')
 
 const index = (req, res) => {
     return res.render('configuracao-conta', { title: "Configuração", css: "style-configuracao-conta.css" });
@@ -117,6 +118,37 @@ const destroy = async (req, res) => {
 }
 
 const recuperarSenha = async (req, res) => {
+
+    const { email } = req.body;    
+    const usuario = await Usuario.findOne({where:{email}})
+    
+    if(!usuario){
+        return res.render('login', { 
+            title: " - Login",
+            erros: [{ msg: "Email não encontrado." }],
+            css:'style-login-cadastro.css'
+            });
+    }
+
+    let emailEnvio = {
+        from: 'contatovegme1@gmail.com',
+        to: email,
+        subject: 'Veg.me recuperação de senha',
+        text: `Ola ${usuario.nome} segue seu token: ${usuario.senha}`,
+        html: `<h1>Ola ${usuario.nome} segue seu token: ${usuario.senha}</h1>`
+    }
+  
+    nodemailer.sendMail(emailEnvio, (error)=>{
+        if(error){
+            console.log('Deu ruim');
+            console.log(error);           
+        }else{
+            console.log('Email enviado com sucesso!');            
+        }
+    })
+    
+    return res.send("OK")
+    
 
 }
 
