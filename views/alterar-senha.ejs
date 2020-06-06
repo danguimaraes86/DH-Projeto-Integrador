@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<%- include('./partials/head-meta') %>
+
+<body>
+
+    <%- include('./partials/header-login-cadastro') %>
+
+    <div class="container d-flex justify-content-center  p-3 " id="form">
+
+        <div class="box-form pr-5 pl-5 p-3 mb-5">
+
+            <div class="flex-column text-center">
+
+                <% if(typeof(erros) != "undefined") { %>
+                <div class="alert alert-light" role="alert">
+                    <ul id="listaDeInformacoes">
+                        <% erros.forEach( (erros) => { %>
+                        <li>
+                            <h6 style="color:green"><%= erros.msg %></h6>
+                        </li>
+                        <% }) %>
+                    </ul>
+                </div>
+                <% } %>
+
+                <div>
+                    <h5 class="text-center mt-3 mb-4 " id="texto-identificacao">Alterar senha</h5>
+                </div>
+
+                <form action="/configuracao/senha/alterar" method="POST">
+                    <div class="text-box d-flex pb-1 pt-3">
+                        <img class="form-icons" src="/icons/login-cadastro/icon-login.png" alt="icon-login">
+                        <input type="text" placeholder="Token" name="token">
+                    </div>
+
+                    <div class="text-box d-flex  pt-4 pb-1">
+                        <img class="form-icons" src="/icons/login-cadastro/icon-senha.png" alt="icon-senha">
+                        <input type="password" placeholder="Senha" name="novaSenha">
+                    </div>
+
+                    <div class="mt-5 ">
+                        <button type="submit" class="btn-login">Alterar</button>
+                    </div>                    
+                </form>
+
+                <div class="text-center mt-2" id="recuperar-senha">
+                    <a href="/login" >Faça seu login</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <%- include('./partials/scripts') %> 
+
+</body>
+
+</html>

@@ -130,12 +130,14 @@ const recuperarSenha = async (req, res) => {
             });
     }
 
+    const url = 'http://localhost:3000/configuracao/senha/alterar'
     let emailEnvio = {
         from: 'contatovegme1@gmail.com',
         to: email,
         subject: 'Veg.me recuperação de senha',
-        text: `Ola ${usuario.nome} segue seu token: ${usuario.senha}`,
-        html: `<h1>Ola ${usuario.nome} segue seu token: ${usuario.senha}</h1>`
+        text: `Ola ${usuario.nome} segue seu token: ${usuario.senha}
+        acesse o link: ${url}`,
+        html: `<h1>Ola ${usuario.nome}</h1><p>segue seu token: ${usuario.senha}</p><p>acesse o link para alterar sua senha: ${url}</p>`
     }
   
     nodemailer.sendMail(emailEnvio, (error)=>{
@@ -145,11 +147,47 @@ const recuperarSenha = async (req, res) => {
         }else{
             console.log('Email enviado com sucesso!');            
         }
-    })
-    
-    return res.send("OK")
-    
+    })    
+    return res.render('login', { 
+        title: " - Login",
+        erros: [{ msg: "Token enviado para seu email" }],
+        css:'style-login-cadastro.css'
+        });
+    }
 
-}
+    const indexAlterarSenha = async (req, res) => {
+        return res.render('alterar-senha', { title: " - Alterar senha", css:'style-login-cadastro.css' });
+    }
 
-module.exports = { index, update, destroy, recuperarSenha }
+    const alterarSenha = async (req, res) => {
+
+        const { token, novaSenha } = req.body
+
+        const usuario = await Usuario.findOne({where: { senha:token }})
+
+        if(!usuario){
+            return res.render('alterar-senha', { 
+                title: " - Alterar senha",
+                erros: [{ msg: "Token invalido." }],
+                css:'style-login-cadastro.css'
+                });
+        }
+        
+        if (novaSenha && novaSenha.length >= 6) {
+            usuario.senha = await gerarHashDaSenha(novaSenha);
+            await usuario.save();
+            return res.render('alterar-senha', { 
+                title: " - Alterar senha",
+                erros: [{ msg: "Senha alterada com sucesso." }],
+                css:'style-login-cadastro.css'
+                });            
+        }else{
+            return res.render('alterar-senha', { 
+                title: " - Alterar senha",
+                erros: [{ msg: "A senha deve conter no minímo 6 caracteres." }],
+                css:'style-login-cadastro.css'
+                }); 
+        }
+    }
+
+module.exports = { index, update, destroy, recuperarSenha, indexAlterarSenha, alterarSenha }
