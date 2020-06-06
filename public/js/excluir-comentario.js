@@ -6,7 +6,11 @@ $('.btn-excluir').click((e) => {
     fetch(`${BASE_URL}comentario/excluir/${id[1]}`)
         .then(resposta => resposta.json()
             .then(() => {
-                e.target.parentNode.parentNode.parentNode.remove()
+                e.target.parentNode.parentNode.parentNode.classList.add("fadeOut")
+
+                setTimeout(function () {
+                    e.target.parentNode.parentNode.parentNode.remove()
+                }, 500);
             }));
 
 })

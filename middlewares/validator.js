@@ -27,7 +27,7 @@ exports.validarCadastro =  [
 
 exports.validarLogin = [
   check('email').isEmail().withMessage("Digite um email!"),
-  check('senha').isLength({min:3}).withMessage("A senha deve conter no minímo 3 caracteres"),
+  check('senha').isLength({min:3}).withMessage("A senha deve conter no minímo 6 caracteres"),
 ]
 
 exports.validarConfiguracao = [
