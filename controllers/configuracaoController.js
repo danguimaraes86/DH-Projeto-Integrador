@@ -91,7 +91,6 @@ const update = async (req, res) => {
     }
 }
 
-
 const destroy = async (req, res) => {
 
     const { senhaAtual } = req.body;
@@ -117,4 +116,8 @@ const destroy = async (req, res) => {
     }
 }
 
-module.exports = { index, update, destroy }
+const recuperarSenha = async (req, res) => {
+
+}
+
+module.exports = { index, update, destroy, recuperarSenha }

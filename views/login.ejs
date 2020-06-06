@@ -1,53 +1,81 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<%- include('./partials/head-meta') %> 
+<%- include('./partials/head-meta') %>
 
 <body>
 
-<%- include('./partials/header-login-cadastro') %>
+    <%- include('./partials/header-login-cadastro') %>
 
-<div class="container d-flex justify-content-center  p-3 " id="form">
-
-    
-
-    <form action="/login" method="POST">
+    <div class="container d-flex justify-content-center  p-3 " id="form">
 
         <div class="box-form pr-5 pl-5 p-3 mb-5">
 
             <div class="flex-column text-center">
-                
+
                 <% if(typeof(erros) != "undefined") { %>
-                    <div class="alert alert-light" role="alert">
-                      <ul id="listaDeInformacoes">
-                      <% erros.forEach( (erros) => { %>
-                          <li><h6 style="color: red"><%= erros.msg %></h6></li>
-                      <% }) %>
-                    </ul>                      
-                    </div>
-                  <% } %> 
+                <div class="alert alert-light" role="alert">
+                    <ul id="listaDeInformacoes">
+                        <% erros.forEach( (erros) => { %>
+                        <li>
+                            <h6 style="color: red"><%= erros.msg %></h6>
+                        </li>
+                        <% }) %>
+                    </ul>
+                </div>
+                <% } %>
 
                 <div>
                     <h5 class="text-center mt-3 mb-4 " id="texto-identificacao">Login</h5>
                 </div>
 
-                <div class="text-box d-flex pb-1 pt-3">
-                    <img class="form-icons" src="/icons/login-cadastro/icon-login.png" alt="icon-login">
-                    <input type="email" placeholder="E-mail" name="email">
-                </div>
+                <form action="/login" method="POST">
+                    <div class="text-box d-flex pb-1 pt-3">
+                        <img class="form-icons" src="/icons/login-cadastro/icon-login.png" alt="icon-login">
+                        <input type="email" placeholder="E-mail" name="email">
+                    </div>
 
-                <div class="text-box d-flex  pt-4 pb-1">
-                    <img class="form-icons" src="/icons/login-cadastro/icon-senha.png" alt="icon-senha">
-                    <input type="password" placeholder="Senha" name="senha">
-                </div>
+                    <div class="text-box d-flex  pt-4 pb-1">
+                        <img class="form-icons" src="/icons/login-cadastro/icon-senha.png" alt="icon-senha">
+                        <input type="password" placeholder="Senha" name="senha">
+                    </div>
 
-                <div class="mt-5 ">                    
-                    <button type="submit" class="btn-login">Login</button>                    
-                </div>
+                    <div class="mt-5 ">
+                        <button type="submit" class="btn-login">Login</button>
+                    </div>
+                </form>
 
                 <div class="text-center mt-2" id="recuperar-senha">
-                    <a href="#" id="recuperar-senha">Recuperar senha</a>
+                    <a href="#" id="recuperar-senha" data-toggle="modal" data-target="#modalRecuperarSenha">Recuperar senha</a>
                 </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="modalRecuperarSenha" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title">Recuperar Senha</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                        </button>
+                        </div>
+                        <form>
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" id="email" placeholder="Digite seu email...">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-vegme">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+                <!-- /Modal -->
 
                 <div class="text-center mt-4" id="criar-conta">
                     <a href="/usuario/cadastro">Criar nova Conta</a>
@@ -55,8 +83,9 @@
 
             </div>
         </div>
-    </form>
-</div>
+    </div>
+
+    <%- include('./partials/scripts') %> 
 
 </body>
 
