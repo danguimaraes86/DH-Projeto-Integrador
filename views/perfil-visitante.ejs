@@ -23,16 +23,17 @@
                             <p class="card-text"> <%= perfilUsuario.biografia  %> </p>
                         </div>
 
-                        <% if (visitanteFavoritado != undefined) { %>
-                            <a class="my-2 text-center" href="/usuario/remover/favorito/<%=perfilUsuario.id%>">
-                                <button type="button" class="btn btn-vegme" id="btn-remover-favorito">Remover</button>
-                            </a>
-                        <% } else { %>
-                            <a class="my-2 text-center" href="/usuario/adicionar/favorito/<%=perfilUsuario.id%>">
-                                <button type="button" class="btn btn-vegme" id="btn-adicionar-favorito">Adicionar</button>
-                            </a>
+                        <% if (usuario.id != perfilUsuario.id) { %>
+                            <% if (visitanteFavoritado != undefined) { %>
+                                <a class="my-2 text-center" href="/usuario/remover/favorito/<%=perfilUsuario.id%>">
+                                    <button type="button" class="btn btn-vegme" id="btn-remover-favorito">Remover</button>
+                                </a>
+                            <% } else { %>
+                                <a class="my-2 text-center" href="/usuario/adicionar/favorito/<%=perfilUsuario.id%>">
+                                    <button type="button" class="btn btn-vegme" id="btn-adicionar-favorito">Adicionar</button>
+                                </a>
+                            <% } %>
                         <% } %>
-
                     </div>
 
                 </section>
@@ -169,7 +170,7 @@
                                             </a>
                                         </div>
                                         <div class="col group-btn-post">
-                                            <a href="/curtir/post/<%=post.id%>">
+                                            <a>
                                                 <button type="button" class="btn btn-ccp">
                                                     Curtir
 
@@ -179,8 +180,7 @@
                                                     <% statusCurtida = 'curtida' %>
                                                     <% } %>
                                                     <% }) %>
-                                                    <span class="badge badge-pill <%= statusCurtida %>"
-                                                        id="contador-curtidas"><%= post.curtidas.length %></span>
+                                                    <span class="badge badge-pill <%= statusCurtida %>" id="contador-curtidas"><%= post.curtidas.length %></span>
 
                                                 </button>
                                             </a>
@@ -225,9 +225,7 @@
                             <a href="/usuario/<%= favorito.nickname %>">
                                 <img src="/<%= favorito.foto_perfil %> " class="img-amigo img-fluid" alt="...">
                             </a>
-                            <a href="/usuario/<%= favorito.nickname %>">
-                                <%= favorito.nome %>
-                            </a>
+                            <%= favorito.nome %>
                         </div>
                         <% }) %>
                     </div>

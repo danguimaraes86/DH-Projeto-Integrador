@@ -44,12 +44,10 @@ const update = async (req, res) => {
 
         // verifica se existe e se campo não veio vazio e faz a troca do nickname
         if (!nickname && novoNickname !== "") {
-            console.log(nickname)
             usuarioLogado.nickname = novoNickname;
             await usuarioLogado.save();
             dadosValidacao.push({ msg: "Nickname alterado com sucesso" });
         } else if (nickname) {
-            console.log(nickname)
             dadosValidacao.push({ msg: "Nickname já existe !" });
         }
 
@@ -95,7 +93,6 @@ const update = async (req, res) => {
 
 
 const destroy = async (req, res) => {
-
 
     const { senhaAtual } = req.body;
     const { senha } = req.session.usuario;

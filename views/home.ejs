@@ -70,8 +70,7 @@
                                         <div>
                                             <p class="pl-2 m-0"><%= post.usuario.nome %></p>
 
-                                            <p id="data-post" class="text-muted pl-2 m-0">
-                                                <%= moment(post.createdAt).format('DD/MM/YYYY')%></p>
+                                            <p id="data-post" class="text-muted pl-2 m-0"><%= moment(post.createdAt).format('DD/MM/YYYY')%></p>
                                         </div>
                                     </div>
 
@@ -183,7 +182,7 @@
                                             </a>
                                         </div>
                                         <div class="col group-btn-post">
-                                            <a >
+                                            <a>
                                                 <button type="button" class="btn-curtir-home btn btn-ccp">
                                                     Curtir
 
@@ -193,8 +192,7 @@
                                                     <% statusCurtida = 'curtida' %>
                                                     <% } %>
                                                     <% }) %>
-                                                    <span class="contador-curtidas badge badge-pill <%= statusCurtida %>"
-                                                        id="contador-curtidas"><%= post.curtidas.length %></span>
+                                                    <span class="contador-curtidas badge badge-pill <%= statusCurtida %>" id="contador-curtidas"><%= post.curtidas.length %></span>
 
                                                 </button>
                                             </a>
@@ -272,8 +270,6 @@
     </footer>
 
     <%- include('./partials/scripts') %>
-    
-   <script src="/js/curtir-post.js"></script> 
 
 </body>
 

@@ -119,7 +119,8 @@ const adicionarFavorito = async (req, res) => {
     
     await usuarioLogado.addFavorito(favorito);   
 
-    return res.redirect('/home');
+    const url = req.header('Referer')
+    return res.redirect(url)
 }
 
 const removerFavorito = async (req, res) => {
@@ -132,7 +133,8 @@ const removerFavorito = async (req, res) => {
    
     await usuarioLogado.removeFavorito(favorito);
 
-    return res.redirect('/home');
+    const url = req.header('Referer')
+    return res.redirect(url)
 }
 
 const perfilVisitante = async (req, res) => {

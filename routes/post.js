@@ -28,16 +28,15 @@ let storage = multer.diskStorage({
 let upload = multer({ 
   storage: storage,
   fileFilter: (req, file, cb) => {
-    // (img.indexOf(extensaoDoArquivo) > -1)
     let extensaoUpload = path.extname(file.originalname).toLowerCase();
     const extensaoImg = [".jpeg", ".png", ".tiff", ".svg", ".jpg", ".jfif"];
     const extensaoVideo = [".mp4", ".mkv", ".avi", ".mov", ".m4v"];
+    
     if(extensaoImg.includes(extensaoUpload) || extensaoVideo.includes(extensaoUpload) ){
       return cb(null, true)
     }else{
-      return cb( new Error('Arquivo não suportado'),false )
+      return cb(null, false )
     }
-  
   } 
 })
 

@@ -100,12 +100,13 @@ const editarPost = async (req, res) => {
         await Imagem.update({
             caminho: `images/fotos-post/${fotoPost[0].filename}`, arquivo: req.files[0].mimetype
         },
-            {
-                where: { post_id }
-            });
+        {
+            where: { post_id }
+        });
     };
 
-    return res.redirect('/home')
+    const url = req.header('Referer')
+    return res.redirect(url)
 }
 
 const excluirPost = async (req, res) => {

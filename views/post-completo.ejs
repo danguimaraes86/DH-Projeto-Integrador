@@ -11,28 +11,103 @@
     <div id="post-completo-<%=postCompleto.id%>" class="post-completo container my-3">
 
       <!-- Header do Post -->
-      <div class="d-flex justify-content-between align-items-center my-3">
+      <div class="d-flex justify-content-between align-items-start my-3">
 
         <!-- Titular do Post -->
-        <div class="d-flex align-items-center justify-content-start">
+        <div class="d-flex align-items-start justify-content-start">
           <a href="/usuario/<%= titularPost.nickname %>">
             <img src="/<%= titularPost.foto_perfil %>" alt="Logo" id="foto-perfil">
           </a>
           <div class="ml-2">
-            <p><%= titularPost.nome %></p>
-            <h4><%=postCompleto.titulo%></h4>
+            <p class="m-0"><%= titularPost.nome %></p>
+            <p id="data-post" class="text-muted m-0"><%= moment(postCompleto.createdAt).format('DD/MM/YYYY')%></p>
           </div>
         </div>
+          
+          <!-- Botão Editar Post -->
+          <% if (usuario.id == titularPost.id) { %>
+            <div>
+                <button type="button" class="btn" data-toggle="modal"
+                    data-target="#post-editar-<%= postCompleto.id %>">
+                    <i class="fas fa-edit icon-editar"></i>
+                </button>
+            </div>
 
-        <!-- ícone para denunciar -->
-        <div class="icon-denunciar">
-          <!-- <i class="fas fa-exclamation-triangle"></i> -->
-          <a href='javascript:history.back()'>
-            <i class="fas fa-arrow-left"></i>
-          </a>
-        </div>
+            <!-- Modal -->
+            <div class="modal fade" id="post-editar-<%= postCompleto.id %>" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Editar Post</h5>
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span>&times;</span>
+                            </button>
+                        </div>
+                        <form action="/post/editar/<%= postCompleto.id %>" method="post"
+                            enctype="multipart/form-data">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="form-label"
+                                        for="post-titulo-<%= postCompleto.id %>">Título do post</label>
+                                    <input type="text" class="form-control"
+                                        id="post-titulo-<%= postCompleto.id %>" name="titulo"
+                                        value="<%= postCompleto.titulo %>">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label"
+                                        for="post-descricao-<%= postCompleto.id %>">Descrição</label>
+                                    <textarea class="form-control"
+                                        id="post-descricao-<%= postCompleto.id %>" rows="6"
+                                        name="descricao"><%= postCompleto.descricao %></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="post-midias-anexadas">
+                                        Mídias anexadas
+                                    </label>
 
+                                    <div class="midias">
+                                        <img class="img-thumbnail rounded" src="" alt=""
+                                            class="foto-label" width="100%" height="100%">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <input id='selecao-foto-<%= postCompleto.id %>' class="selecao-foto"
+                                        type='file' name="fotoPost">
+                                    <label for='selecao-foto-<%= postCompleto.id %>'
+                                        id="btn-input-foto"></label>
+                                    <label for='selecao-foto-<%= postCompleto.id %>'
+                                        id="texto-selecionar-foto">Selecionar foto</label>
+                                </div>
+
+                            </div>
+
+                            <div class="modal-footer d-flex justify-content-between">
+                                <div class="btn-group dropup">
+                                    <button type="button" class="btn btn-danger dropdown-toggle"
+                                        data-toggle="dropdown">
+                                        Excluir Post
+                                    </button>
+                                    <div class="dropdown-menu p-0">
+                                        <button type="submit"
+                                            formaction="/post/excluir/<%= postCompleto.id %>"
+                                            formmethod="POST"
+                                            class="btn btn-block btn-danger">Sim</button>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-vegme">Salvar
+                                    Alterações</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <% } %>
+        
       </div>
+      
+      <h4 class="text-wrap"><%=postCompleto.titulo%></h4>
 
       <!-- Card do Post -->
       <div class="card mb-3">
@@ -119,7 +194,6 @@
 
   <%- include('./partials/scripts') %>
    <script src="/js/excluir-comentario.js"></script> 
-   <script src="/js/curtir-post.js"></script> 
 
 </body>
 

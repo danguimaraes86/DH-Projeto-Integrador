@@ -1,11 +1,9 @@
-
-
 header a img {
   width: 30px;
   height: 30px;
 }
 
-.icon-denunciar {
+.icon-voltar {
   width: 30px;
   height: 30px;
   align-self: flex-end;
@@ -23,7 +21,7 @@ header a img {
   border-radius: 0.25rem;
 }
 
-#post-completo {
+.post-completo {
   max-width: 600px;
   border: 1px solid rgb(193, 193, 193);
   border-radius: 0.25rem;
@@ -110,10 +108,62 @@ form button {
   background-color: transparent
 }
 
+.btn-excluir {
+  background-color: transparent;
+}
+
 .fa-trash-alt {
   color: #98E144;
 }
 
 .fa-trash-alt:hover {
   color: red;
+}
+
+/* Modal Editar Post */
+.form-control {
+  border: 1px solid rgb(193, 193, 193);
+  border-radius: .25rem;
+  resize: none;
+}
+
+.form-label {
+  font-weight: 500;
+}
+
+input[type='file'] {
+  display: none
+}
+
+#btn-input-foto{
+  background-image: url('../icons/click.png');
+  width: 35px;
+  height: 40px;
+  background-size: cover; 
+  cursor: pointer;
+}
+
+#texto-selecionar-foto{
+  cursor: pointer;
+}
+
+.midias {
+  border: 1px solid rgb(193, 193, 193);
+  border-radius: .25rem;
+  min-height: 48px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-bottom: 8px;
+}
+
+.img-thumbnail {
+  width: 30%;
+  max-height: 100px;
+  margin-top: 8px;
+  border: none;
+}
+
+.btn-danger {
+  border-radius: 4px;
 }
