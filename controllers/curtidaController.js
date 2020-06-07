@@ -1,4 +1,20 @@
-const { Curtida, Post } = require('../models')
+const { Curtida, Post, Usuario } = require('../models')
+
+const index = async (req, res) => {
+
+    const post_id = req.params.id
+    const postCompleto = await Post.findByPk(post_id);
+    
+    const curtidas = await postCompleto.getCurtidas({
+        include: Usuario
+    });
+
+    const usuarios = curtidas.map(curtida => {
+        return curtida.usuario;
+    });
+
+    return res.status(200).json(usuarios);
+}
 
 const store = async (req, res) => {
 
@@ -26,7 +42,7 @@ const store = async (req, res) => {
 
     const postCompleto = await Post.findByPk(post_id);
     const curtidas = await postCompleto.getCurtidas();
-    
+
     return res.status(200).json({
         qtdCurtida: curtidas.length,
         status: statusCurtida
@@ -35,5 +51,6 @@ const store = async (req, res) => {
 }
 
 module.exports = {
-    store
+    store,
+    index
 }
