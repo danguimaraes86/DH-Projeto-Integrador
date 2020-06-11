@@ -1,14 +1,12 @@
-
 //Metodo que cuida da ação curtir, do PostCompleto
-const curtirPostCompleto = ()=>{
+const curtirPostCompleto = () => {
     let { id } = $('.post-completo')[0]
     id = id.split('-');
 
     fetch(`${BASE_URL}curtir/post/${id[2]}`)
         .then(resposta => resposta.json()
             .then((data) => {
-                
-    console.log(id)
+
                 $('#contador-curtidas').text(`${data.qtdCurtida}`)
                 $('#contador-curtidas').removeClass(`curtida`)
                 $('#contador-curtidas').addClass(`${data.status}`)
@@ -20,15 +18,10 @@ $('.btn-curtir').click((e) => {
     curtirPostCompleto();
 })
 
-
-
-
-
-
-const curtirPostHome = (e)=>{
+const curtirPostHome = (e) => {
     const BASE_URL = 'http://localhost:3000/'
     const { id } = e.target.parentNode.parentNode.parentNode.parentNode
-    
+
     fetch(`${BASE_URL}curtir/post/${id}`)
         .then(resposta => resposta.json()
             .then((data) => {
@@ -42,19 +35,17 @@ const curtirPostHome = (e)=>{
 }
 $('.btn-curtir-home').click((e) => {
     e.preventDefault();
-    
+
     curtirPostHome(e);
-    console.log("botão")
 })
 
 
 $('.contador-curtidas').click((e) => {
     e.preventDefault()
-    
-    console.log("span")
+
     const BASE_URL = 'http://localhost:3000/'
     const { id } = e.target.parentNode.parentNode.parentNode.parentNode.parentNode
-   
+
     fetch(`${BASE_URL}curtir/post/${id}`)
         .then(resposta => resposta.json()
             .then((data) => {
@@ -66,9 +57,6 @@ $('.contador-curtidas').click((e) => {
                 }
             }));
 })
-
-
-
 
 // Mostrar quem curtiu o post
 $(function () {
@@ -82,19 +70,19 @@ $('.btn-curtidas').click((e) => {
     id = id.split('-');
     let curtidas = [];
 
-    fetch(`${BASE_URL}curtir/show/post/${id[2]}`)
+    fetch(`${BASE_URL}curtir/${id[2]}`)
         .then(resposta => resposta.json()
             .then((data) => {
-                let curtidas = []
+
+                let curtidas = [];
+                
                 data.forEach(usuario => {
-                    let element = $(`
-                <div class ="d-flex align-items-center mb-2" p-2 >
-                    <img class="pr-1"src="/${usuario.foto_perfil}" width="50" height="50" alt="...">
+                    let divCurtida =
+                        $(`<div class ="d-flex align-items-center mb-2" p-2 >
+                    <img class="pr-1"src="/${usuario.foto_perfil}" width="40" height="40" alt="...">
                     ${usuario.nome}
-                </div>
-                `
-                    );
-                    curtidas.push(element)
+                </div> `);
+                    curtidas.push(divCurtida)
                 });
 
                 $('.popover-body').append(curtidas)

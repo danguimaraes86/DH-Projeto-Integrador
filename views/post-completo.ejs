@@ -103,9 +103,16 @@
 
       <!-- Card do Post -->
       <div class="card mb-3">
-        <% if(imagens[0].caminho != "null"){ %>
-        <img src="/<%=imagens[0].caminho%>" class="card-img-top" alt="...">
-        <% } %>
+
+          <% if(imagens[0].caminho != "null"){ %>
+          <% if(imagens[0].arquivo.indexOf("image") == 0) { %>
+          <img src="/<%=imagens[0].caminho%>" class="card-img-top" alt="...">
+          <% } else { %>
+          <video controls loop controlslist='nodownload' src="/<%=imagens[0].caminho %>"
+             class="card-img-top" alt="..." height="300" ></video>
+              <% } %>
+              <% } %>
+        
         <div class="card-body">
 
           <div class="d-flex justify-content-between">
