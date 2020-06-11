@@ -179,9 +179,13 @@
               <p class="nome-perfil"><%= comentario.usuario.nome %></p>
             </div>
 
-            <button class="btn-excluir">
-              <i class="btn fas fa-trash-alt"></i>
-            </button>
+            
+            <% if(usuario.id == titularPost.id || usuario.id == comentario.usuario_id){ %> 
+              <button class="btn-excluir">
+                <i class="btn fas fa-trash-alt"></i>
+              </button>
+              
+            <% } %> 
 
           </div>
           <p><%= comentario.descricao %></p>
