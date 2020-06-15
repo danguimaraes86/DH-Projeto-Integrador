@@ -77,12 +77,23 @@ $('.btn-curtidas').click((e) => {
                 let curtidas = [];
                 
                 data.forEach(usuario => {
-                    let divCurtida =
-                        $(`<div class ="d-flex align-items-center mb-2" p-2 >
-                    <img class="pr-1"src="/${usuario.foto_perfil}" width="40" height="40" alt="...">
-                    ${usuario.nome}
-                </div> `);
-                    curtidas.push(divCurtida)
+                    console.log(usuario.foto_perfil);
+                    
+                    if(usuario.foto_perfil.indexOf("https") >= 0){
+                        let divCurtida =
+                        $(`<div class ="d-flex align-items-center mb-2" p-2 >                        
+                            <img class="pr-1"src="${usuario.foto_perfil}" width="40" height="40" alt="...">
+                            ${usuario.nome}
+                        </div> `); 
+                        curtidas.push(divCurtida);                       
+                    }else{
+                        let divCurtida =
+                        $(`<div class ="d-flex align-items-center mb-2" p-2 >                        
+                            <img class="pr-1"src="/${usuario.foto_perfil}" width="40" height="40" alt="...">
+                            ${usuario.nome}
+                        </div> `); 
+                        curtidas.push(divCurtida); 
+                    }                    
                 });
 
                 $('.popover-body').append(curtidas)

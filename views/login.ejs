@@ -45,34 +45,40 @@
                     </div>
                 </form>
 
+                <div>
+                    <button type="button" class="g-signin2 mt-2"  data-onsuccess="onSignIn"></button>
+                </div>
+
                 <div class="text-center mt-2" id="recuperar-senha">
-                    <a href="#" id="recuperar-senha" data-toggle="modal" data-target="#modalRecuperarSenha">Recuperar senha</a>
+                    <a href="#" id="recuperar-senha" data-toggle="modal" data-target="#modalRecuperarSenha">Recuperar
+                        senha</a>
                 </div>
 
                 <!-- Modal -->
                 <div class="modal fade" id="modalRecuperarSenha" tabindex="-1" role="dialog">
                     <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title">Recuperar Senha</h5>
-                        <button type="button" class="close" data-dismiss="modal">
-                            <span>&times;</span>
-                        </button>
-                        </div>
-                        <form action="/configuracao/recuperar/senha" method="POST">
-                        <div class="modal-body">
-                            <div class="form-group row">
-                                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-                                <div class="col-sm-10">
-                                  <input type="text" class="form-control"  name="email" placeholder="Digite seu email...">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Recuperar Senha</h5>
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                            </div>
+                            <form action="/configuracao/recuperar/senha" method="POST">
+                                <div class="modal-body">
+                                    <div class="form-group row">
+                                        <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="email"
+                                                placeholder="Digite seu email...">
+                                        </div>
+                                    </div>
                                 </div>
-                              </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-vegme">Enviar</button>
-                            </div>
-                        </form>
-                    </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-vegme">Enviar</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 <!-- /Modal -->
@@ -85,7 +91,8 @@
         </div>
     </div>
 
-    <%- include('./partials/scripts') %> 
+    <%- include('./partials/scripts') %>
+    <script src="/js/apiGoogleSignIn.js"></script> 
 
 </body>
 

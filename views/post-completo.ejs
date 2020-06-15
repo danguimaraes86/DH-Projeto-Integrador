@@ -16,7 +16,13 @@
         <!-- Titular do Post -->
         <div class="d-flex align-items-start justify-content-start">
           <a href="/usuario/<%= titularPost.nickname %>">
-            <img src="/<%= titularPost.foto_perfil %>" alt="Logo" id="foto-perfil">
+
+            <% if(titularPost.foto_perfil.indexOf("https")) { %>
+            <img src="/<%=titularPost.foto_perfil %> " alt="Logo" id="foto-perfil">
+            <% } else { %>
+            <img src="<%=titularPost.foto_perfil %> " alt="Logo" id="foto-perfil">
+            <% } %>
+
           </a>
           <div class="ml-2">
             <p class="m-0"><%= titularPost.nome %></p>
@@ -104,15 +110,15 @@
       <!-- Card do Post -->
       <div class="card mb-3">
 
-          <% if(imagens[0].caminho != "null"){ %>
-          <% if(imagens[0].arquivo.indexOf("image") == 0) { %>
-          <img src="/<%=imagens[0].caminho%>" class="card-img-top" alt="...">
-          <% } else { %>
-          <video controls loop controlslist='nodownload' src="/<%=imagens[0].caminho %>"
-             class="card-img-top" alt="..." height="300" ></video>
-              <% } %>
-              <% } %>
-        
+        <% if(imagens[0].caminho != "null"){ %>
+        <% if(imagens[0].arquivo.indexOf("image") == 0) { %>
+        <img src="/<%=imagens[0].caminho%>" class="card-img-top" alt="...">
+        <% } else { %>
+        <video controls loop controlslist='nodownload' src="/<%=imagens[0].caminho %>" class="card-img-top" alt="..."
+          height="300"></video>
+        <% } %>
+        <% } %>
+
         <div class="card-body">
 
           <div class="d-flex justify-content-between">
@@ -136,7 +142,8 @@
                 <% statusCurtida = 'curtida' %>
                 <% } %>
                 <% }) %>
-                <span class="curtidas-post-completo badge badge-pill <%= statusCurtida %>" id="contador-curtidas"><%= curtidas.length %></span>
+                <span class="curtidas-post-completo badge badge-pill <%= statusCurtida %>"
+                  id="contador-curtidas"><%= curtidas.length %></span>
 
               </button>
             </a>
@@ -148,65 +155,69 @@
           </div>
 
           <div class="col group-btn-post">
-          <button type="button" class="btn btn-ccp btn-curtidas" data-container="body" data-toggle="popover" data-placement="top"
-            data-content=" ">
-            Curtidas
-          </button>
-        </div>
-
-      </div>
-
-      <div class="collapse" id="form-comentario-<%= postCompleto.id %>">
-        <div class="container my-3">
-          <form action="/comentario/post?post=<%= postCompleto.id %>" method="POST"
-            class="d-flex justify-content-between align-items-center">
-            <div class="form-group w-100 mr-3 m-0">
-              <input type="text" class="form-control" id="input-comentario-<%= postCompleto.id %>"
-                placeholder="Digite seu comentário..." name="descricao">
-            </div>
-            <button type="submit">
-              <i id="btn-enviar" class="fas fa-paper-plane"></i>
+            <button type="button" class="btn btn-ccp btn-curtidas" data-container="body" data-toggle="popover"
+              data-placement="top" data-content=" ">
+              Curtidas
             </button>
-          </form>
+          </div>
+
+        </div>
+
+        <div class="collapse" id="form-comentario-<%= postCompleto.id %>">
+          <div class="container my-3">
+            <form action="/comentario/post?post=<%= postCompleto.id %>" method="POST"
+              class="d-flex justify-content-between align-items-center">
+              <div class="form-group w-100 mr-3 m-0">
+                <input type="text" class="form-control" id="input-comentario-<%= postCompleto.id %>"
+                  placeholder="Digite seu comentário..." name="descricao">
+              </div>
+              <button type="submit">
+                <i id="btn-enviar" class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Seção Comentários -->
-    <% if (comentarios.length > 0) { %>
-    <section class="border" id="post-comentario">
-      <% comentarios.forEach(comentario => { %>
-      <div class="list-group list-group-flush">
-        <div id="comentario-<%= comentario.id %>" class="list-group-item">
-          <div class="d-flex justify-content-between align-items-center mb-2">
-            <div class="d-flex">
-              <a href="/usuario/<%= comentario.usuario.nickname %>">
-                <img src="/<%= comentario.usuario.foto_perfil %>" class="img-amigo">
-              </a>
-              <p class="nome-perfil"><%= comentario.usuario.nome %></p>
-            </div>
+      <!-- Seção Comentários -->
+      <% if (comentarios.length > 0) { %>
+      <section class="border" id="post-comentario">
+        <% comentarios.forEach(comentario => { %>
+        <div class="list-group list-group-flush">
+          <div id="comentario-<%= comentario.id %>" class="list-group-item">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <div class="d-flex">
+                <a href="/usuario/<%= comentario.usuario.nickname %>">
+                  <% if(comentario.usuario.foto_perfil.indexOf("https")) { %>
+                  <img src="/<%=comentario.usuario.foto_perfil %> " class="img-amigo">
+                  <% } else { %>
+                  <img src="<%=comentario.usuario.foto_perfil %> " class="img-amigo">
+                  <% } %>                  
+                </a>
+                <p class="nome-perfil"><%= comentario.usuario.nome %></p>
+              </div>
 
-            
-            <% if(usuario.id == titularPost.id || usuario.id == comentario.usuario_id){ %> 
+
+              <% if(usuario.id == titularPost.id || usuario.id == comentario.usuario_id){ %>
               <button class="btn-excluir">
                 <i class="btn fas fa-trash-alt"></i>
               </button>
-              
-            <% } %> 
 
+              <% } %>
+
+            </div>
+            <p><%= comentario.descricao %></p>
           </div>
-          <p><%= comentario.descricao %></p>
         </div>
-      </div>
-      <% })%>
-    </section>
-    <% } %>
+        <% })%>
+      </section>
+      <% } %>
 
     </div>
   </main>
 
   <%- include('./partials/scripts') %>
-  <script src="/js/excluir-comentario.js"></script>  
+  <script src="/js/excluir-comentario.js"></script>
 
 </body>
 
