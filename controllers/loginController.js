@@ -1,6 +1,7 @@
 const { Usuario } = require('../models');
 const { validationResult } = require('express-validator');
-const { compararHashDaSenha } = require('../utils/hashing')
+const { compararHashDaSenha } = require('../utils/hashing');
+const { gerarHashDaSenha } = require('../utils/hashing')
 
 const { OAuth2Client } = require('google-auth-library');
 const CLIENT_ID = "554100096158-ps2ij57f92h7p9e0jdtqa6ennu50mscg.apps.googleusercontent.com";
@@ -38,8 +39,7 @@ const login = async (req, res) => {
         title: " - Login",
         erros: [{ msg: "Usuario ou senha inválida." }],
         css:'style-login-cadastro.css'
-        });
-    
+        });    
 };
 
 const verify = async (req, res) => {
@@ -53,7 +53,7 @@ const verify = async (req, res) => {
             audience: CLIENT_ID,
         });
         const payload = ticket.getPayload();
-        const userid = payload['sub'];
+        const userid = payload['sub'];             
     
         const usuarioCadastrado = await Usuario.findOne({ where: { email: payload.email } })
     
@@ -62,7 +62,7 @@ const verify = async (req, res) => {
                 nome: payload.name,
                 nickname: payload.email.split('@')[0],
                 email: payload.email,
-                senha: userid,
+                senha: await gerarHashDaSenha(userid),
                 foto_perfil: payload.picture
             });
     

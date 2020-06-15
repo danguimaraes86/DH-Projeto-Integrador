@@ -3,3 +3,4 @@
 docker-compose.yml
 /public/images/fotos-perfil
 /public/images/fotos-post
+/configs/googleAPI
