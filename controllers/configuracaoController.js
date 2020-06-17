@@ -131,14 +131,15 @@ const recuperarSenha = async (req, res) => {
             });
     }
 
-    const url = `${process.env.BASE_URL_APP}'/configuracao/senha/alterar`
+    const url = `${process.env.BASE_URL_APP}/configuracao/senha/alterar`
+    
     let emailEnvio = {
-        from: 'contatovegme1@gmail.com',
+        from: process.env.EMAIL,
         to: email,
         subject: 'Veg.me recuperação de senha',
         text: `Ola ${usuario.nome} segue seu token: ${usuario.senha}
         acesse o link: ${url}`,
-        html: `<h1>Ola ${usuario.nome}</h1><p>segue seu token: ${usuario.senha}</p><p>acesse o link para alterar sua senha: ${url}</p>`
+        html: `<h1>Ola ${usuario.nome}</h1><p>segue seu token: ${usuario.senha}</p><p>acesse o link para alterar sua senha:<a href="${url}"> ${url} </a> </p>`
     }
   
     nodemailer.sendMail(emailEnvio, (error)=>{
