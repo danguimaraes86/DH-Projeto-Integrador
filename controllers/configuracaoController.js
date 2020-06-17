@@ -142,7 +142,6 @@ const recuperarSenha = async (req, res) => {
   
     nodemailer.sendMail(emailEnvio, (error)=>{
         if(error){
-            console.log('Deu ruim');
             console.log(error);           
         }else{
             console.log('Email enviado com sucesso!');            
