@@ -1,3 +1,5 @@
+const BASE_URL_APP = window.location.hostname;
+
 $("#btn-footer-amigos").click(function (event) {
 
   $('#feed').addClass('d-none');

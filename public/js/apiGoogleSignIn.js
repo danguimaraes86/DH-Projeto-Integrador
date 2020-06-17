@@ -6,7 +6,7 @@ async function onSignIn(googleUser) {
 
     const dados = JSON.stringify(token);
 
-    const resposta = await fetch('http://localhost:3000/login/api/google', {
+    const resposta = await fetch(`${BASE_URL_APP}/login/api/google`, {
         headers: {
             'Content-Type': 'application/json'
         },
@@ -16,7 +16,7 @@ async function onSignIn(googleUser) {
     
     googleUser.disconnect();    
     
-    window.location.href = "http://localhost:3000/home";    
+    window.location.href = `${BASE_URL_APP}/home`;    
 }
 
 

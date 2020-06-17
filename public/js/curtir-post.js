@@ -3,7 +3,7 @@ const curtirPostCompleto = () => {
     let { id } = $('.post-completo')[0]
     id = id.split('-');
 
-    fetch(`${BASE_URL}curtir/post/${id[2]}`)
+    fetch(`${BASE_URL_APP}/curtir/post/${id[2]}`)
         .then(resposta => resposta.json()
             .then((data) => {
 
@@ -12,17 +12,17 @@ const curtirPostCompleto = () => {
                 $('#contador-curtidas').addClass(`${data.status}`)
             }));
 }
-//'#contador-curtidas'
+
 $('.btn-curtir').click((e) => {
     e.preventDefault()
     curtirPostCompleto();
 })
 
 const curtirPostHome = (e) => {
-    const BASE_URL = 'http://localhost:3000/'
+
     const { id } = e.target.parentNode.parentNode.parentNode.parentNode
 
-    fetch(`${BASE_URL}curtir/post/${id}`)
+    fetch(`${BASE_URL_APP}/curtir/post/${id}`)
         .then(resposta => resposta.json()
             .then((data) => {
                 let curtida = e.target.childNodes[1]
@@ -43,10 +43,9 @@ $('.btn-curtir-home').click((e) => {
 $('.contador-curtidas').click((e) => {
     e.preventDefault()
 
-    const BASE_URL = 'http://localhost:3000/'
     const { id } = e.target.parentNode.parentNode.parentNode.parentNode.parentNode
 
-    fetch(`${BASE_URL}curtir/post/${id}`)
+    fetch(`${BASE_URL_APP}/curtir/post/${id}`)
         .then(resposta => resposta.json()
             .then((data) => {
                 let curtida = e.target;
@@ -70,7 +69,7 @@ $('.btn-curtidas').click((e) => {
     id = id.split('-');
     let curtidas = [];
 
-    fetch(`${BASE_URL}curtir/${id[2]}`)
+    fetch(`${BASE_URL_APP}/curtir/${id[2]}`)
         .then(resposta => resposta.json()
             .then((data) => {
 

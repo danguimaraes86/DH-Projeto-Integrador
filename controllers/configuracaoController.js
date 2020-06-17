@@ -2,7 +2,8 @@ const { Usuario } = require('../models');
 const { compararHashDaSenha } = require('../utils/hashing');
 const { gerarHashDaSenha } = require('../utils/hashing');
 const { validationResult } = require("express-validator");
-const nodemailer = require('../configs/emailController')
+const nodemailer = require('../configs/emailController');
+require("dotenv").config();
 
 const index = (req, res) => {
     return res.render('configuracao-conta', { title: "Configuração", css: "style-configuracao-conta.css" });
@@ -130,7 +131,7 @@ const recuperarSenha = async (req, res) => {
             });
     }
 
-    const url = 'http://localhost:3000/configuracao/senha/alterar'
+    const url = `${process.env.BASE_URL_APP}'/configuracao/senha/alterar`
     let emailEnvio = {
         from: 'contatovegme1@gmail.com',
         to: email,
