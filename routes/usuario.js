@@ -20,7 +20,7 @@ const auth = require('../middlewares/auth')
 
 let storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, "images", "fotos-perfil"))
+    cb(null, path.join("images", "fotos-perfil"))
   },
   filename: function (req, file, cb) {
     cb(null, `${Date.now()}${path.extname(file.originalname)}`);
