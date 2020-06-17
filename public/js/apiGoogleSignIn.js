@@ -13,10 +13,9 @@ async function onSignIn(googleUser) {
         method: "POST",
         body: dados
     });    
-    
-    googleUser.disconnect();    
-    
-    window.location.href = `${BASE_URL_APP}/home`;    
+        
+    window.location.href = `${BASE_URL_APP}/home`; 
+    googleUser.disconnect();   
 }
 
 

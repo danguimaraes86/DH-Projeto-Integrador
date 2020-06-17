@@ -1,5 +1,5 @@
 //Metodo que cuida da ação curtir, do PostCompleto
-const curtirPostCompleto = () => {
+const curtirPostCompleto = (e) => {
     let { id } = $('.post-completo')[0]
     id = id.split('-');
 
