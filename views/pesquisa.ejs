@@ -9,7 +9,7 @@
 
     <section id="amigos">
 
-        <h3 class="text-center mt-4 p-4">Usuarios Encontrados</h3>
+        <h3 class="text-center mt-4 p-4">Usuários Encontrados</h3>
 
         <div class="container">
 
@@ -20,10 +20,10 @@
             <div class="list-group-item d-flex align-items-center justify-content-between">
                 <div class="d-flex" id="<%=usuarioEncontrado.id%> ">
                     <a href="/usuario/<%= usuarioEncontrado.nickname %>">
-                        <% if(usuarioEncontrado.foto_perfil.indexOf("https")) { %>
-                            <img src="/<%=usuarioEncontrado.foto_perfil %> " class="img-amigo img-fluid" alt="..."  id="foto-usuario">
-                        <% } else { %> 
+                        <% if(usuarioEncontrado.foto_perfil.indexOf("https") >= 0) { %>
                             <img src="<%=usuarioEncontrado.foto_perfil %> " class="img-amigo img-fluid" alt="..."  id="foto-usuario">
+                        <% } else { %> 
+                            <img src="/<%=usuarioEncontrado.foto_perfil %> " class="img-amigo img-fluid" alt="..."  id="foto-usuario">
                         <% } %>                         
                     </a>
                     <div class="d-row ml-2">
