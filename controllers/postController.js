@@ -2,6 +2,7 @@ const { Usuario, Post, Imagem } = require('../models')
 const fs = require('fs')
 const path = require('path')
 const moment = require('moment')
+const awsUpload = require('../middlewares/aws-upload')
 
 const create = (req, res) => {
     return res.render('criar-post', { title: "Criar Post", css: "style-criar-post.css" });
@@ -16,12 +17,13 @@ const store = async (req, res) => {
     const fotoPost = () => {
         if (req.files.length > 0) {
             extensao = req.files[0].mimetype
-            return `images/fotos-post/${req.files[0].filename}`
+            return awsUpload(req.files[0])
         } else {
             extensao = null
             return "null"
         }
     }
+
     const post = await Post.create({
         usuario_id: id,
         titulo,
