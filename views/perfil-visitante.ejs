@@ -12,7 +12,7 @@
             <div class="row">
 
                 <!-- Seção do Perfil -->
-                <section class="col-3 d-none d-md-block p-0" id="perfil">
+                <section class="col col-md-3 p-md-0 my-3 m-md-0" id="perfil">
 
                     <div class="card" id="card-perfil">
                         <% if(perfilUsuario.foto_perfil.indexOf("https") >= 0 ) { %>
@@ -253,27 +253,6 @@
         </div>
 
     </main>
-
-    <!-- Footer para mobile -->
-    <footer>
-        <div class="container d-md-none p-2">
-            <div class="row">
-                <div class="col btn-feed">
-                    <a href="#nav-bar">
-                        <button type="button" class="btn btn-vegme" id="btn-footer-home">Home</button>
-                    </a>
-                </div>
-                <div class="col btn-feed">
-                    <button type="button" class="btn btn-vegme" id="btn-footer-amigos">Favoritos</button>
-                </div>
-                <div class="col btn-feed">
-                    <a href="/post/criar">
-                        <button type="button" class="btn btn-vegme">Criar</button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <%- include('./partials/scripts') %>
 
