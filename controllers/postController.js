@@ -3,6 +3,7 @@ const fs = require('fs')
 const path = require('path')
 const moment = require('moment')
 const awsUpload = require('../middlewares/aws-upload')
+const awsDelete = require('../middlewares/aws-delete')
 
 const create = (req, res) => {
     return res.render('criar-post', { title: "Criar Post", css: "style-criar-post.css" });
@@ -96,11 +97,12 @@ const editarPost = async (req, res) => {
     if (fotoPost.length > 0) {
 
         if (imagem.caminho != "null") {
-            await fs.unlinkSync(path.join('public', imagem.caminho))
+            awsDelete(imagem)
         }
 
         await Imagem.update({
-            caminho: `images/fotos-post/${fotoPost[0].filename}`, arquivo: req.files[0].mimetype
+            caminho: awsUpload(req.files[0]),
+            arquivo: req.files[0].mimetype
         },
         {
             where: { post_id }

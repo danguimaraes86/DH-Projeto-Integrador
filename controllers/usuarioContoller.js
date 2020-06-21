@@ -3,6 +3,8 @@ const { validationResult } = require("express-validator")
 const { gerarHashDaSenha } = require('../utils/hashing')
 const moment = require('moment')
 
+const awsUpload = require('../middlewares/aws-upload')
+const awsDelete = require('../middlewares/aws-delete')
 
 const cadastro = (req, res) => {
     return res.render('cadastro', {title: " - Cadastro", css:'style-login-cadastro.css' });
@@ -14,7 +16,7 @@ const store = async (req, res) => {
     
     const fotoPerfil = ()=> {
         if(req.files.length > 0){
-            return `images/fotos-perfil/${req.files[0].filename}`
+            return awsUpload(req.files[0])
         }else{
             return "images/padrao/user.jpg"
         }
@@ -77,9 +79,9 @@ const editar = (req, res) => {
 
 const update = async (req, res) => {
 
-    const { nome, biografia, foto_perfil } = req.body;
-    const  {id}  = req.session.usuario;
-    const fotoPerfil = req.files;  
+    const { nome, biografia } = req.body
+    const  {id}  = req.session.usuario
+    const fotoPerfil = req.files
 
     // buscar usuário no banco
     const usuario = await Usuario.findByPk(id);    
@@ -97,12 +99,14 @@ const update = async (req, res) => {
     };    
     
     // Verfica se o usuário selecionou uma foto para altera-la
-    if(fotoPerfil.length > 0){                
-        if(usuario.foto_perfil != `images/fotos-perfil/${fotoPerfil[0].filename}` ) {
-            usuario.foto_perfil = `images/fotos-perfil/${fotoPerfil[0].filename}`;
-            await usuario.save();
-        };
+    if(fotoPerfil.length > 0){   
+        if(!usuario.foto_perfil.includes('padrao/user')) {
+            awsDelete(usuario.foto_perfil)
+        }          
+        usuario.foto_perfil = awsUpload(req.files[0])
+        await usuario.save();
     };
+
     // Grava novos dados do usuário na sessão
     req.session.usuario = usuario
     

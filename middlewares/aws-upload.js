@@ -1,7 +1,5 @@
 const AWS = require('aws-sdk')
 const fs = require('fs')
-const path = require('path')
-
 
 AWS.config.region = process.env.BUCKETEER_AWS_REGION;
 const S3_BUCKET = process.env.BUCKETEER_BUCKET_NAME;

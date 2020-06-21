@@ -14,7 +14,6 @@ const curtirPostCompleto = (e) => {
 }
 
 $('.btn-curtir').click((e) => {
-    e.preventDefault()
     curtirPostCompleto();
 })
 
@@ -34,8 +33,6 @@ const curtirPostHome = (e) => {
             }));
 }
 $('.btn-curtir-home').click((e) => {
-    e.preventDefault();
-
     curtirPostHome(e);
 })
 
