@@ -15,7 +15,7 @@ module.exports = (imagem) => {
         if(typeof(imagem) == 'string'){
             return imagem.split('/public/')[1]
         } else {
-            imagem.caminho.split('/public/')[1]
+            return imagem.caminho.split('/public/')[1]
         }
     }
 
