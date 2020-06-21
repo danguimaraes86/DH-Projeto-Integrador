@@ -11,7 +11,13 @@ module.exports = (imagem) => {
         secretAccessKey: process.env.BUCKETEER_AWS_SECRET_ACCESS_KEY,
     });
 
-    const nomeArquivo = imagem.caminho.split('/public/')[1]
+    const nomeArquivo = () => {
+        if(typeof(imagem) == 'string'){
+            return imagem.split('/public/')[1]
+        } else {
+            imagem.caminho.split('/public/')[1]
+        }
+    }
 
     const s3Params = {
         Bucket: S3_BUCKET,
