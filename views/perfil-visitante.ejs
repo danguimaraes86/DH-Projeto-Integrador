@@ -15,11 +15,7 @@
                 <section class="col col-md-3 p-md-0 my-3 m-md-0" id="perfil">
 
                     <div class="card" id="card-perfil">
-                        <% if(perfilUsuario.foto_perfil.indexOf("https") >= 0 ) { %>
-                            <img src="<%=perfilUsuario.foto_perfil %> "class="card-img-top" alt="...">
-                        <% } else { %> 
-                            <img src="<%=perfilUsuario.foto_perfil %> "class="card-img-top" alt="...">
-                        <% } %>
+                        <img src="<%=perfilUsuario.foto_perfil %> "class="card-img-top" alt="...">
                         
                         <div class="card-body">
 
@@ -58,11 +54,7 @@
                                 <!-- Header do Post -->
                                 <div class="d-flex align-items-center justify-content-between m-1">
                                     <div class="d-flex justify-content-start align-items-center">
-                                        <% if(post.usuario.foto_perfil.indexOf("https") >= 0 ) { %>
-                                            <img src="<%=post.usuario.foto_perfil %> "alt="Logo" id="foto-perfil">
-                                        <% } else { %> 
-                                            <img src="/<%=post.usuario.foto_perfil %> "alt="Logo" id="foto-perfil">
-                                        <% } %>
+                                        <img src="<%=post.usuario.foto_perfil %> "alt="Logo" id="foto-perfil">
                                         <div>
                                             <p class="pl-2 m-0"><%= post.usuario.nome %></p>
 
@@ -237,11 +229,7 @@
                         <% favoritos.forEach( favorito => {  %>
                         <div class="list-group-item d-flex align-items-center">
                             <a href="/usuario/<%= favorito.nickname %>">
-                                <% if(favorito.foto_perfil.indexOf("https") >= 0) { %>
-                                    <img src="<%=favorito.foto_perfil %> "class="img-amigo img-fluid" alt="...">
-                                <% } else { %> 
-                                    <img src="/<%=favorito.foto_perfil %> "class="img-amigo img-fluid" alt="...">
-                                <% } %>
+                                <img src="<%=favorito.foto_perfil %> "class="img-amigo img-fluid" alt="...">
                             </a>
                             <%= favorito.nome %>
                         </div>
