@@ -20,7 +20,11 @@
             <div class="list-group-item d-flex align-items-center justify-content-between">
                 <div class="d-flex" id="<%=usuarioEncontrado.id%> ">
                     <a href="/usuario/<%= usuarioEncontrado.nickname %>">
-                        <img src="<%=usuarioEncontrado.foto_perfil %> " class="img-amigo img-fluid" alt="..."  id="foto-usuario">
+                        <% if(usuarioEncontrado.foto_perfil.indexOf("https") >= 0) { %>
+                            <img src="<%=usuarioEncontrado.foto_perfil %> " class="img-amigo img-fluid" alt="..."  id="foto-usuario">
+                        <% } else { %> 
+                            <img src="/<%=usuarioEncontrado.foto_perfil %> " class="img-amigo img-fluid" alt="..."  id="foto-usuario">
+                        <% } %>                         
                     </a>
                     <div class="d-row ml-2">
                         <p id="nome-usuario"><%= usuarioEncontrado.nome %></p>

@@ -12,13 +12,13 @@ const cadastro = (req, res) => {
 
 const store = async (req, res) => {
 
-    const { nome, nickname, email, senha, foto_perfil } = req.body;
+    const { nome, nickname, email, senha, } = req.body;
     
     const fotoPerfil = ()=> {
         if(req.files.length > 0){
             return awsUpload(req.files[0])
         }else{
-            return "images/padrao/user.jpg"
+            return "/images/padrao/user.jpg"
         }
     };
 
