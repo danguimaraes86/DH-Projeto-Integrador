@@ -11,7 +11,7 @@ module.exports = (imagem) => {
         secretAccessKey: process.env.BUCKETEER_AWS_SECRET_ACCESS_KEY,
     });
 
-    const nomeArquivo = imagem.caminho.split('public/')[1]
+    const nomeArquivo = imagem.caminho.split('/public/')[1]
 
     console.log(nomeArquivo);
     
@@ -21,12 +21,12 @@ module.exports = (imagem) => {
         Key: `public/${imagem.caminho}`,
     };
 
-    // s3.deleteObject(s3Params, function (err, data) {
-    //     if (err) {
-    //         console.log("Error: ", err);
-    //     } else {
-    //         console.log(data);
-    //     }
-    // });
+    s3.deleteObject(s3Params, function (err, data) {
+        if (err) {
+            console.log("Error: ", err);
+        } else {
+            console.log(data);
+        }
+    });
     
 }
