@@ -16,13 +16,7 @@
         <!-- Titular do Post -->
         <div class="d-flex align-items-start justify-content-start">
           <a href="/usuario/<%= titularPost.nickname %>">
-
-            <% if(titularPost.foto_perfil.indexOf("https") >= 0) { %>
             <img src="<%=titularPost.foto_perfil %> " alt="Logo" id="foto-perfil">
-            <% } else { %>
-            <img src="/<%=titularPost.foto_perfil %> " alt="Logo" id="foto-perfil">
-            <% } %>
-
           </a>
           <div class="ml-2">
             <p class="m-0"><%= titularPost.nome %></p>
@@ -188,11 +182,7 @@
             <div class="d-flex justify-content-between align-items-center mb-2">
               <div class="d-flex">
                 <a href="/usuario/<%= comentario.usuario.nickname %>">
-                  <% if(comentario.usuario.foto_perfil.indexOf("https") >= 0) { %>
                   <img src="<%=comentario.usuario.foto_perfil %> " class="img-amigo">
-                  <% } else { %>
-                  <img src="/<%=comentario.usuario.foto_perfil %> " class="img-amigo">
-                  <% } %>                  
                 </a>
                 <p class="nome-perfil"><%= comentario.usuario.nome %></p>
               </div>

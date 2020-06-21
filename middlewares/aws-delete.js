@@ -13,12 +13,9 @@ module.exports = (imagem) => {
 
     const nomeArquivo = imagem.caminho.split('/public/')[1]
 
-    console.log(nomeArquivo);
-    
-
     const s3Params = {
         Bucket: S3_BUCKET,
-        Key: `public/${imagem.caminho}`,
+        Key: `public/${nomeArquivo}`,
     };
 
     s3.deleteObject(s3Params, function (err, data) {
