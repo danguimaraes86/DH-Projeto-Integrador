@@ -1,7 +1,7 @@
 const BASE_URL_APP = 'https://veg-me.herokuapp.com';
 
-if (window.location.host == 'http://veg-me.herokuapp.com') {
-  window.location.href = BASE_URL_APP
+if (window.location.protocol == 'http:') {
+  window.location.replace(BASE_URL_APP)
 }
 
 $("#btn-footer-amigos").click(function (event) {
