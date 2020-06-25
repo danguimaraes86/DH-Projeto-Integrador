@@ -26,11 +26,11 @@
 
                         <% if (usuario.id != perfilUsuario.id) { %>
                             <% if (visitanteFavoritado != undefined) { %>
-                                <a class="my-2 text-center" href="/usuario/remover/favorito/<%=perfilUsuario.id%>">
+                                <a class="mb-2 text-center" href="/usuario/remover/favorito/<%=perfilUsuario.id%>">
                                     <button type="button" class="btn btn-vegme" id="btn-remover-favorito">Remover</button>
                                 </a>
                             <% } else { %>
-                                <a class="my-2 text-center" href="/usuario/adicionar/favorito/<%=perfilUsuario.id%>">
+                                <a class="mb-2 text-center" href="/usuario/adicionar/favorito/<%=perfilUsuario.id%>">
                                     <button type="button" class="btn btn-vegme" id="btn-adicionar-favorito">Adicionar</button>
                                 </a>
                             <% } %>
@@ -225,16 +225,25 @@
 
                     <h3 class="text-center mt-2">Favoritos</h3>
 
-                    <div class="list-group list-group-flush">
-                        <% favoritos.forEach( favorito => {  %>
-                        <div class="list-group-item d-flex align-items-center">
-                            <a href="/usuario/<%= favorito.nickname %>">
-                                <img src="<%=favorito.foto_perfil %> "class="img-amigo img-fluid" alt="...">
-                            </a>
-                            <%= favorito.nome %>
+                    <% if (favoritos.length == 0 ) { %>
+                        <%= favoritos.lenght %>
+                        <div class="d-flex flex-column align-items-center my-3">
+                            <i class="far fa-frown mb-1"></i>
+                            <p class="text-center text-muted m-0">Nenhum favorito ainda</p>
                         </div>
-                        <% }) %>
-                    </div>
+                        <% } else { %>
+                            <div class="list-group list-group-flush">
+                                <% favoritos.forEach( favorito => {  %>
+                                <div class="list-group-item d-flex align-items-center">
+                                    <a href="/usuario/<%= favorito.nickname %>">
+                                        <img src="<%= favorito.foto_perfil %> " class="img-amigo img-fluid" alt="...">
+                                    </a>
+                                    <%= favorito.nome %>
+                                </div>
+                                <% }) %>
+                            </div>
+                    <% } %>
+
                 </section>
 
             </div>

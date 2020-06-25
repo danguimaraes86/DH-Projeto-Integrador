@@ -128,7 +128,8 @@ input[type='file'] {
     width: 100%;
 }
 .card-img-top{
-    max-height: 300px;
+    object-fit: cover;
+    max-height: 350px;
     background-repeat: no-repeat;
     background-size: cover;
 }

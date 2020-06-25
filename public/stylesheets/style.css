@@ -35,6 +35,10 @@ header #logo-veg-me {
     margin: 0;
 }
 
+.fa-frown {
+    font-size: 32px;
+}
+
 #titulo-navbar {
     font-family: myFont1;
     color: #98E144;
