@@ -42,6 +42,7 @@ header img{
 }
 
 #foto-perfil {
+    object-fit: cover;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -16,6 +16,7 @@ header a img {
 }
 
 #foto-perfil {
+  object-fit: cover;
   height: 70px;
   width: 80px;
   border-radius: 0.25rem;

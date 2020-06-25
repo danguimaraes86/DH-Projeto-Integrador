@@ -15,6 +15,7 @@ input[type='file'] {
     display: flex;
     justify-content: center;
     align-items: center;
+    object-fit: cover;
     width: 40%;
     height: 15vh;
     border: 1px solid rgb(193, 193, 193);
