@@ -6,6 +6,7 @@ a:hover {
 }
 
 #foto-usuario{
+    object-fit: cover;
     width: 70px;
     height: 70px;
     background-size: cover;
